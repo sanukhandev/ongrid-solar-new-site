@@ -135,7 +135,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${montserrat.variable} ${lato.variable}`}>
-      <body className={`font-sans antialiased ${montserrat.className}`}>
+      <body className={`font-sans antialiased ${montserrat.className} overflow-x-hidden`}>
         {children}
       </body>
     </html>
