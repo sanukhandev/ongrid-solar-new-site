@@ -12,6 +12,7 @@ import { CTA } from "@/components/cta";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { StructuredData } from "@/components/structured-data";
+import { TopAnnouncement } from "@/components/top-announcement";
 import { jsonLdSchema, breadcrumbSchema } from "@/lib/seo";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
     <>
       <StructuredData data={jsonLdSchema} />
       <StructuredData data={breadcrumbSchema} />
+      <TopAnnouncement />
       <main className="min-h-screen">
         <ScrollProgress />
         <Header />

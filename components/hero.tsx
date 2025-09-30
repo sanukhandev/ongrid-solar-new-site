@@ -20,7 +20,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-gradient-to-br from-blue-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+      className="relative pt-36 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-gradient-to-br from-blue-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
     >
       {/* Background gradient with animation */}
       <div className="absolute inset-0 bg-gradient-orange-subtle animate-gradient" />
