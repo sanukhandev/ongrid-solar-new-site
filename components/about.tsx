@@ -20,7 +20,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="py-20 md:py-32 bg-gradient-to-br from-gray-50 to-orange-50 dark:from-gray-900 dark:to-gray-800"
+      className="py-16 md:py-20 bg-gradient-to-br from-gray-50 to-orange-50 dark:from-gray-900 dark:to-gray-800"
     >
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

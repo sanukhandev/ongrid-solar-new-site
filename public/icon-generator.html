@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnGrid Solar Icon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo-display {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .logo-svg {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #ddd;
+            margin: 10px;
+        }
+        .icon-sizes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .icon-preview {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .icon-canvas {
+            border: 1px solid #ccc;
+            margin: 5px auto;
+            display: block;
+        }
+        .download-btn {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .download-btn:hover {
+            background: #e55a2b;
+        }
+        .instructions {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌞 OnGrid Solar - Icon Generator</h1>
+        
+        <div class="instructions">
+            <h3>📋 Instructions:</h3>
+            <ol>
+                <li>Right-click on each icon below and "Save image as..."</li>
+                <li>Save them to the <code>/public</code> folder with exact names shown</li>
+                <li>Or use the download buttons to save automatically</li>
+            </ol>
+        </div>
+
+        <div class="logo-display">
+            <h3>Original Logo</h3>
+            <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- OnGrid Solar Logo -->
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#faa633;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ee7723;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Circular background -->
+                <circle cx="100" cy="100" r="90" fill="url(#gradient)" stroke="#fff" stroke-width="4"/>
+                
+                <!-- Solar panel grid -->
+                <g transform="translate(50, 50)">
+                    <!-- Panel rows -->
+                    <rect x="10" y="20" width="80" height="15" fill="#fff" opacity="0.9" rx="2"/>
+                    <rect x="10" y="40" width="80" height="15" fill="#fff" opacity="0.8" rx="2"/>
+                    <rect x="10" y="60" width="80" height="15" fill="#fff" opacity="0.9" rx="2"/>
+                    <rect x="10" y="80" width="80" height="15" fill="#fff" opacity="0.8" rx="2"/>
+                    
+                    <!-- Grid lines -->
+                    <line x1="25" y1="20" x2="25" y2="95" stroke="#faa633" stroke-width="1"/>
+                    <line x1="40" y1="20" x2="40" y2="95" stroke="#faa633" stroke-width="1"/>
+                    <line x1="55" y1="20" x2="55" y2="95" stroke="#faa633" stroke-width="1"/>
+                    <line x1="75" y1="20" x2="75" y2="95" stroke="#faa633" stroke-width="1"/>
+                </g>
+                
+                <!-- Sun rays -->
+                <g transform="translate(100, 100)">
+                    <line x1="0" y1="-110" x2="0" y2="-100" stroke="#faa633" stroke-width="3"/>
+                    <line x1="77.8" y1="-77.8" x2="70.7" y2="-70.7" stroke="#faa633" stroke-width="3"/>
+                    <line x1="110" y1="0" x2="100" y2="0" stroke="#faa633" stroke-width="3"/>
+                    <line x1="77.8" y1="77.8" x2="70.7" y2="70.7" stroke="#faa633" stroke-width="3"/>
+                    <line x1="0" y1="110" x2="0" y2="100" stroke="#faa633" stroke-width="3"/>
+                    <line x1="-77.8" y1="77.8" x2="-70.7" y2="70.7" stroke="#faa633" stroke-width="3"/>
+                    <line x1="-110" y1="0" x2="-100" y2="0" stroke="#faa633" stroke-width="3"/>
+                    <line x1="-77.8" y1="-77.8" x2="-70.7" y2="-70.7" stroke="#faa633" stroke-width="3"/>
+                </g>
+                
+                <!-- Text -->
+                <text x="100" y="140" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">OnGrid</text>
+                <text x="100" y="155" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="10">Solar</text>
+            </svg>
+        </div>
+
+        <h3>🎯 Required Icons</h3>
+        <div class="icon-sizes">
+            <div class="icon-preview">
+                <div>apple-touch-icon.png</div>
+                <canvas class="icon-canvas" width="180" height="180" data-size="180" data-name="apple-touch-icon.png"></canvas>
+                <div>180×180</div>
+                <button class="download-btn" onclick="downloadIcon(this, 'apple-touch-icon.png', 180)">Download</button>
+            </div>
+            
+            <div class="icon-preview">
+                <div>android-chrome-192x192.png</div>
+                <canvas class="icon-canvas" width="64" height="64" data-size="192" data-name="android-chrome-192x192.png"></canvas>
+                <div>192×192</div>
+                <button class="download-btn" onclick="downloadIcon(this, 'android-chrome-192x192.png', 192)">Download</button>
+            </div>
+            
+            <div class="icon-preview">
+                <div>android-chrome-512x512.png</div>
+                <canvas class="icon-canvas" width="64" height="64" data-size="512" data-name="android-chrome-512x512.png"></canvas>
+                <div>512×512</div>
+                <button class="download-btn" onclick="downloadIcon(this, 'android-chrome-512x512.png', 512)">Download</button>
+            </div>
+            
+            <div class="icon-preview">
+                <div>favicon-16x16.png</div>
+                <canvas class="icon-canvas" width="32" height="32" data-size="16" data-name="favicon-16x16.png"></canvas>
+                <div>16×16</div>
+                <button class="download-btn" onclick="downloadIcon(this, 'favicon-16x16.png', 16)">Download</button>
+            </div>
+            
+            <div class="icon-preview">
+                <div>favicon-32x32.png</div>
+                <canvas class="icon-canvas" width="32" height="32" data-size="32" data-name="favicon-32x32.png"></canvas>
+                <div>32×32</div>
+                <button class="download-btn" onclick="downloadIcon(this, 'favicon-32x32.png', 32)">Download</button>
+            </div>
+            
+            <div class="icon-preview">
+                <div>mstile-150x150.png</div>
+                <canvas class="icon-canvas" width="64" height="64" data-size="150" data-name="mstile-150x150.png"></canvas>
+                <div>150×150</div>
+                <button class="download-btn" onclick="downloadIcon(this, 'mstile-150x150.png', 150)">Download</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>🚀 Quick Setup Options:</h3>
+            <p><strong>Option 1 - Online Generator (Recommended):</strong></p>
+            <ol>
+                <li>Visit <a href="https://realfavicongenerator.net/" target="_blank">RealFaviconGenerator.net</a></li>
+                <li>Upload the <code>public/SVG/logo.svg</code> file</li>
+                <li>Download the generated package</li>
+                <li>Replace files in <code>/public</code> folder</li>
+            </ol>
+            
+            <p><strong>Option 2 - CLI Tool:</strong></p>
+            <pre>npm install -g favicon
+favicon public/SVG/logo.svg public/</pre>
+            
+            <p><strong>Option 3 - Use this page:</strong></p>
+            <p>Right-click each icon above and save to <code>/public</code> folder</p>
+        </div>
+    </div>
+
+    <script>
+        // Generate icons when page loads
+        window.onload = function() {
+            generateAllIcons();
+        };
+        
+        function generateAllIcons() {
+            const canvases = document.querySelectorAll('.icon-canvas');
+            canvases.forEach(canvas => {
+                const size = parseInt(canvas.dataset.size);
+                const ctx = canvas.getContext('2d');
+                
+                // Set actual canvas size
+                canvas.width = size;
+                canvas.height = size;
+                
+                // Draw the logo
+                drawLogo(ctx, size);
+            });
+        }
+        
+        function drawLogo(ctx, size) {
+            const scale = size / 200;
+            
+            // Create gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#faa633');
+            gradient.addColorStop(1, '#ee7723');
+            
+            // Draw circular background
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, (size/2) - 4*scale, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Draw white border
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 4 * scale;
+            ctx.stroke();
+            
+            // Draw solar panels (simplified for small sizes)
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            const panelWidth = 80 * scale;
+            const panelHeight = 15 * scale;
+            const startX = 50 * scale;
+            const startY = 70 * scale;
+            
+            for (let i = 0; i < 4; i++) {
+                ctx.fillRect(startX, startY + i * 20 * scale, panelWidth, panelHeight);
+            }
+            
+            // Draw grid lines
+            ctx.strokeStyle = '#faa633';
+            ctx.lineWidth = 1 * scale;
+            for (let i = 1; i < 4; i++) {
+                const x = startX + (i * panelWidth / 4);
+                ctx.beginPath();
+                ctx.moveTo(x, startY);
+                ctx.lineTo(x, startY + 75 * scale);
+                ctx.stroke();
+            }
+            
+            // Draw sun rays (simplified)
+            ctx.strokeStyle = '#faa633';
+            ctx.lineWidth = 3 * scale;
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const rayLength = 10 * scale;
+            const rayDistance = (size/2) - 10*scale;
+            
+            for (let i = 0; i < 8; i++) {
+                const angle = (i * Math.PI) / 4;
+                const startX = centerX + Math.cos(angle) * rayDistance;
+                const startY = centerY + Math.sin(angle) * rayDistance;
+                const endX = centerX + Math.cos(angle) * (rayDistance - rayLength);
+                const endY = centerY + Math.sin(angle) * (rayDistance - rayLength);
+                
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+            }
+            
+            // Add text for larger icons
+            if (size >= 64) {
+                ctx.fillStyle = '#fff';
+                ctx.font = `bold ${12 * scale}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.fillText('OnGrid', centerX, centerY + 40*scale);
+                
+                ctx.font = `${10 * scale}px Arial`;
+                ctx.fillText('Solar', centerX, centerY + 55*scale);
+            }
+        }
+        
+        function downloadIcon(button, filename, size) {
+            const canvas = button.parentElement.querySelector('.icon-canvas');
+            
+            // Create a new canvas with the actual size
+            const downloadCanvas = document.createElement('canvas');
+            downloadCanvas.width = size;
+            downloadCanvas.height = size;
+            const ctx = downloadCanvas.getContext('2d');
+            
+            // Draw the logo at full size
+            drawLogo(ctx, size);
+            
+            // Create download link
+            downloadCanvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 'image/png');
+        }
+    </script>
+</body>
+</html>

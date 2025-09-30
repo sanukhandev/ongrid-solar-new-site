@@ -1,0 +1,31 @@
+{
+    "name": "OnGrid Solar - Best Solar Company in Trivandrum",
+    "short_name": "OnGrid Solar",
+    "description": "Leading Solar Panel Installation in Trivandrum. Expert Rooftop Solar Systems, Commercial Solar Power Solutions.",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "theme_color": "#faa633",
+    "background_color": "#ffffff",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "categories": [
+        "business",
+        "utilities",
+        "productivity"
+    ],
+    "lang": "en-IN"
+}

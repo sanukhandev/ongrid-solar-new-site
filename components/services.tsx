@@ -29,7 +29,7 @@ export function Services() {
   const data = content as unknown as ContentType;
 
   return (
-    <section id="services" className="py-20 md:py-32 bg-white dark:bg-gray-900">
+    <section id="services" className="py-16 md:py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="font-lato font-bold text-3xl md:text-4xl lg:text-5xl text-gray-900 dark:text-white">

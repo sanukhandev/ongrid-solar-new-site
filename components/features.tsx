@@ -29,7 +29,7 @@ export function Features() {
   return (
     <section
       id="features"
-      className="py-20 md:py-32 bg-gradient-to-b from-orange-50/50 to-yellow-50/30 dark:from-gray-900 dark:to-gray-800"
+      className="py-16 md:py-20 bg-gradient-to-b from-orange-50/50 to-yellow-50/30 dark:from-gray-900 dark:to-gray-800"
     >
       <div className="container mx-auto px-4">
         {/* Header */}

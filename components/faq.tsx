@@ -21,12 +21,12 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="py-20 md:py-32 bg-gradient-to-b from-background to-accent/10"
+      className="py-16 md:py-20 bg-gradient-to-b from-background to-accent/10"
     >
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div ref={ref} className="text-center mb-16 animate-on-scroll">
+          <div ref={ref} className="text-center mb-12 animate-on-scroll">
             <div className="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full text-sm font-medium text-primary mb-6 animate-fade-in">
               <HelpCircle className="w-4 h-4" />
               <span>Frequently Asked Questions</span>

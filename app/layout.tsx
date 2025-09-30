@@ -92,8 +92,40 @@ export const metadata: Metadata = {
     "business:contact_data:country_name": "India",
     "business:contact_data:phone_number": "7594949406",
     "business:contact_data:email": "ongridsolarpowersolution@gmail.com",
+    "msapplication-TileColor": "#faa633",
+    "msapplication-config": "/browserconfig.xml",
+    "theme-color": "#faa633",
   },
   generator: "v0.app",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180" },
+      { url: "/apple-touch-icon-152x152.png", sizes: "152x152" },
+      { url: "/apple-touch-icon-120x120.png", sizes: "120x120" },
+      { url: "/apple-touch-icon-76x76.png", sizes: "76x76" },
+    ],
+    other: [
+      {
+        rel: "apple-touch-icon-precomposed",
+        url: "/apple-touch-icon.png",
+      },
+      {
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg",
+        color: "#faa633",
+      },
+    ],
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
