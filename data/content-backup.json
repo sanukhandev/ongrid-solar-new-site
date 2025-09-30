@@ -1,0 +1,212 @@
+{
+  "site": {
+    "name": "SolarTech",
+    "tagline": "Power Your Home & Business with the Sun!"
+  },
+  "navigation": {
+    "links": [
+      { "label": "Home", "href": "#home" },
+      { "label": "About", "href": "#about" },
+      { "label": "Services", "href": "#services" },
+      { "label": "Blog", "href": "#blog" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "cta": {
+      "primary": "Get Free Quote",
+      "secondary": "Call Now"
+    }
+  },
+  "hero": {
+    "title": "Power Your Home & Business with the Sun!",
+    "subtitle": "Stop overpaying for electricity. Our expert solar installation services help you save money, use clean energy, and achieve energy independence. Government subsidies available - save up to ₹78,000!",
+    "cta": "Get Your Free Solar Quote Today",
+    "secondaryCta": "Learn More",
+    "highlights": [
+      "Save up to 80% on power bills",
+      "Government-approved solar solutions", 
+      "Fast installation & long-lasting panels",
+      "MNRE REGISTERED VENDOR - Subsidy ₹78,000 - EMI available"
+    ]
+  },
+  "features": {
+    "title": "Why Choose Solar Energy?",
+    "subtitle": "Maximum savings. Minimum hassle.",
+    "description": "Our solar solutions deliver exceptional value through cutting-edge technology and expert installation. Experience government-approved systems with guaranteed performance.",
+    "items": [
+      {
+        "id": "cost-savings",
+        "title": "Massive Cost Savings",
+        "description": "Save up to 80% on your electricity bills. Most homeowners recover their investment within 4-6 years through reduced utility costs and government subsidies.",
+        "icon": "piggy-bank"
+      },
+      {
+        "id": "government-subsidy",
+        "title": "Government Subsidies Available",
+        "description": "Get up to ₹78,000 subsidy under PM Surya Ghar Muft Bijli Yojana. We handle all paperwork and ensure you get maximum benefits.",
+        "icon": "badge-check"
+      },
+      {
+        "id": "energy-independence",
+        "title": "Energy Independence",
+        "description": "Take control of your power supply with on-grid, off-grid, or hybrid solar systems. Never worry about power cuts or rising electricity rates again.",
+        "icon": "home"
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Solar Solutions",
+    "subtitle": "Complete solar solutions for every need",
+    "items": [
+      {
+        "id": "residential-solar",
+        "title": "Residential Solar Installation",
+        "description": "Transform your rooftop into a money-saving power plant. On-grid and hybrid systems available with 25-year performance warranty.",
+        "icon": "home",
+        "features": ["On-Grid Systems", "Hybrid Systems", "Battery Storage", "Net Metering"]
+      },
+      {
+        "id": "commercial-solar",
+        "title": "Commercial Solar Solutions", 
+        "description": "Cut your business energy costs and go green with scalable solar solutions for offices, warehouses, and factories.",
+        "icon": "building",
+        "features": ["Industrial Scale", "Custom Design", "Energy Management", "ROI Analysis"]
+      },
+      {
+        "id": "maintenance",
+        "title": "Solar Panel Maintenance",
+        "description": "Keep your panels performing at peak levels with our regular cleaning, inspections, and maintenance plans.",
+        "icon": "wrench",
+        "features": ["Regular Cleaning", "Performance Monitoring", "Warranty Support", "Emergency Repairs"]
+      },
+      {
+        "id": "battery-storage", 
+        "title": "Battery Storage & Hybrid Solutions",
+        "description": "Store extra solar power for night-time use or power outages with our latest battery storage systems.",
+        "icon": "battery",
+        "features": ["Lithium Batteries", "Backup Power", "Smart Inverters", "Grid Tie"]
+      }
+    ]
+  },
+  "about": {
+    "title": "About SolarTech",
+    "subtitle": "Trusted Solar Energy Company Since 2014",
+    "description": "We are a trusted solar energy company committed to making clean power accessible to everyone. With a team of certified engineers and installers, we have completed hundreds of projects for homes, schools, and businesses.",
+    "mission": "To deliver affordable, reliable, and sustainable solar solutions that reduce energy costs and protect the planet.",
+    "stats": [
+      { "value": "10+", "label": "Years Experience" },
+      { "value": "500+", "label": "Projects Completed" },
+      { "value": "25", "label": "Year Warranty" },
+      { "value": "80%", "label": "Average Savings" }
+    ],
+    "whyTrust": [
+      "10+ years of experience in solar technology",
+      "Premium quality solar panels with 25-year performance warranties", 
+      "End-to-end support — from site survey to post-installation service",
+      "MNRE registered vendor with government approvals"
+    ]
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Ready to start saving with solar energy?",
+    "address": {
+      "street": "TC 37/2604(6), SHINI TOWER, KODUNGANOOR PO",
+      "area": "Vattiyoorkavu",
+      "city": "Thiruvananthapuram",
+      "state": "Kerala",
+      "pincode": "695013"
+    },
+    "phone": "7594949406",
+    "email": "ongridsolarpowersolution@gmail.com",
+    "cta": "Book a Free Site Visit"
+  },
+  "blog": {
+    "title": "Solar Energy Insights",
+    "subtitle": "Learn & Save with Expert Solar Knowledge",
+    "posts": [
+      {
+        "id": "solar-types-guide",
+        "title": "On-Grid vs Off-Grid vs Hybrid Solar: Complete Guide for 2025",
+        "excerpt": "Learn the key differences between on-grid, off-grid, and hybrid solar systems. Find out which solar solution suits your home or business best.",
+        "category": "Guide"
+      },
+      {
+        "id": "solar-roi-calculator",
+        "title": "Solar ROI Calculator Guide – Find Out Your Savings in 2025", 
+        "excerpt": "Use our simple guide to calculate solar ROI and find out how much you can save every month by installing solar panels.",
+        "category": "Finance"
+      },
+      {
+        "id": "maintenance-tips",
+        "title": "5 Simple Maintenance Tips for Solar Panels",
+        "excerpt": "Keep your solar panels running at peak performance with these 5 simple maintenance tips for maximum efficiency.",
+        "category": "Maintenance"
+      },
+      {
+        "id": "government-subsidy",
+        "title": "Government Subsidies & Tax Benefits for Solar in India 2025",
+        "excerpt": "Complete guide to PM Surya Ghar Muft Bijli Yojana and other government schemes. Get up to ₹78,000 subsidy.",
+        "category": "Policy"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about solar energy",
+    "items": [
+      {
+        "question": "How much can I save with solar panels?",
+        "answer": "Most homeowners save 60-80% on their electricity bills. With current government subsidies up to ₹78,000, the payback period is typically 4-6 years."
+      },
+      {
+        "question": "What government subsidies are available?",
+        "answer": "Under PM Surya Ghar Muft Bijli Yojana, you can get ₹30,000 for 1kW, ₹60,000 for 2kW, and ₹78,000 for 3kW systems. We handle all subsidy paperwork."
+      },
+      {
+        "question": "What's the difference between on-grid and off-grid systems?",
+        "answer": "On-grid systems connect to the electricity grid and allow net metering. Off-grid systems work independently with battery storage. Hybrid systems combine both benefits."
+      },
+      {
+        "question": "How long do solar panels last?",
+        "answer": "Our solar panels come with 25-year performance warranties and typically last 25-30 years with minimal maintenance."
+      },
+      {
+        "question": "What maintenance is required?",
+        "answer": "Solar panels require minimal maintenance - just regular cleaning and annual inspections. We provide comprehensive maintenance packages."
+      },
+      {
+        "question": "How long does installation take?",
+        "answer": "Residential installations typically take 1-3 days. Commercial projects may take 1-2 weeks depending on system size."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Start Saving with Solar?",
+    "subtitle": "Join thousands of satisfied customers who are saving money with clean energy",
+    "description": "Get your free consultation today and discover how much you can save with solar panels. Our experts will design a custom solution for your needs.",
+    "cta": "Get Your Free Quote Now",
+    "secondaryCta": "Call 7594949406"
+  },
+  "footer": {
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get the latest solar news and tips"
+    },
+    "links": {
+      "company": [
+        { "label": "About", "href": "#about" },
+        { "label": "Services", "href": "#services" },
+        { "label": "Contact", "href": "#contact" }
+      ],
+      "support": [
+        { "label": "FAQ", "href": "#faq" },
+        { "label": "Blog", "href": "#blog" },
+        { "label": "Support", "href": "#support" }
+      ],
+      "legal": [
+        { "label": "Privacy", "href": "#privacy" }, 
+        { "label": "Terms", "href": "#terms" }
+      ]
+    },
+    "copyright": "© 2025 SolarTech. All rights reserved."
+  }
+}
