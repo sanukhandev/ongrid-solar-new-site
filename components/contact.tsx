@@ -3,6 +3,7 @@
 import content from "@/data/content.json";
 import { MapPin, Phone, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState, FormEvent } from "react";
 
 type ContentType = {
   contact: {
@@ -23,6 +24,54 @@ type ContentType = {
 
 export function Contact() {
   const data = content as unknown as ContentType;
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    systemSize: "",
+    message: "",
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    // Create WhatsApp message
+    const whatsappMessage = `Hi OnGrid Solar! I'm interested in solar panel installation.
+
+*Contact Details:*
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+${formData.systemSize ? `System Size: ${formData.systemSize} kW` : ""}
+
+${formData.message ? `*Message:*\n${formData.message}` : ""}
+
+Please provide me with a free quote for solar panel installation in Trivandrum.`;
+
+    // Clean phone number for WhatsApp (remove spaces, brackets, hyphens)
+    const cleanPhone = data.contact.phone.replace(/[^+\d]/g, "");
+
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
+
+    // Open WhatsApp
+    window.open(whatsappUrl, "_blank");
+  };
 
   return (
     <section
@@ -125,7 +174,7 @@ export function Contact() {
 
           {/* Contact Form */}
           <div className="backdrop-blur-sm bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700 p-4 sm:p-6 lg:p-8 rounded-2xl overflow-hidden">
-            <form className="space-y-4 sm:space-y-6">
+            <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
               <div>
                 <h3 className="font-lato font-bold text-lg sm:text-xl lg:text-2xl text-gray-900 dark:text-white mb-4 sm:mb-6 break-words">
                   Get Your Free Quote
@@ -139,6 +188,9 @@ export function Contact() {
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
                     placeholder="Enter your name"
@@ -150,6 +202,9 @@ export function Contact() {
                   </label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
                     placeholder="Enter your phone"
@@ -163,6 +218,9 @@ export function Contact() {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   required
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
                   placeholder="Enter your email"
@@ -173,7 +231,12 @@ export function Contact() {
                 <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   System Size (kW)
                 </label>
-                <select className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full">
+                <select
+                  name="systemSize"
+                  value={formData.systemSize}
+                  onChange={handleInputChange}
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
+                >
                   <option value="">Select system size</option>
                   <option value="1">1 kW (₹30,000 subsidy)</option>
                   <option value="2">2 kW (₹60,000 subsidy)</option>
@@ -188,7 +251,10 @@ export function Contact() {
                   Message
                 </label>
                 <textarea
-                  rows={3}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows={2}
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base resize-none max-w-full"
                   placeholder="Tell us about your energy needs..."
                 />
@@ -197,9 +263,9 @@ export function Contact() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-2.5 sm:py-3 text-sm sm:text-base font-medium min-w-0"
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-2.5 sm:py-3 text-sm sm:text-base font-medium min-w-0"
               >
-                <span className="truncate">Get Free Quote Now</span>
+                <span className="truncate">💬 Send via WhatsApp</span>
               </Button>
 
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center leading-relaxed break-words">
