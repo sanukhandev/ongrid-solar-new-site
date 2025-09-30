@@ -1,16 +1,16 @@
-import { Header } from "@/components/header"
-import { Hero } from "@/components/hero"
-import { About } from "@/components/about"
-import { Features } from "@/components/features"
-import { Services } from "@/components/services"
-import { FAQ } from "@/components/faq"
-import { Blog } from "@/components/blog"
-import { Contact } from "@/components/contact"
-import { CTA } from "@/components/cta"
-import { Footer } from "@/components/footer"
-import { ScrollProgress } from "@/components/scroll-progress"
-import { StructuredData } from "@/components/structured-data"
-import { jsonLdSchema, breadcrumbSchema } from "@/lib/seo"
+import { Header } from "@/components/header";
+import { Hero } from "@/components/hero";
+import { About } from "@/components/about";
+import { Features } from "@/components/features";
+import { Services } from "@/components/services";
+import { FAQ } from "@/components/faq";
+import { Blog } from "@/components/blog";
+import { Contact } from "@/components/contact";
+import { CTA } from "@/components/cta";
+import { Footer } from "@/components/footer";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { StructuredData } from "@/components/structured-data";
+import { jsonLdSchema, breadcrumbSchema } from "@/lib/seo";
 
 export default function Home() {
   return (
@@ -31,5 +31,5 @@ export default function Home() {
         <Footer />
       </main>
     </>
-  )
+  );
 }

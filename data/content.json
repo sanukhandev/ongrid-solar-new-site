@@ -5,11 +5,26 @@
   },
   "navigation": {
     "links": [
-      { "label": "Home", "href": "#home" },
-      { "label": "About", "href": "#about" },
-      { "label": "Services", "href": "#services" },
-      { "label": "Blog", "href": "#blog" },
-      { "label": "Contact", "href": "#contact" }
+      {
+        "label": "Home",
+        "href": "#home"
+      },
+      {
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "label": "Services",
+        "href": "#services"
+      },
+      {
+        "label": "Blog",
+        "href": "#blog"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
     ],
     "cta": {
       "primary": "Get Free Quote",
@@ -23,7 +38,7 @@
     "secondaryCta": "Call 7594949406",
     "highlights": [
       "Save up to 80% on power bills with Solar Panel Installation in Trivandrum",
-      "Best Solar Company in Trivandrum - MNRE registered vendor", 
+      "Best Solar Company in Trivandrum - MNRE registered vendor",
       "Government subsidy up to ₹78,000 for Rooftop Solar Systems in Trivandrum",
       "Expert Solar Hybrid System and Solar Ongrid System in Trivandrum"
     ]
@@ -62,28 +77,48 @@
         "title": "Residential Solar Panel Installation in Trivandrum",
         "description": "Transform your rooftop into a money-saving power plant with our expert Solar Panel Installation in Trivandrum. Rooftop Solar Systems available with 25-year performance warranty.",
         "icon": "home",
-        "features": ["Solar Ongrid System in Trivandrum", "Solar Hybrid System", "Solar Battery Storage", "Net Metering"]
+        "features": [
+          "Solar Ongrid System in Trivandrum",
+          "Solar Hybrid System",
+          "Solar Battery Storage",
+          "Net Metering"
+        ]
       },
       {
         "id": "commercial-solar",
-        "title": "Commercial Solar Power Solutions", 
+        "title": "Commercial Solar Power Solutions",
         "description": "Cut your business energy costs with scalable Commercial Solar Power Solutions for offices, warehouses, and factories. Best Solar Company in Trivandrum for commercial projects.",
         "icon": "building",
-        "features": ["Industrial Scale Solar", "Custom Design", "Energy Management", "ROI Analysis"]
+        "features": [
+          "Industrial Scale Solar",
+          "Custom Design",
+          "Energy Management",
+          "ROI Analysis"
+        ]
       },
       {
         "id": "maintenance",
         "title": "Solar Panel Maintenance in Trivandrum",
         "description": "Keep your Solar Panel Installation in Trivandrum performing at peak levels with our regular cleaning, inspections, and maintenance plans.",
         "icon": "wrench",
-        "features": ["Regular Cleaning", "Performance Monitoring", "Warranty Support", "Emergency Repairs"]
+        "features": [
+          "Regular Cleaning",
+          "Performance Monitoring",
+          "Warranty Support",
+          "Emergency Repairs"
+        ]
       },
       {
-        "id": "battery-storage", 
+        "id": "battery-storage",
         "title": "Solar Battery Storage and Hybrid Solutions",
         "description": "Store extra solar power with our Solar Battery Storage systems. Solar Hybrid System solutions for night-time use and power outages.",
         "icon": "battery",
-        "features": ["Lithium Solar Battery Storage", "Backup Power", "Smart Inverters", "Grid Tie"]
+        "features": [
+          "Lithium Solar Battery Storage",
+          "Backup Power",
+          "Smart Inverters",
+          "Grid Tie"
+        ]
       }
     ]
   },
@@ -93,14 +128,26 @@
     "description": "We are the Best Solar Company in Trivandrum committed to making clean power accessible to everyone. With a team of certified engineers and installers, we have completed hundreds of Solar Panel Installation in Trivandrum projects for homes, schools, and businesses across Kerala.",
     "mission": "To deliver affordable, reliable, and sustainable solar solutions that reduce energy costs and protect the planet while helping customers maximize government subsidies for Rooftop Solar Systems in Trivandrum.",
     "stats": [
-      { "value": "10+", "label": "Years Experience" },
-      { "value": "500+", "label": "Projects Completed" },
-      { "value": "25", "label": "Year Warranty" },
-      { "value": "80%", "label": "Average Savings" }
+      {
+        "value": "10+",
+        "label": "Years Experience"
+      },
+      {
+        "value": "500+",
+        "label": "Projects Completed"
+      },
+      {
+        "value": "25",
+        "label": "Year Warranty"
+      },
+      {
+        "value": "80%",
+        "label": "Average Savings"
+      }
     ],
     "whyTrust": [
       "10+ years of Solar Panel Installation in Trivandrum experience",
-      "Premium quality Rooftop Solar Systems with 25-year performance warranties", 
+      "Premium quality Rooftop Solar Systems with 25-year performance warranties",
       "End-to-end support — from site survey to post-installation service",
       "MNRE registered vendor with government approvals - Best Solar Company in Trivandrum"
     ]
@@ -131,7 +178,7 @@
       },
       {
         "id": "solar-roi-calculator",
-        "title": "Solar Panel Installation in Trivandrum ROI Calculator Guide 2025", 
+        "title": "Solar Panel Installation in Trivandrum ROI Calculator Guide 2025",
         "excerpt": "Calculate ROI for Solar Panel Installation in Trivandrum and find out how much you can save every month with Rooftop Solar Systems.",
         "category": "Finance"
       },

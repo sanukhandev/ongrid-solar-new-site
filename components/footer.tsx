@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import content from "@/data/content.json"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import content from "@/data/content.json";
 
 type ContentType = {
   site: { name: string };
@@ -31,16 +31,20 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 flex items-center justify-center">
-                <img 
-                  src="/SVG/logo.svg" 
-                  alt="OnGrid Solar logo" 
+                <img
+                  src="/SVG/logo.svg"
+                  alt="OnGrid Solar logo"
                   className="w-10 h-10 object-contain"
                 />
               </div>
-              <span className="font-lato font-bold text-xl">{data.site.name}</span>
+              <span className="font-lato font-bold text-xl">
+                {data.site.name}
+              </span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed max-w-sm">
-              Leading solar installation company in Trivandrum. MNRE registered vendor providing government-approved solar solutions with up to ₹78,000 subsidy.
+              Leading solar installation company in Trivandrum. MNRE registered
+              vendor providing government-approved solar solutions with up to
+              ₹78,000 subsidy.
             </p>
           </div>
 
@@ -49,12 +53,18 @@ export function Footer() {
             <h3 className="font-lato font-bold mb-4">Contact Info</h3>
             <ul className="space-y-3">
               <li>
-                <a href={`tel:${data.contact.phone}`} className="text-white/70 hover:text-orange-400 transition-colors text-sm">
+                <a
+                  href={`tel:${data.contact.phone}`}
+                  className="text-white/70 hover:text-orange-400 transition-colors text-sm"
+                >
                   📞 {data.contact.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${data.contact.email}`} className="text-white/70 hover:text-orange-400 transition-colors text-sm break-all">
+                <a
+                  href={`mailto:${data.contact.email}`}
+                  className="text-white/70 hover:text-orange-400 transition-colors text-sm break-all"
+                >
                   ✉️ {data.contact.email}
                 </a>
               </li>
@@ -69,22 +79,34 @@ export function Footer() {
             <h3 className="font-lato font-bold mb-4">Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#services" className="text-white/70 hover:text-orange-400 transition-colors text-sm">
+                <a
+                  href="#services"
+                  className="text-white/70 hover:text-orange-400 transition-colors text-sm"
+                >
                   Residential Solar
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-white/70 hover:text-orange-400 transition-colors text-sm">
+                <a
+                  href="#services"
+                  className="text-white/70 hover:text-orange-400 transition-colors text-sm"
+                >
                   Commercial Solar
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-white/70 hover:text-orange-400 transition-colors text-sm">
+                <a
+                  href="#services"
+                  className="text-white/70 hover:text-orange-400 transition-colors text-sm"
+                >
                   Maintenance & Support
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-white/70 hover:text-orange-400 transition-colors text-sm">
+                <a
+                  href="#services"
+                  className="text-white/70 hover:text-orange-400 transition-colors text-sm"
+                >
                   Battery Storage
                 </a>
               </li>
@@ -114,13 +136,20 @@ export function Footer() {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/70 text-sm">
-              © 2025 {data.site.name}. All rights reserved. | MNRE Registered Vendor
+              © 2025 {data.site.name}. All rights reserved. | MNRE Registered
+              Vendor
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-white/70 hover:text-orange-400 transition-colors text-sm">
+              <a
+                href="#"
+                className="text-white/70 hover:text-orange-400 transition-colors text-sm"
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="text-white/70 hover:text-orange-400 transition-colors text-sm">
+              <a
+                href="#"
+                className="text-white/70 hover:text-orange-400 transition-colors text-sm"
+              >
                 Terms of Service
               </a>
             </div>
@@ -128,5 +157,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

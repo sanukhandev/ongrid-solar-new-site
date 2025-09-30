@@ -37,9 +37,9 @@ export function Header() {
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3 group">
             <div className="w-12 h-12 flex items-center justify-center transition-transform group-hover:scale-105">
-              <img 
-                src="/SVG/logo.svg" 
-                alt="OnGrid Solar logo" 
+              <img
+                src="/SVG/logo.svg"
+                alt="OnGrid Solar logo"
                 className="w-10 h-10 object-contain"
               />
             </div>

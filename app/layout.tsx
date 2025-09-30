@@ -17,12 +17,13 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "OnGrid Solar - Best Solar Company in Trivandrum | Solar Panel Installation",
+  title:
+    "OnGrid Solar - Best Solar Company in Trivandrum | Solar Panel Installation",
   description:
     "Leading Solar Panel Installation in Trivandrum. Expert Rooftop Solar Systems, Commercial Solar Power Solutions, Solar Battery Storage & Hybrid Systems. MNRE registered. Get up to ₹78,000 subsidy. Best Solar Company in Trivandrum.",
   keywords: [
     "Solar Panel Installation in Trivandrum",
-    "Rooftop Solar Systems in Trivandrum", 
+    "Rooftop Solar Systems in Trivandrum",
     "Commercial Solar Power Solutions",
     "Solar Battery Storage",
     "Solar Hybrid System",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     "Residential Solar Trivandrum",
     "Commercial Solar Kerala",
     "Solar Panels Trivandrum",
-    "OnGrid Solar Trivandrum"
+    "OnGrid Solar Trivandrum",
   ].join(", "),
   authors: [{ name: "OnGrid Solar" }],
   robots: {
@@ -45,14 +46,16 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
-    title: "OnGrid Solar - Best Solar Company in Trivandrum | Solar Panel Installation",
-    description: "Leading Solar Panel Installation in Trivandrum. Expert Rooftop Solar Systems, Commercial Solar Power Solutions. MNRE registered with government subsidies up to ₹78,000.",
+    title:
+      "OnGrid Solar - Best Solar Company in Trivandrum | Solar Panel Installation",
+    description:
+      "Leading Solar Panel Installation in Trivandrum. Expert Rooftop Solar Systems, Commercial Solar Power Solutions. MNRE registered with government subsidies up to ₹78,000.",
     type: "website",
     locale: "en_IN",
     url: "https://ongridsolarpowersolution.com",
@@ -69,7 +72,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "OnGrid Solar - Best Solar Company in Trivandrum",
-    description: "Expert Solar Panel Installation in Trivandrum. Rooftop Solar Systems, Commercial Solar Power Solutions. Get up to ₹78,000 government subsidy.",
+    description:
+      "Expert Solar Panel Installation in Trivandrum. Rooftop Solar Systems, Commercial Solar Power Solutions. Get up to ₹78,000 government subsidy.",
     images: ["/og-image.jpg"],
   },
   alternates: {
@@ -79,8 +83,9 @@ export const metadata: Metadata = {
     "geo.region": "IN-KL",
     "geo.placename": "Trivandrum, Kerala",
     "geo.position": "8.5241;76.9366",
-    "ICBM": "8.5241, 76.9366",
-    "business:contact_data:street_address": "TC 37/2604(6), SHINI TOWER, KODUNGANOOR PO",
+    ICBM: "8.5241, 76.9366",
+    "business:contact_data:street_address":
+      "TC 37/2604(6), SHINI TOWER, KODUNGANOOR PO",
     "business:contact_data:locality": "Vattiyoorkavu",
     "business:contact_data:region": "Kerala",
     "business:contact_data:postal_code": "695013",
@@ -88,7 +93,7 @@ export const metadata: Metadata = {
     "business:contact_data:phone_number": "7594949406",
     "business:contact_data:email": "ongridsolarpowersolution@gmail.com",
   },
-  generator: "v0.app"
+  generator: "v0.app",
 };
 
 export default function RootLayout({
