@@ -1,8 +1,7 @@
 "use client";
 
 import content from "@/data/content.json";
-import { ArrowRight, Calendar, Tag } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Calendar, Tag } from "lucide-react";
 
 type ContentType = {
   blog: {
@@ -76,29 +75,9 @@ export function Blog() {
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {post.excerpt}
                 </p>
-
-                <div className="pt-4">
-                  <Button
-                    variant="ghost"
-                    className="p-0 h-auto text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 group-hover:translate-x-1 transition-all duration-300"
-                  >
-                    Read More
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
-                </div>
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-orange-300 text-orange-700 hover:bg-orange-50 dark:border-orange-700 dark:text-orange-300 dark:hover:bg-orange-900/20"
-          >
-            View All Articles
-          </Button>
         </div>
       </div>
     </section>

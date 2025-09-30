@@ -81,13 +81,6 @@ export function Services() {
                     )
                   )}
                 </div>
-
-                <Button
-                  variant="outline"
-                  className="w-full border-orange-300 text-orange-700 hover:bg-orange-50 dark:border-orange-700 dark:text-orange-300 dark:hover:bg-orange-900/20 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300"
-                >
-                  Learn More
-                </Button>
               </div>
             );
           })}
