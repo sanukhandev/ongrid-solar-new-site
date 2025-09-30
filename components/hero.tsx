@@ -17,6 +17,17 @@ type ContentType = {
 
 export function Hero() {
   const data = content as unknown as ContentType;
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <section
       id="home"
@@ -75,19 +86,25 @@ export function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up stagger-4">
               <Button
+                onClick={scrollToContact}
                 size="lg"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg group glass-card"
               >
                 {data.hero.cta}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-orange-300 text-orange-700 hover:bg-orange-50 dark:border-orange-700 dark:text-orange-300 dark:hover:bg-orange-900/20"
+              <a
+                href={`tel:${data.hero.secondaryCta.replace(/[^0-9+]/g, "")}`}
+                className="inline-flex"
               >
-                {data.hero.secondaryCta}
-              </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-orange-300 text-orange-700 hover:bg-orange-50 dark:border-orange-700 dark:text-orange-300 dark:hover:bg-orange-900/20 w-full"
+                >
+                  {data.hero.secondaryCta}
+                </Button>
+              </a>
             </div>
           </div>
 

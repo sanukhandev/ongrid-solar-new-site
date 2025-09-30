@@ -8,6 +8,16 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 export function CTA() {
   const ref = useScrollAnimation();
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <section className="py-20 md:py-32 bg-gradient-to-br from-orange-500 via-orange-600 to-yellow-500 relative overflow-hidden animate-gradient">
       {/* Background pattern */}
@@ -38,10 +48,11 @@ export function CTA() {
               {content.cta.subtitle}
             </p>
             <Button
+              onClick={scrollToContact}
               size="lg"
               className="glass bg-white/20 text-white border-white/30 hover:bg-white/30 group animate-fade-in-up stagger-2 hover-lift"
             >
-              {content.cta.button}
+              {content.cta.cta}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>

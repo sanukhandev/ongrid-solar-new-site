@@ -13,14 +13,17 @@ export function TopAnnouncement() {
   const data = content as unknown as ContentType;
 
   return (
-    <div className="sticky top-0 z-50 bg-gradient-to-r from-orange-600 to-orange-500 text-white py-2 sm:py-3 overflow-hidden shadow-lg">
+    <div className="sticky top-0 z-50 bg-gradient-to-r from-orange-600 to-orange-500 text-white py-2 sm:py-3 overflow-hidden shadow-lg border-b border-orange-700/20">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-30">
-        <div className="w-full h-full" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}></div>
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        ></div>
       </div>
-      
+
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-center">
           {/* EMI Options - Highlighted */}
@@ -36,7 +39,9 @@ export function TopAnnouncement() {
 
           {/* Main message */}
           <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 text-xs sm:text-sm">
-            <span className="font-medium">Best & Affordable Solar Panel Installation</span>
+            <span className="font-medium">
+              Best & Affordable Solar Panel Installation
+            </span>
             <span className="hidden sm:inline">•</span>
             <div className="flex items-center gap-1">
               <Gift className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-300" />
