@@ -43,14 +43,14 @@ function StarRating({ rating }: { rating: number }) {
 export function Testimonials() {
   const data = content as unknown as ContentType;
   const testimonials = data.testimonials.reviews;
-  
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   // Auto-advance slider
   useEffect(() => {
     if (!isAutoPlaying) return;
-    
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
@@ -64,7 +64,9 @@ export function Testimonials() {
   };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
     setIsAutoPlaying(false);
   };
 
@@ -88,15 +90,12 @@ export function Testimonials() {
         <div className="relative max-w-4xl mx-auto">
           {/* Main Testimonial Display */}
           <div className="relative overflow-hidden rounded-2xl">
-            <div 
+            <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {testimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className="w-full flex-shrink-0 px-4"
-                >
+                <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
                   <div className="backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 border border-white/20 dark:border-gray-700/20 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xl">
                     <div className="flex flex-col items-center text-center space-y-6">
                       {/* Quote Icon */}
