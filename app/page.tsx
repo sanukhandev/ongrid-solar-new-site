@@ -5,6 +5,7 @@ import { Features } from "@/components/features";
 import { Services } from "@/components/services";
 import { Partners } from "@/components/partners";
 import { FAQ } from "@/components/faq";
+import { Testimonials } from "@/components/testimonials";
 import { Blog } from "@/components/blog";
 import { Contact } from "@/components/contact";
 import { CTA } from "@/components/cta";
@@ -27,6 +28,7 @@ export default function Home() {
         <Services />
         <Partners />
         <FAQ />
+        <Testimonials />
         <Blog />
         <Contact />
         <CTA />
