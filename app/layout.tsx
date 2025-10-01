@@ -2,7 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Montserrat, Lato } from "next/font/google";
 import "./globals.css";
-
+import { Analytics } from "@vercel/analytics/next";
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -145,6 +145,7 @@ export default function RootLayout({
       <body
         className={`font-sans antialiased ${montserrat.className} overflow-x-hidden`}
       >
+        <Analytics />
         {children}
       </body>
     </html>
