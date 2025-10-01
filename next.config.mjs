@@ -11,8 +11,6 @@ const nextConfig = {
   },
 
   images: {
-    // ✅ Enable Next.js Image Optimization
-    formats: ["image/avif", "image/webp", "image/png", "image/jpeg"],
     domains: [
     ],
     deviceSizes: [320, 640, 768, 1024, 1280, 1600, 1920],
