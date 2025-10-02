@@ -282,8 +282,8 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                     </Button>
                   </div>
                   <p className="text-[9px] sm:text-[10px] text-gray-400 mt-1 text-center px-1">
-                    ⚡ Get instant solar quotes • Save up to ₹78,000 • Free
-                    consultation
+                    Powered by Zakkiy AI. Developed by The Desert Whales LLC
+                    Dubai. consultation
                   </p>
                 </div>
               </>
