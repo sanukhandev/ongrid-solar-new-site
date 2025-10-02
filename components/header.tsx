@@ -29,9 +29,11 @@ export function Header() {
   return (
     <header
       className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? "glass-dark shadow-lg top-0" : "bg-transparent"
+        isScrolled
+          ? "bg-gray-900/95 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
       }`}
-      style={{ top: "40px" }}
+      style={{ top: isScrolled ? "30px" : "40px" }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
@@ -94,7 +96,11 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className={`md:hidden p-2 z-50 rounded-lg transition-all duration-200 ${
+              isScrolled
+                ? "text-white bg-white/10 hover:bg-white/20 hover:text-orange-300"
+                : "text-gray-800 bg-gray-100/80 hover:bg-gray-200 hover:text-orange-600"
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -104,23 +110,44 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t animate-fade-in">
+          <div
+            className={`md:hidden py-4 border-t animate-fade-in ${
+              isScrolled
+                ? "bg-gray-900/95 backdrop-blur-md border-white/20"
+                : "bg-white/95 backdrop-blur-md border-gray-200 shadow-lg"
+            }`}
+          >
             <nav className="flex flex-col gap-4">
               {data.navigation.links.map((link: any) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                  className={`text-sm font-medium transition-colors px-2 py-1 rounded ${
+                    isScrolled
+                      ? "text-white hover:text-orange-300 hover:bg-white/10"
+                      : "text-gray-800 hover:text-orange-600 hover:bg-orange-50"
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="flex flex-col gap-2 pt-4 border-t">
-                <Button variant="ghost" size="sm">
+              <div className="flex flex-col gap-2 pt-4 border-t border-current/20">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={
+                    isScrolled
+                      ? "text-white hover:text-orange-300 hover:bg-white/10"
+                      : "text-gray-800 hover:text-orange-600"
+                  }
+                >
                   {data.navigation.cta.secondary}
                 </Button>
-                <Button size="sm" className="bg-primary hover:bg-primary-hover">
+                <Button
+                  size="sm"
+                  className="bg-gradient-orange text-white hover:shadow-lg"
+                >
                   {data.navigation.cta.primary}
                 </Button>
               </div>
