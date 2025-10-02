@@ -21,7 +21,7 @@ export function generateSEOMetadata({
     "Solar Ongrid System in Trivandrum",
     "Best Solar Company in Trivandrum",
   ],
-  canonicalUrl = "https://ongridsolarpowersolution.com",
+  canonicalUrl = "https://ongridsolarpowersolutions.com",
   ogImage = "/og-image.jpg",
 }: SEOProps): Metadata {
   return {
@@ -73,7 +73,7 @@ export const jsonLdSchema = {
   name: "OnGrid Solar",
   description:
     "Leading Solar Panel Installation company in Trivandrum, Kerala. Expert Rooftop Solar Systems, Commercial Solar Power Solutions, Solar Battery Storage & Hybrid Systems.",
-  url: "https://ongridsolarpowersolution.com",
+  url: "https://ongridsolarpowersolutions.com",
   telephone: "7594949406",
   email: "ongridsolarpowersolution@gmail.com",
   address: {
@@ -109,8 +109,8 @@ export const jsonLdSchema = {
   ],
   priceRange: "₹₹₹",
   openingHours: "Mo-Sa 09:00-18:00",
-  image: "https://ongridsolarpowersolution.com/og-image.jpg",
-  sameAs: ["https://ongridsolarpowersolution.com"],
+  image: "https://ongridsolarpowersolutions.com/og-image.jpg",
+  sameAs: ["https://ongridsolarpowersolutions.com"],
   hasCredential: {
     "@type": "EducationalOccupationalCredential",
     name: "MNRE Registered Vendor",
@@ -154,19 +154,19 @@ export const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://ongridsolarpowersolution.com",
+      item: "https://ongridsolarpowersolutions.com",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Services",
-      item: "https://ongridsolarpowersolution.com/services",
+      item: "https://ongridsolarpowersolutions.com/services",
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "Solar Panel Installation in Trivandrum",
-      item: "https://ongridsolarpowersolution.com/services/solar-panel-installation-trivandrum",
+      item: "https://ongridsolarpowersolutions.com/services/solar-panel-installation-trivandrum",
     },
   ],
 };

@@ -7,6 +7,7 @@ import { Partners } from "@/components/partners";
 import { FAQ } from "@/components/faq";
 import { Testimonials } from "@/components/testimonials";
 import { Blog } from "@/components/blog";
+import { Gallery } from "@/components/gallery";
 import { Contact } from "@/components/contact";
 import { CTA } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -32,6 +33,7 @@ export default function Home() {
         <FAQ />
         <Testimonials />
         <Blog />
+        <Gallery />
         <Contact />
         <CTA />
         <Footer />

@@ -2,7 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Montserrat, Lato } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
+
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -17,36 +17,27 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "OnGrid Solar - Best Solar Installation Company in Trivandrum",
+  title:
+    "OnGrid Solar - Best Solar Company in Trivandrum | Solar Panel Installation",
   description:
-    "Top solar company in Trivandrum offering rooftop & commercial solar, hybrid systems & battery storage. MNRE registered. Get up to ₹78,000 subsidy.",
+    "Leading Solar Panel Installation in Trivandrum. Expert Rooftop Solar Systems, Commercial Solar Power Solutions, Solar Battery Storage & Hybrid Systems. MNRE registered. Get up to ₹78,000 subsidy. Best Solar Company in Trivandrum.",
   keywords: [
     "Solar Panel Installation in Trivandrum",
     "Rooftop Solar Systems in Trivandrum",
-    "Solar Panels Trivandrum Price",
-    "OnGrid Solar Trivandrum",
-    "Hybrid Solar System in Trivandrum",
+    "Commercial Solar Power Solutions",
+    "Solar Battery Storage",
+    "Solar Hybrid System",
+    "Solar Ongrid System in Trivandrum",
+    "Best Solar Company in Trivandrum",
+    "Solar Installation Trivandrum",
+    "MNRE Solar Vendor Kerala",
+    "Government Solar Subsidy",
+    "PM Surya Ghar Muft Bijli Yojana",
+    "Solar Energy Kerala",
     "Residential Solar Trivandrum",
     "Commercial Solar Kerala",
-    "Solar Installation Trivandrum",
-    "Commercial Solar Power Solutions",
-    "Solar Battery Storage and Inverters",
-    "Solar Hybrid System Kerala",
-    "Solar Ongrid System in Kerala",
-    "Solar Offgrid System Trivandrum",
-    "Solar Water Heater Kerala",
-    "Best Solar Company in Trivandrum",
-    "Top Solar EPC Company Kerala",
-    "MNRE Approved Solar Vendor Kerala",
-    "Trusted Solar Installer Kerala",
-    "Government Solar Subsidy Kerala",
-    "PM Surya Ghar Muft Bijli Yojana Kerala",
-    "Solar Panel Subsidy in Trivandrum",
-    "Kerala Solar Subsidy 2025",
-    "Solar Energy Kerala",
-    "Solar Power for Homes in Kerala",
-    "Solar Energy Solutions Kerala",
-    "Solar System Cost in Trivandrum",
+    "Solar Panels Trivandrum",
+    "OnGrid Solar Trivandrum",
   ].join(", "),
   authors: [{ name: "OnGrid Solar" }],
   robots: {
@@ -61,7 +52,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "OnGrid Solar - Best Solar Installation Company in Trivandrum",
+    title:
+      "OnGrid Solar - Best Solar Company in Trivandrum | Solar Panel Installation",
     description:
       "Leading Solar Panel Installation in Trivandrum. Expert Rooftop Solar Systems, Commercial Solar Power Solutions. MNRE registered with government subsidies up to ₹78,000.",
     type: "website",
@@ -79,7 +71,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OnGrid Solar - Best Solar Installation Company in Trivandrum",
+    title: "OnGrid Solar - Best Solar Company in Trivandrum",
     description:
       "Expert Solar Panel Installation in Trivandrum. Rooftop Solar Systems, Commercial Solar Power Solutions. Get up to ₹78,000 government subsidy.",
     images: ["/og-image.jpg"],
@@ -104,6 +96,7 @@ export const metadata: Metadata = {
     "msapplication-config": "/browserconfig.xml",
     "theme-color": "#faa633",
   },
+  generator: "v0.app",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -145,7 +138,6 @@ export default function RootLayout({
       <body
         className={`font-sans antialiased ${montserrat.className} overflow-x-hidden`}
       >
-        <Analytics />
         {children}
       </body>
     </html>

@@ -6,7 +6,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/</loc>
+    <loc>https://ongridsolarpowersolutions.com/</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
   
   <!-- About Page -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/about</loc>
+    <loc>https://ongridsolarpowersolutions.com/about</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -22,7 +22,7 @@
   
   <!-- Services Page -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/services</loc>
+    <loc>https://ongridsolarpowersolutions.com/services</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -30,7 +30,7 @@
   
   <!-- Solar Panel Installation in Trivandrum -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/services/solar-panel-installation-trivandrum</loc>
+    <loc>https://ongridsolarpowersolutions.com/services/solar-panel-installation-trivandrum</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -38,7 +38,7 @@
   
   <!-- Rooftop Solar Systems in Trivandrum -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/services/rooftop-solar-systems-trivandrum</loc>
+    <loc>https://ongridsolarpowersolutions.com/services/rooftop-solar-systems-trivandrum</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -46,7 +46,7 @@
   
   <!-- Commercial Solar Power Solutions -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/services/commercial-solar-power-solutions</loc>
+    <loc>https://ongridsolarpowersolutions.com/services/commercial-solar-power-solutions</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -54,7 +54,7 @@
   
   <!-- Solar Battery Storage -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/services/solar-battery-storage</loc>
+    <loc>https://ongridsolarpowersolutions.com/services/solar-battery-storage</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -62,7 +62,7 @@
   
   <!-- Solar Hybrid System -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/services/solar-hybrid-system</loc>
+    <loc>https://ongridsolarpowersolutions.com/services/solar-hybrid-system</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -70,7 +70,7 @@
   
   <!-- Solar Ongrid System in Trivandrum -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/services/solar-ongrid-system-trivandrum</loc>
+    <loc>https://ongridsolarpowersolutions.com/services/solar-ongrid-system-trivandrum</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -78,15 +78,23 @@
   
   <!-- Blog Page -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/blog</loc>
-    <lastmod>2025-09-30</lastmod>
+    <loc>https://ongridsolarpowersolutions.com/blog</loc>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Gallery Page -->
+  <url>
+    <loc>https://ongridsolarpowersolutions.com/gallery</loc>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <!-- Contact Page -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/contact</loc>
+    <loc>https://ongridsolarpowersolutions.com/contact</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -94,7 +102,7 @@
   
   <!-- FAQ Page -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/faq</loc>
+    <loc>https://ongridsolarpowersolutions.com/faq</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -102,28 +110,28 @@
   
   <!-- Blog Posts -->
   <url>
-    <loc>https://ongridsolarpowersolution.com/blog/on-grid-vs-off-grid-vs-hybrid-solar-guide</loc>
+    <loc>https://ongridsolarpowersolutions.com/blog/on-grid-vs-off-grid-vs-hybrid-solar-guide</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://ongridsolarpowersolution.com/blog/solar-roi-calculator-guide</loc>
+    <loc>https://ongridsolarpowersolutions.com/blog/solar-roi-calculator-guide</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://ongridsolarpowersolution.com/blog/solar-panel-maintenance-tips</loc>
+    <loc>https://ongridsolarpowersolutions.com/blog/solar-panel-maintenance-tips</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://ongridsolarpowersolution.com/blog/government-solar-subsidies-india-2025</loc>
+    <loc>https://ongridsolarpowersolutions.com/blog/government-solar-subsidies-india-2025</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

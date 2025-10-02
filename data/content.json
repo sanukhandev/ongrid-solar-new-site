@@ -18,6 +18,10 @@
         "href": "#services"
       },
       {
+        "label": "Gallery",
+        "href": "#gallery"
+      },
+      {
         "label": "Blog",
         "href": "#blog"
       },
