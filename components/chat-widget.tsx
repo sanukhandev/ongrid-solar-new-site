@@ -125,7 +125,9 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
     });
 
   return (
-    <div className={`fixed bottom-4 right-4 z-50 ${className}`}>
+    <div
+      className={`fixed bottom-2 right-2 sm:bottom-4 sm:right-4 z-50 ${className}`}
+    >
       {/* Floating Button */}
       {!isOpen && (
         <motion.div
@@ -136,11 +138,11 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
           <Button
             onClick={() => setIsOpen(true)}
             size="lg"
-            className="relative h-14 w-14 sm:h-16 sm:w-16 rounded-full 
+            className="relative h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full 
                        bg-gradient-to-br from-orange-500 via-amber-500 to-yellow-500 
                        shadow-xl hover:scale-110 transition-all duration-300"
           >
-            <MessageCircle className="h-6 w-6 text-white" />
+            <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
           </Button>
         </motion.div>
       )}
@@ -154,25 +156,26 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className={`flex flex-col w-[calc(100vw-2rem)] sm:w-96 h-[70vh] sm:h-[500px] 
+            className={`flex flex-col w-[calc(100vw-1rem)] max-w-sm sm:w-80 md:w-96 
+                        h-[calc(100vh-6rem)] max-h-[500px] sm:h-[450px] md:h-[500px] 
                         bg-white/20 backdrop-blur-2xl border border-white/30 
-                        rounded-3xl shadow-2xl overflow-hidden`}
+                        rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden`}
           >
             {/* Header */}
             <div
-              className="flex items-center justify-between px-4 py-3 
+              className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 
                             bg-gradient-to-r from-orange-500/30 via-amber-500/30 to-yellow-500/30
                             backdrop-blur-md border-b border-white/20"
             >
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2 sm:space-x-3">
                 <div
-                  className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-yellow-400 
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-orange-400 to-yellow-400 
                                 flex items-center justify-center shadow-md"
                 >
-                  <Bot className="h-5 w-5 text-white" />
+                  <Bot className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white drop-shadow">
+                  <h3 className="font-semibold text-white drop-shadow text-sm sm:text-base">
                     Sungrid AI
                   </h3>
                   <p className="text-xs text-green-300 flex items-center">
@@ -180,22 +183,22 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                   </p>
                 </div>
               </div>
-              <div className="flex space-x-2">
+              <div className="flex space-x-1 sm:space-x-2">
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsMinimized(!isMinimized)}
-                  className="text-white hover:bg-white/10 rounded-full"
+                  className="text-white hover:bg-white/10 rounded-full h-8 w-8 p-0"
                 >
-                  <Minimize2 className="h-4 w-4" />
+                  <Minimize2 className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsOpen(false)}
-                  className="text-white hover:bg-white/10 rounded-full"
+                  className="text-white hover:bg-white/10 rounded-full h-8 w-8 p-0"
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
               </div>
             </div>
@@ -205,10 +208,10 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
               <>
                 {/* Chat Messages */}
                 <div
-                  className="flex-1 p-4 overflow-y-auto max-h-[300px] sm:max-h-[350px] scroll-smooth"
+                  className="flex-1 p-2 sm:p-4 overflow-y-auto max-h-[calc(100vh-12rem)] sm:max-h-[300px] md:max-h-[350px] scroll-smooth"
                   style={{ scrollBehavior: "smooth" }}
                 >
-                  <div className="space-y-4">
+                  <div className="space-y-2 sm:space-y-4">
                     {messages.map((message) => (
                       <motion.div
                         key={message.id}
@@ -232,7 +235,9 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                                           : "bg-white/30 text-gray-800 backdrop-blur-md"
                                       }`}
                         >
-                          <p className="whitespace-pre-wrap">{message.text}</p>
+                          <p className="whitespace-pre-wrap text-sm sm:text-base leading-relaxed">
+                            {message.text}
+                          </p>
                           <p className="text-xs opacity-60 mt-1">
                             {formatTime(message.timestamp)}
                           </p>
@@ -242,10 +247,13 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
 
                     {/* Typing dots */}
                     {isLoading && (
-                      <div className="flex items-center space-x-1 text-gray-500 text-sm">
-                        <span className="w-2 h-2 bg-orange-400 rounded-full animate-bounce"></span>
-                        <span className="w-2 h-2 bg-amber-400 rounded-full animate-bounce delay-150"></span>
-                        <span className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce delay-300"></span>
+                      <div className="flex items-center space-x-1 text-gray-500 text-sm px-2">
+                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-orange-400 rounded-full animate-bounce"></span>
+                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-amber-400 rounded-full animate-bounce delay-150"></span>
+                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400 rounded-full animate-bounce delay-300"></span>
+                        <span className="text-xs text-gray-500">
+                          Sungrid AI is thinking...
+                        </span>
                       </div>
                     )}
                   </div>
@@ -253,29 +261,29 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                 </div>
 
                 {/* Input */}
-                <div className="p-3 border-t bg-white/20 backdrop-blur-md">
+                <div className="p-2 sm:p-3 border-t bg-white/20 backdrop-blur-md">
                   <div className="flex space-x-2">
                     <Input
                       ref={inputRef}
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       onKeyPress={handleKeyPress}
-                      placeholder="Type your solar question..."
+                      placeholder="Ask about solar solutions..."
                       disabled={isLoading}
-                      className="flex-1 text-sm"
+                      className="flex-1 text-sm bg-white/50 border-white/30 rounded-xl"
                     />
                     <Button
                       onClick={sendMessage}
                       disabled={!inputValue.trim() || isLoading}
                       size="sm"
-                      className="bg-orange-500 hover:bg-orange-600"
+                      className="bg-orange-500 hover:bg-orange-600 rounded-xl px-3 py-2"
                     >
-                      <Send className="h-4 w-4" />
+                      <Send className="h-3 w-3 sm:h-4 sm:w-4" />
                     </Button>
                   </div>
-                  <p className="text-[10px] text-gray-400 mt-1 text-center">
-                    For urgent inquiries, call us at +91 75949-49406 | Powerd by
-                    Zakkiy AI
+                  <p className="text-[9px] sm:text-[10px] text-gray-400 mt-1 text-center px-1">
+                    ⚡ Get instant solar quotes • Save up to ₹78,000 • Free
+                    consultation
                   </p>
                 </div>
               </>
