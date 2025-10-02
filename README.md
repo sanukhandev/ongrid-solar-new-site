@@ -115,7 +115,21 @@ pnpm install
 npm install
 ```
 
-3. Run the development server:
+3. Set up environment variables:
+
+```bash
+cp .env.example .env.local
+```
+
+Edit `.env.local` and add your Gemini API key:
+
+```
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+Get your API key from: [Google AI Studio](https://aistudio.google.com/app/apikey)
+
+4. Run the development server:
 
 ```bash
 pnpm dev
@@ -123,7 +137,7 @@ pnpm dev
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Build for Production
 
@@ -148,6 +162,34 @@ The website features an interactive gallery showcasing:
 - Completed solar installations
 - Residential rooftop projects
 - Commercial solar systems
+
+## 🤖 AI Chat Assistant
+
+The website includes an intelligent chat widget powered by Google's Gemini AI:
+
+### Features
+
+- **Context-Aware Responses**: Trained on company data for accurate information
+- **Solar-Focused**: Only responds to solar energy and company-related queries
+- **Real-time Support**: Instant answers to customer questions
+- **Mobile Responsive**: Works seamlessly on all devices
+
+### Topics Covered
+
+- Solar panel pricing and installation
+- Government subsidies and benefits
+- Technical specifications
+- Company services and policies
+- Maintenance and warranties
+
+### Setup
+
+The chat widget requires a Gemini API key. Add it to your `.env.local` file:
+
+```
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
 - Before/after project photos
 - Video testimonials and installations
 

@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Montserrat, Lato } from "next/font/google";
 import "./globals.css";
+import ChatWidget from "@/components/chat-widget";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -140,6 +141,7 @@ export default function RootLayout({
         className={`font-sans antialiased ${montserrat.className} overflow-x-hidden`}
       >
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
