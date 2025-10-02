@@ -49,7 +49,7 @@ export function Contact() {
     e.preventDefault();
 
     // Create WhatsApp message
-    const whatsappMessage = `Hi OnGrid Solar! I'm interested in solar panel installation.
+    const whatsappMessage = `Hi OnGrid Solar Power Solutions Pvt Ltd! I'm interested in solar panel installation.
 
 *Contact Details:*
 Name: ${formData.name}

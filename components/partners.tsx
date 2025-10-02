@@ -29,7 +29,22 @@ export function Partners() {
               <Handshake className="w-5 h-5" />
               Trusted Partners
             </div>
-            <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-gray-900 mb-4">
+            <h2
+              className="text-3xl md:text-4xl font-montserrat font-bold text-gray-900 mb-4"
+              style={{
+                background:
+                  "linear-gradient(135deg, #ea580c 0%, #f97316 25%, #fb923c 50%, #fbbf24 75%, #f59e0b 100%)",
+                backgroundSize: "200% 200%",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                animation: "gradient-shift 4s ease-in-out infinite",
+                fontWeight: 900,
+                letterSpacing: "-0.025em",
+                filter: "drop-shadow(0 2px 4px rgba(234, 88, 12, 0.1))",
+                textShadow: "0 0 1px rgba(234, 88, 12, 0.2)",
+              }}
+            >
               Partnered With
               <span className="text-primary"> Leading Solar Manufacturers</span>
             </h2>

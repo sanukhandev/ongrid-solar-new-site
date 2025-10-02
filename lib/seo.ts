@@ -10,7 +10,7 @@ interface SEOProps {
 }
 
 export function generateSEOMetadata({
-  title = "OnGrid Solar - Best Solar Company in Trivandrum | Solar Panel Installation",
+  title = "OnGrid Solar Power Solutions Pvt Ltd - Best Solar Company in Trivandrum | Solar Panel Installation",
   description = "Leading Solar Panel Installation in Trivandrum. Expert Rooftop Solar Systems, Commercial Solar Power Solutions, Solar Battery Storage & Hybrid Systems. MNRE registered. Get up to ₹78,000 subsidy.",
   keywords = [
     "Solar Panel Installation in Trivandrum",
@@ -45,7 +45,7 @@ export function generateSEOMetadata({
       type: "website",
       locale: "en_IN",
       url: canonicalUrl,
-      siteName: "OnGrid Solar",
+      siteName: "OnGrid Solar Power Solutions Pvt Ltd",
       images: [
         {
           url: ogImage,
@@ -70,7 +70,7 @@ export function generateSEOMetadata({
 export const jsonLdSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "OnGrid Solar",
+  name: "OnGrid Solar Power Solutions Pvt Ltd",
   description:
     "Leading Solar Panel Installation company in Trivandrum, Kerala. Expert Rooftop Solar Systems, Commercial Solar Power Solutions, Solar Battery Storage & Hybrid Systems.",
   url: "https://ongridsolarpowersolutions.com",

@@ -142,7 +142,22 @@ export function Gallery() {
     <section className="py-24 bg-gray-50" id="gallery">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            style={{
+              background:
+                "linear-gradient(135deg, #ea580c 0%, #f97316 25%, #fb923c 50%, #fbbf24 75%, #f59e0b 100%)",
+              backgroundSize: "200% 200%",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+              animation: "gradient-shift 4s ease-in-out infinite",
+              fontWeight: 900,
+              letterSpacing: "-0.025em",
+              filter: "drop-shadow(0 2px 4px rgba(234, 88, 12, 0.1))",
+              textShadow: "0 0 1px rgba(234, 88, 12, 0.2)",
+            }}
+          >
             Our Project Gallery
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">

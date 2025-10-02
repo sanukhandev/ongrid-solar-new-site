@@ -31,7 +31,7 @@ export function Header() {
       className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled ? "glass-dark shadow-lg top-0" : "bg-transparent"
       }`}
-      style={{ top: isScrolled ? "52px" : "52px" }}
+      style={{ top: "40px" }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
@@ -44,7 +44,22 @@ export function Header() {
                 className="w-10 h-10 object-contain"
               />
             </div>
-            <span className="font-lato font-bold text-xl text-gray-800 dark:text-white">
+            <span
+              className="font-lato font-bold text-xl text-gray-800 dark:text-white"
+              style={{
+                background:
+                  "linear-gradient(135deg, #ea580c 0%, #f97316 25%, #fb923c 50%, #fbbf24 75%, #f59e0b 100%)",
+                backgroundSize: "200% 200%",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                animation: "gradient-shift 4s ease-in-out infinite",
+                fontWeight: 900,
+                letterSpacing: "-0.025em",
+                filter: "drop-shadow(0 2px 4px rgba(234, 88, 12, 0.1))",
+                textShadow: "0 0 1px rgba(234, 88, 12, 0.2)",
+              }}
+            >
               {data.site.name}
             </span>
           </a>

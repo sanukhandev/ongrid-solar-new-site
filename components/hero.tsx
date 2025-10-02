@@ -61,20 +61,20 @@ export function Hero() {
 
             {/* Animated Gradient Hero Title */}
             <h1
-              className="font-lato font-black text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight text-balance animate-fade-in-up stagger-1"
-              style={{
-                background:
-                  "linear-gradient(135deg, #ea580c 0%, #f97316 25%, #fb923c 50%, #fbbf24 75%, #f59e0b 100%)",
-                backgroundSize: "200% 200%",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                color: "transparent",
-                animation: "gradient-shift 4s ease-in-out infinite",
-                fontWeight: 900,
-                letterSpacing: "-0.025em",
-                filter: "drop-shadow(0 2px 4px rgba(234, 88, 12, 0.1))",
-                textShadow: "0 0 1px rgba(234, 88, 12, 0.2)",
-              }}
+              className="font-lato font-black text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight text-balance animate-fade-in-up stagger-1 text-primary"
+              // style={{
+              //   background:
+              //     "linear-gradient(135deg, #ea580c 0%, #f97316 25%, #fb923c 50%, #fbbf24 75%, #f59e0b 100%)",
+              //   backgroundSize: "200% 200%",
+              //   WebkitBackgroundClip: "text",
+              //   backgroundClip: "text",
+              //   color: "transparent",
+              //   animation: "gradient-shift 4s ease-in-out infinite",
+              //   fontWeight: 900,
+              //   letterSpacing: "-0.025em",
+              //   filter: "drop-shadow(0 2px 4px rgba(234, 88, 12, 0.1))",
+              //   textShadow: "0 0 1px rgba(234, 88, 12, 0.2)",
+              // }}
             >
               {data.hero.title}
             </h1>

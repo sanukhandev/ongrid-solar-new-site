@@ -1,6 +1,6 @@
 {
   "site": {
-    "name": "OnGrid Solar",
+    "name": "OnGrid Solar Power Solution",
     "tagline": "Power Your Home & Business with the Sun!"
   },
   "navigation": {
@@ -36,8 +36,8 @@
     }
   },
   "hero": {
-    "title": "Best Solar Panel Installation in Trivandrum - OnGrid Solar",
-    "subtitle": "Leading provider of Solar Panel Installation in Trivandrum with expert Rooftop Solar Systems, Commercial Solar Power Solutions, and Solar Battery Storage. MNRE registered vendor offering government subsidies up to ₹78,000. Experience the best Solar Ongrid System in Trivandrum with Kerala's most trusted solar company.",
+    "title": "Best Solar Panel Installation in Trivandrum",
+    "subtitle": "Leading provider of Solar Panel Installation in Trivandrum with expert Rooftop Solar Systems, Commercial Solar Power Solutions, and Solar Battery Storage. MNRE registered vendor offering government subsidies up to ₹78,000. Experience the best Solar Ongrid System in Trivandrum with Kerala's most trusted solar company - OnGrid Solar Power Solutions Pvt Ltd.",
     "cta": "Book a Free Visit",
     "secondaryCta": "Call +91 (759) 494-9406",
     "highlights": [
@@ -127,7 +127,7 @@
     ]
   },
   "about": {
-    "title": "About OnGrid Solar - Best Solar Company in Trivandrum",
+    "title": "About OnGrid Solar Power Solutions Pvt Ltd - Best Solar Company in Trivandrum",
     "subtitle": "Trusted Solar Energy Company Since 2014",
     "description": "We are the Best Solar Company in Trivandrum committed to making clean power accessible to everyone. With a team of certified engineers and installers, we have completed hundreds of Solar Panel Installation in Trivandrum projects for homes, schools, and businesses across Kerala.",
     "mission": "To deliver affordable, reliable, and sustainable solar solutions that reduce energy costs and protect the planet while helping customers maximize government subsidies for Rooftop Solar Systems in Trivandrum.",
@@ -172,14 +172,14 @@
   },
   "testimonials": {
     "title": "What Our Customers Say",
-    "subtitle": "Real experiences from satisfied customers who chose OnGrid Solar for their energy needs",
+    "subtitle": "Real experiences from satisfied customers who chose OnGrid Solar Power Solutions Pvt Ltd for their energy needs",
     "reviews": [
       {
         "id": 1,
         "name": "Rajesh Kumar",
         "location": "Vattiyoorkavu, Trivandrum",
         "rating": 5,
-        "review": "OnGrid Solar transformed our home with excellent solar panel installation in Trivandrum. Our electricity bills dropped by 80% in just 3 months. The team was professional and completed the rooftop solar system installation on time. Highly recommend their services!",
+        "review": "OnGrid Solar Power Solutions Pvt Ltd transformed our home with excellent solar panel installation in Trivandrum. Our electricity bills dropped by 80% in just 3 months. The team was professional and completed the rooftop solar system installation on time. Highly recommend their services!",
         "systemSize": "3 kW",
         "savings": "₹4,500/month"
       },
@@ -188,7 +188,7 @@
         "name": "Priya Nair",
         "location": "Pattom, Trivandrum",
         "rating": 5,
-        "review": "Best solar company in Trivandrum! Got ₹78,000 government subsidy through OnGrid Solar. Their solar hybrid system works perfectly even during power cuts. The installation quality is outstanding and customer service is excellent.",
+        "review": "Best solar company in Trivandrum! Got ₹78,000 government subsidy through OnGrid Solar Power Solutions Pvt Ltd. Their solar hybrid system works perfectly even during power cuts. The installation quality is outstanding and customer service is excellent.",
         "systemSize": "5 kW",
         "savings": "₹7,200/month"
       },
@@ -197,7 +197,7 @@
         "name": "Arun Pillai",
         "location": "Kazhakootam, Trivandrum",
         "rating": 5,
-        "review": "Outstanding solar panel installation service! OnGrid Solar's commercial solar power solution reduced our office electricity costs significantly. The solar ongrid system in Trivandrum is working flawlessly for over a year now.",
+        "review": "Outstanding solar panel installation service! OnGrid Solar Power Solutions Pvt Ltd's commercial solar power solution reduced our office electricity costs significantly. The solar ongrid system in Trivandrum is working flawlessly for over a year now.",
         "systemSize": "10 kW",
         "savings": "₹15,000/month"
       },
@@ -206,7 +206,7 @@
         "name": "Meera Thomas",
         "location": "Kowdiar, Trivandrum",
         "rating": 5,
-        "review": "Excellent experience with OnGrid Solar! Their rooftop solar systems in Trivandrum are top quality. The team explained everything clearly and helped us get maximum government subsidy. Our solar battery storage system works perfectly.",
+        "review": "Excellent experience with OnGrid Solar Power Solutions Pvt Ltd! Their rooftop solar systems in Trivandrum are top quality. The team explained everything clearly and helped us get maximum government subsidy. Our solar battery storage system works perfectly.",
         "systemSize": "2 kW",
         "savings": "₹3,800/month"
       },
@@ -215,7 +215,7 @@
         "name": "Sunil Varma",
         "location": "Sasthamangalam, Trivandrum",
         "rating": 5,
-        "review": "Highly satisfied with OnGrid Solar's service! Best solar panel installation in Trivandrum. The solar hybrid system handles our complete power needs. Professional installation, great follow-up support, and impressive cost savings.",
+        "review": "Highly satisfied with OnGrid Solar Power Solutions Pvt Ltd's service! Best solar panel installation in Trivandrum. The solar hybrid system handles our complete power needs. Professional installation, great follow-up support, and impressive cost savings.",
         "systemSize": "4 kW",
         "savings": "₹6,100/month"
       }
