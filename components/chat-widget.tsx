@@ -23,7 +23,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "👋 Hello! I'm **Sungrid AI**, your On grid AI executive.\n\n🔹 Get instant quotes & save up to ₹78,000 with government subsidies\n🔹 MNRE certified with 25-year warranties\n🔹 500+ successful installations across Kerala\n\nHow can I help you go solar today? ⚡",
+      text: "👋 Hello! I'm <b>OnGrid AI</b>, your On grid AI executive.\n\n🔹 Get instant quotes & save up to ₹78,000 with government subsidies\n🔹 MNRE certified with 25-year warranties\n🔹 500+ successful installations across Kerala\n\nHow can I help you go solar today? ⚡",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -175,7 +175,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                 </div>
                 <div>
                   <h3 className="font-semibold text-white drop-shadow text-sm sm:text-base">
-                    Sungrid AI
+                    OnGrid AI
                   </h3>
                   <p className="text-xs text-green-300 flex items-center">
                     ● Online now
@@ -251,7 +251,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                         <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-amber-400 rounded-full animate-bounce delay-150"></span>
                         <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400 rounded-full animate-bounce delay-300"></span>
                         <span className="text-xs text-gray-500">
-                          Sungrid AI is thinking...
+                          OnGrid AI is typing...
                         </span>
                       </div>
                     )}
