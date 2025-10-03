@@ -112,21 +112,22 @@ class SolarContextManager {
 
     if (data.priceStructure) {
       context += `\nPRICING:\n`;
-      data.priceStructure.slice(0, 3).forEach((price: any) => {
-        context += `• ${price.capacity}: ₹${price.price} (${price.description})\n`;
+      data.priceStructure.slice(0, 4).forEach((price: any) => {
+        context += `• ${
+          price.capacityKW
+        }KW System: ₹${price.priceINR.toLocaleString()} (₹${
+          price.priceLakhs
+        } Lakhs)\n`;
       });
     }
 
     if (data.installationDetails) {
-      context += `\nINSTALLATION PROCESS:\n`;
-      if (data.installationDetails.process) {
-        data.installationDetails.process.slice(0, 4).forEach((step: any) => {
-          context += `• ${step.title}: ${step.description}\n`;
-        });
-      }
-      if (data.installationDetails.timeline) {
-        context += `Timeline: ${data.installationDetails.timeline}\n`;
-      }
+      context += `\nINSTALLATION DETAILS:\n`;
+      context += `• Earthing: ${data.installationDetails.earthing}\n`;
+      context += `• Wiring: ${data.installationDetails.wiring}\n`;
+      context += `• Material: ${data.installationDetails.material}\n`;
+      context += `• Equipment: ${data.installationDetails.equipment}\n`;
+      context += `• Cabling: ${data.installationDetails.cabling}\n`;
     }
 
     if (data.about?.stats) {
