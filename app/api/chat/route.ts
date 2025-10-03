@@ -171,35 +171,51 @@ class SolarContextManager {
     if (data.priceStructure) {
       context += `\nPRICING INFORMATION:\n`;
 
-      if (data.priceStructure.overview) {
-        context += `Overview: ${data.priceStructure.overview}\n`;
+      if (data.priceStructure.title) {
+        context += `Title: ${data.priceStructure.title}\n`;
       }
 
-      if (data.priceStructure.systems) {
+      if (data.priceStructure.description) {
+        context += `Overview: ${data.priceStructure.description}\n`;
+      }
+
+      if (
+        data.priceStructure.packages &&
+        Array.isArray(data.priceStructure.packages)
+      ) {
         context += `\nSystem Packages:\n`;
-        data.priceStructure.systems.forEach((system: any) => {
-          context += `• ${system.capacity}: ₹${system.price} (${system.description})\n`;
-          if (system.features) {
-            context += `  Features: ${system.features.join(", ")}\n`;
-          }
-          if (system.savings) {
-            context += `  Monthly Savings: ${system.savings}\n`;
-          }
+        data.priceStructure.packages.forEach((pkg: any) => {
+          context += `• ${pkg.capacityKW}kW: ₹${pkg.priceINR} (After subsidy: ₹${pkg.priceAfterSubsidy})\n`;
+          context += `  Monthly Generation: ${pkg.monthlyGeneration}\n`;
+          context += `  Monthly Savings: ${pkg.monthlySavings}\n`;
+          context += `  Suitable For: ${pkg.suitableFor}\n`;
+          context += `  Payback Period: ${pkg.paybackPeriod}\n`;
         });
       }
 
-      if (data.priceStructure.subsidies) {
-        context += `\nGovernment Benefits:\n`;
-        data.priceStructure.subsidies.forEach((subsidy: any) => {
-          context += `• ${subsidy.type}: ${subsidy.amount} (${subsidy.description})\n`;
-        });
+      if (data.priceStructure.subsidyInfo) {
+        context += `\nGovernment Subsidy:\n`;
+        context += `• Scheme: ${data.priceStructure.subsidyInfo.scheme}\n`;
+        context += `• Max Subsidy: ${data.priceStructure.subsidyInfo.maxSubsidy}\n`;
+        context += `• Processing Time: ${data.priceStructure.subsidyInfo.processingTime}\n`;
       }
 
       if (data.priceStructure.financing) {
         context += `\nFinancing Options:\n`;
-        data.priceStructure.financing.forEach((option: any) => {
-          context += `• ${option.type}: ${option.details}\n`;
-        });
+        if (data.priceStructure.financing.available) {
+          context += `• Financing Available: Yes\n`;
+        }
+        if (
+          data.priceStructure.financing.options &&
+          Array.isArray(data.priceStructure.financing.options)
+        ) {
+          data.priceStructure.financing.options.forEach((option: string) => {
+            context += `• ${option}\n`;
+          });
+        }
+        if (data.priceStructure.financing.zeroDownPayment) {
+          context += `• Zero Down Payment: ${data.priceStructure.financing.zeroDownPayment}\n`;
+        }
       }
     }
 
@@ -215,24 +231,35 @@ class SolarContextManager {
         context += `Timeline: ${data.installationDetails.timeline}\n`;
       }
 
-      if (data.installationDetails.process) {
+      if (
+        data.installationDetails.process &&
+        Array.isArray(data.installationDetails.process)
+      ) {
         context += `\nStep-by-Step Process:\n`;
         data.installationDetails.process.forEach((step: any, index: number) => {
-          context += `${index + 1}. ${step.step}: ${step.description}\n`;
+          context += `${index + 1}. ${step.title || step.step}: ${
+            step.description
+          }\n`;
           if (step.duration) {
             context += `   Duration: ${step.duration}\n`;
           }
         });
       }
 
-      if (data.installationDetails.requirements) {
+      if (
+        data.installationDetails.requirements &&
+        Array.isArray(data.installationDetails.requirements)
+      ) {
         context += `\nRequirements:\n`;
         data.installationDetails.requirements.forEach((req: string) => {
           context += `• ${req}\n`;
         });
       }
 
-      if (data.installationDetails.postInstallation) {
+      if (
+        data.installationDetails.postInstallation &&
+        Array.isArray(data.installationDetails.postInstallation)
+      ) {
         context += `\nPost-Installation:\n`;
         data.installationDetails.postInstallation.forEach((item: string) => {
           context += `• ${item}\n`;
@@ -243,12 +270,12 @@ class SolarContextManager {
     // About company
     if (data.about) {
       context += `\nWHY CHOOSE US:\n`;
-      if (data.about.stats) {
+      if (data.about.stats && Array.isArray(data.about.stats)) {
         data.about.stats.forEach((stat: any) => {
           context += `• ${stat.label}: ${stat.value}\n`;
         });
       }
-      if (data.about.whyTrust) {
+      if (data.about.whyTrust && Array.isArray(data.about.whyTrust)) {
         data.about.whyTrust.slice(0, 4).forEach((reason: string) => {
           context += `• ${reason}\n`;
         });
@@ -286,7 +313,7 @@ class SolarContextManager {
 
   // Enhanced system prompt for better price and installation responses
   getSystemPrompt(): string {
-    return `You are Sungrid AI, the official sales assistant for ${
+    return `You are OnGrid AI, the official sales assistant for ${
       this.contextData.site?.name || "our solar company"
     } in Trivandrum, Kerala.
 
