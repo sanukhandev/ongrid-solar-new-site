@@ -157,10 +157,10 @@ export function Hero() {
                   <span className="text-white font-bold text-xl">30</span>
                 </div>
                 <div>
-                  <p className="font-semibold text-white-800">
-                    Years Warranty + 10 Years Inverter Warranty
+                  <p className="font-semibold text-white">Years Warranty Solar OnGrid</p>
+                  <p className="text-sm text-orange-600">
+                    10 Years Inverter Warranty
                   </p>
-                  <p className="text-sm text-orange-600">Premium Quality</p>
                 </div>
               </div>
             </div>
