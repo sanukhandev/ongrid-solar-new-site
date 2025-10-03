@@ -37,9 +37,9 @@ class SolarContextManager {
     // Context mapping based on keywords
     const contextMap: Record<string, string[]> = {
       service: ["services"],
-      install: ["services", "about"],
-      price: ["services", "priceStructure"],
-      cost: ["services", "about"],
+      install: ["services", "installationDetails"],
+      price: ["services", "priceStructure", "installationDetails"],
+      cost: ["services", "priceStructure", "installationDetails"],
       subsidy: ["about", "hero"],
       government: ["about", "hero"],
       testimonial: ["testimonials"],
