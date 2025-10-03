@@ -206,7 +206,7 @@
         "name": "Meera Thomas",
         "location": "Kowdiar, Trivandrum",
         "rating": 5,
-        "review": "Excellent experience with OnGrid Solar Power Solutions Pvt Ltd! Their rooftop solar systems in Trivandrum are top quality. The team explained everything clearly and helped us get maximum government subsidy. Our solar battery storage system works perfectly.",
+        "review": "Excellent experiencer with OnGrid Solar Power Solutions Pvt Ltd! Their rooftop solar systems in Trivandrum are top quality. The team explained everything clearly and helped us get maximum government subsidy. Our solar battery storage system works perfectly.",
         "systemSize": "2 kW",
         "savings": "₹3,800/month"
       },
@@ -221,6 +221,38 @@
       }
     ]
   },
+    "priceStructure": [
+      {
+        "capacityKW": 3,
+        "priceINR": 210000,
+        "priceLakhs": 2.10
+      },
+      {
+        "capacityKW": 5,
+        "priceINR": 305000,
+        "priceLakhs": 3.05
+      },
+      {
+        "capacityKW": 6,
+        "priceINR": 360000,
+        "priceLakhs": 3.60
+      },
+      {
+        "capacityKW": 8,
+        "priceINR": 450000,
+        "priceLakhs": 4.50
+      },
+      {
+        "capacityKW": 10,
+        "priceINR": 550000,
+        "priceLakhs": 5.50
+      }
+    ],
+    "currency": "INR",
+    "unit": {
+      "capacity": "KW",
+      "price": "Rupees"
+    },
   "blog": {
     "title": "Solar Energy Insights for Trivandrum",
     "subtitle": "Learn & Save with Expert Solar Knowledge",

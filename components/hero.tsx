@@ -60,10 +60,7 @@ export function Hero() {
             </div>
 
             {/* Animated Gradient Hero Title */}
-            <h1
-              className="font-lato font-black text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight text-balance animate-fade-in-up stagger-1 text-primary"
-             
-            >
+            <h1 className="font-lato font-black text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight text-balance animate-fade-in-up stagger-1 text-primary dark:text-white">
               {data.hero.title}
             </h1>
 
@@ -157,11 +154,11 @@ export function Hero() {
             <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 glass-orange rounded-xl p-6 w-64 animate-fade-in-up stagger-5 hover-lift">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-gradient-orange rounded-lg flex items-center justify-center animate-glow">
-                  <span className="text-white font-bold text-xl">25+</span>
+                  <span className="text-white font-bold text-xl">30</span>
                 </div>
                 <div>
-                  <p className="font-semibold text-orange-800">
-                    Years Warranty
+                  <p className="font-semibold text-white-800">
+                    Years Warranty + 10 Years Inverter Warranty
                   </p>
                   <p className="text-sm text-orange-600">Premium Quality</p>
                 </div>

@@ -38,7 +38,7 @@ class SolarContextManager {
     const contextMap: Record<string, string[]> = {
       service: ["services"],
       install: ["services", "about"],
-      price: ["services", "about"],
+      price: ["services", "priceStructure"],
       cost: ["services", "about"],
       subsidy: ["about", "hero"],
       government: ["about", "hero"],
@@ -55,7 +55,7 @@ class SolarContextManager {
       benefit: ["hero", "about"],
       solar: ["services", "about", "hero"],
       panel: ["services", "about"],
-      installation: ["services", "about"],
+      installation: ["services", "about", "priceStructure"],
       maintenance: ["services"],
       warranty: ["about"],
       mnre: ["about"],

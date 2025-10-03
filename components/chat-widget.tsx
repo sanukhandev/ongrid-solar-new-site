@@ -280,9 +280,9 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                       <Send className="h-3 w-3 sm:h-4 sm:w-4" />
                     </Button>
                   </div>
-                  <p className="text-[9px] sm:text-[10px] text-gray-400 mt-1 text-center px-1">
-                    Powered by Zakkiy AI. Developed by The Desert Whales LLC
-                    Dubai
+                  <p className="text-[9px] sm:text-[10px] text-black-400 mt-1 text-center px-1">
+                    Powered by <b> Zakkiy AI </b>. Developed by The Desert
+                    Whales LLC Dubai
                   </p>
                 </div>
               </>
