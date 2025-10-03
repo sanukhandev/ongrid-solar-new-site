@@ -48,11 +48,73 @@
     ]
   },
   "installationDetails": {
-    "earthing": "4 earthing points, including a multi-spike lightning arrester",
-    "wiring": "Earthing with copper wire",
-    "material": "All materials are stainless steel, so there is no risk of rusting",
-    "equipment": "Top-quality panels and inverter with extended warranty",
-    "cabling": "Havells wires and Polycab DC cables with fuse are used"
+    "title": "Professional Solar Installation Process in Trivandrum",
+    "description": "Complete end-to-end solar panel installation with premium quality materials and expert workmanship",
+    "process": [
+      {
+        "step": 1,
+        "title": "Site Survey & Design",
+        "description": "Free technical site survey to assess roof condition, shading analysis, and custom system design",
+        "duration": "1-2 days"
+      },
+      {
+        "step": 2,
+        "title": "Permits & Approvals",
+        "description": "Handle all KSEB approvals, net metering applications, and government subsidy paperwork",
+        "duration": "15-30 days"
+      },
+      {
+        "step": 3,
+        "title": "Installation",
+        "description": "Professional installation by certified technicians with safety protocols",
+        "duration": "1-3 days"
+      },
+      {
+        "step": 4,
+        "title": "Testing & Commissioning",
+        "description": "Complete system testing, grid synchronization, and performance verification",
+        "duration": "1 day"
+      },
+      {
+        "step": 5,
+        "title": "Net Metering Setup",
+        "description": "KSEB net meter installation and grid connection for billing benefits",
+        "duration": "7-15 days"
+      }
+    ],
+    "specifications": {
+      "earthing": "4 earthing points with multi-spike lightning arrester for complete safety",
+      "wiring": "Premium copper earthing wire for maximum conductivity and safety",
+      "mounting": "All stainless steel mounting structures - rust-proof and weatherproof",
+      "panels": "Tier-1 mono PERC solar panels with 25-year performance warranty",
+      "inverter": "MNRE approved string/micro inverters with 5-year comprehensive warranty",
+      "cabling": "Havells AC wires and Polycab DC cables with proper MCB and fuse protection",
+      "monitoring": "Real-time performance monitoring system included"
+    },
+    "safety": {
+      "certifications": [
+        "MNRE approved",
+        "IEC certified",
+        "BIS standard compliant"
+      ],
+      "protection": [
+        "Lightning protection",
+        "Surge protection",
+        "Fire safety compliant"
+      ],
+      "insurance": "Installation insurance and workmanship warranty"
+    },
+    "maintenance": {
+      "cleaning": "Quarterly professional cleaning included for first year",
+      "monitoring": "24/7 remote monitoring and alert system",
+      "support": "Dedicated customer support and emergency response",
+      "warranty": "25-year panel warranty, 5-year inverter warranty, 5-year installation warranty"
+    },
+    "timeline": {
+      "residential": "7-45 days from booking to commissioning",
+      "commercial": "30-90 days depending on system size",
+      "factors": "Timeline depends on KSEB approvals and subsidy processing"
+    }
   },
   "features": {
     "title": "Why Choose Solar Energy in Trivandrum?",
@@ -228,38 +290,117 @@
       }
     ]
   },
-    "priceStructure": [
+  "priceStructure": {
+    "title": "Solar Panel Installation Pricing in Trivandrum",
+    "description": "Complete solar system pricing including panels, inverter, installation, and government subsidy benefits",
+    "packages": [
+      {
+        "capacityKW": 1,
+        "priceINR": 75000,
+        "priceAfterSubsidy": 45000,
+        "subsidyAmount": 30000,
+        "monthlyGeneration": "120-150 units",
+        "monthlySavings": "₹1,500-2,000",
+        "suitableFor": "Small homes, 1-2 BHK",
+        "paybackPeriod": "3-4 years",
+        "roofspaceRequired": "100-120 sq ft"
+      },
+      {
+        "capacityKW": 2,
+        "priceINR": 140000,
+        "priceAfterSubsidy": 80000,
+        "subsidyAmount": 60000,
+        "monthlyGeneration": "240-300 units",
+        "monthlySavings": "₹3,000-4,000",
+        "suitableFor": "Medium homes, 2-3 BHK",
+        "paybackPeriod": "3-4 years",
+        "roofspaceRequired": "200-240 sq ft"
+      },
       {
         "capacityKW": 3,
         "priceINR": 210000,
-        "priceLakhs": 2.10
+        "priceAfterSubsidy": 132000,
+        "subsidyAmount": 78000,
+        "monthlyGeneration": "360-450 units",
+        "monthlySavings": "₹4,500-6,000",
+        "suitableFor": "Large homes, 3-4 BHK",
+        "paybackPeriod": "3-4 years",
+        "roofspaceRequired": "300-360 sq ft"
       },
       {
         "capacityKW": 5,
         "priceINR": 305000,
-        "priceLakhs": 3.05
+        "priceAfterSubsidy": 305000,
+        "subsidyAmount": 0,
+        "monthlyGeneration": "600-750 units",
+        "monthlySavings": "₹7,500-10,000",
+        "suitableFor": "Large homes, villas, small businesses",
+        "paybackPeriod": "4-5 years",
+        "roofspaceRequired": "500-600 sq ft"
       },
       {
         "capacityKW": 6,
         "priceINR": 360000,
-        "priceLakhs": 3.60
+        "priceAfterSubsidy": 360000,
+        "subsidyAmount": 0,
+        "monthlyGeneration": "720-900 units",
+        "monthlySavings": "₹9,000-12,000",
+        "suitableFor": "Commercial, large homes",
+        "paybackPeriod": "4-5 years",
+        "roofspaceRequired": "600-720 sq ft"
       },
       {
         "capacityKW": 8,
         "priceINR": 450000,
-        "priceLakhs": 4.50
+        "priceAfterSubsidy": 450000,
+        "subsidyAmount": 0,
+        "monthlyGeneration": "960-1200 units",
+        "monthlySavings": "₹12,000-16,000",
+        "suitableFor": "Small commercial, large villas",
+        "paybackPeriod": "4-5 years",
+        "roofspaceRequired": "800-960 sq ft"
       },
       {
         "capacityKW": 10,
         "priceINR": 550000,
-        "priceLakhs": 5.50
+        "priceAfterSubsidy": 550000,
+        "subsidyAmount": 0,
+        "monthlyGeneration": "1200-1500 units",
+        "monthlySavings": "₹15,000-20,000",
+        "suitableFor": "Commercial establishments, large buildings",
+        "paybackPeriod": "4-5 years",
+        "roofspaceRequired": "1000-1200 sq ft"
       }
     ],
-    "currency": "INR",
-    "unit": {
-      "capacity": "KW",
-      "price": "Rupees"
+    "included": [
+      "High-efficiency mono PERC solar panels",
+      "MNRE approved inverter with 5-year warranty",
+      "Complete installation with earthing and safety",
+      "Net metering assistance and grid connection",
+      "25-year panel performance warranty",
+      "5-year comprehensive maintenance"
+    ],
+    "financing": {
+      "available": true,
+      "options": [
+        "Bank loans at 8.5-11% interest",
+        "Solar financing partners",
+        "EMI options available"
+      ],
+      "zeroDownPayment": "Available for qualified customers"
     },
+    "subsidyInfo": {
+      "scheme": "PM Surya Ghar Muft Bijli Yojana",
+      "maxSubsidy": "₹78,000 for 3kW and above",
+      "processingTime": "3-6 months",
+      "documentsRequired": "Electricity bill, property documents, Aadhaar, bank details"
+    }
+  },
+  "currency": "INR",
+  "unit": {
+    "capacity": "KW",
+    "price": "Rupees"
+  },
   "blog": {
     "title": "Solar Energy Insights for Trivandrum",
     "subtitle": "Learn & Save with Expert Solar Knowledge",
