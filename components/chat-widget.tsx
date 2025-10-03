@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from "react";
 import { MessageCircle, Send, X, Minimize2, User, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Message {
@@ -98,7 +97,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
     } catch (error) {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: "⚠️ I'm temporarily unavailable. For immediate solar consultation, call our experts at **+91 75949-49406** or request a free site visit!",
+        text: "⚠️ I'm temporarily unavailable. For immediate solar consultation, call our experts at **+91 75 94 94 94 06** or request a free site visit!",
         sender: "bot",
         timestamp: new Date(),
       };
@@ -283,7 +282,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                   </div>
                   <p className="text-[9px] sm:text-[10px] text-gray-400 mt-1 text-center px-1">
                     Powered by Zakkiy AI. Developed by The Desert Whales LLC
-                    Dubai. consultation
+                    Dubai
                   </p>
                 </div>
               </>

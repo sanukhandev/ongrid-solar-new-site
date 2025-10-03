@@ -81,7 +81,7 @@ Visit our website: [https://ongridsolarpowersolutions.com](https://ongridsolarpo
 
 ## 📞 Contact Information
 
-- **Phone**: 7594949406
+- **Phone**: +91 75 94 94 94 06
 - **Email**: ongridsolarpowersolution@gmail.com
 - **Address**: TC 37/2604(6), SHINI TOWER, KODUNGANOOR PO, Vattiyoorkavu, Kerala 695013
 

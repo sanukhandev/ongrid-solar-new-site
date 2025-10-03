@@ -12,7 +12,7 @@
 
 ### 📱 Phone Number Formatting
 
-- **US-Style Format**: `+91 (759) 494-9406`
+- **Updated Format**: `+91 75 94 94 94 06`
 - **Country Code**: Added +91 for India
 - **Consistent Usage**: Updated across all components
 

@@ -2,44 +2,148 @@ import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import content from "@/data/content.json";
 
-// Initialize Google GenAI
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY || "",
-});
+// ==============================
+// SolarContextManager: Handles context extraction for solar site chat
+// ==============================
+class SolarContextManager {
+  private static instance: SolarContextManager;
+  private contextData: any;
 
-// Create a comprehensive context from content.json
-const createCompanyContext = () => {
-  return `
-You are Sungrid AI for ${
-    content.site.name
-  } in Trivandrum, Kerala. Answer questions concisely and specifically.
-
-QUICK FACTS:
-- Services: ${
-    content.services?.items?.map((s) => s.title).join(", ") ||
-    "Solar installation, maintenance, consulting"
-  }
-- Contact: ${content.contact.phone}
-- Benefits: Government subsidy up to ₹78,000, MNRE certified, 25-year warranty
-- Stats: ${
-    content.about?.stats
-      ?.slice(0, 2)
-      .map((s) => `${s.value} ${s.label.toLowerCase()}`)
-      .join(", ") || "500+ projects, 10+ years experience"
+  private constructor() {
+    this.contextData = content;
   }
 
-RESPONSE RULES:
-1. Answer only the specific question asked
-2. Solar-related topics only
-3. Keep responses under 50 words unless detailed explanation requested
-4. For pricing: "Contact us for personalized quote"
-5. For non-solar topics: "I help with solar solutions only"
-6. AI Info : "Powered by Zakkiy AI Developed by The Desert Whales LLC Dubai"
-7. Company Info : "Ongrid Solar Power Solutions is a trusted solar energy provider in Trivandrum, Kerala, offering expert installation and maintenance services with government subsidies and MNRE certification"
-8. Meet / Visit : "Book a visit on our contact form below"
-`;
-};
+  static getInstance(): SolarContextManager {
+    if (!SolarContextManager.instance) {
+      SolarContextManager.instance = new SolarContextManager();
+    }
+    return SolarContextManager.instance;
+  }
 
+  // Get relevant context based on query keywords
+  getRelevantContext(query: string): string {
+    const keywords = query.toLowerCase().split(" ");
+    let relevantData: any = {};
+
+    // Always include basic company info
+    relevantData.company = {
+      name: this.contextData.site?.name,
+      tagline: this.contextData.site?.tagline,
+      phone: this.contextData.contact?.phone,
+      email: this.contextData.contact?.email,
+      address: this.contextData.contact?.address,
+    };
+
+    // Context mapping based on keywords
+    const contextMap: Record<string, string[]> = {
+      service: ["services"],
+      install: ["services", "about"],
+      price: ["services", "about"],
+      cost: ["services", "about"],
+      subsidy: ["about", "hero"],
+      government: ["about", "hero"],
+      testimonial: ["testimonials"],
+      review: ["testimonials"],
+      customer: ["testimonials"],
+      about: ["about"],
+      contact: ["contact"],
+      location: ["contact"],
+      address: ["contact"],
+      phone: ["contact"],
+      email: ["contact"],
+      feature: ["hero", "about"],
+      benefit: ["hero", "about"],
+      solar: ["services", "about", "hero"],
+      panel: ["services", "about"],
+      installation: ["services", "about"],
+      maintenance: ["services"],
+      warranty: ["about"],
+      mnre: ["about"],
+      certified: ["about"],
+    };
+
+    // Add relevant sections based on query
+    keywords.forEach((keyword) => {
+      const sections = contextMap[keyword];
+      if (sections) {
+        sections.forEach((section) => {
+          if (this.contextData[section]) {
+            relevantData[section] = this.contextData[section];
+          }
+        });
+      }
+    });
+
+    // If no specific context found, include essential info
+    if (Object.keys(relevantData).length === 1) {
+      relevantData.services = this.contextData.services;
+      relevantData.about = this.contextData.about;
+    }
+
+    return this.formatContext(relevantData);
+  }
+
+  private formatContext(data: any): string {
+    let context = "";
+
+    if (data.company) {
+      context += `\nCOMPANY: ${data.company.name}\n`;
+      context += `Phone: ${data.company.phone}\n`;
+      context += `Email: ${data.company.email}\n`;
+      if (data.company.address) {
+        context += `Location: ${data.company.address.city}, ${data.company.address.state}\n`;
+      }
+    }
+
+    if (data.services?.items) {
+      context += `\nSERVICES:\n`;
+      data.services.items.slice(0, 3).forEach((service: any) => {
+        context += `• ${service.title}: ${service.description}\n`;
+      });
+    }
+
+    if (data.about?.stats) {
+      context += `\nSTATS:\n`;
+      data.about.stats.slice(0, 3).forEach((stat: any) => {
+        context += `• ${stat.label}: ${stat.value}\n`;
+      });
+    }
+
+    if (data.testimonials?.reviews) {
+      context += `\nCUSTOMER FEEDBACK:\n`;
+      data.testimonials.reviews.slice(0, 2).forEach((review: any) => {
+        context += `• ${review.name}: "${review.review}"\n`;
+      });
+    }
+
+    return context;
+  }
+
+  // Get system prompt for the AI
+  getSystemPrompt(): string {
+    return `You are Sungrid AI, the official assistant for ${
+      this.contextData.site?.name || "our solar company"
+    } in Trivandrum, Kerala.
+
+RESPONSE GUIDELINES:
+• Answer ONLY what's asked - be precise and concise
+• Keep responses under 50 words unless detailed explanation needed
+• For pricing: "Contact us for personalized quote at ${
+      this.contextData.contact?.phone
+    }"
+• For non-solar topics: "I help with solar solutions only"
+• For meetings: "Book a visit through our contact form"
+• If unsure: "Please connect with our team for details"
+• Always be professional and helpful
+• AI Info : Zakkiy AI. Developed by The Desert Whales LLC Dubai.
+
+EXPERTISE: Solar installations, government subsidies, MNRE certification, maintenance, warranties`;
+  }
+}
+
+// ==============================
+// API Handler
+// ==============================
 export async function POST(req: NextRequest) {
   try {
     const { message } = await req.json();
@@ -58,25 +162,37 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const context = createCompanyContext();
+    // Initialize MCP Context Manager
+    const contextManager = SolarContextManager.getInstance();
 
-    const prompt = `${context}
+    // Get only relevant context based on the query
+    const relevantContext = contextManager.getRelevantContext(message);
+    const systemPrompt = contextManager.getSystemPrompt();
 
-Customer Inquiry: ${message}
+    // Initialize Google GenAI
+    const ai = new GoogleGenAI({
+      apiKey: process.env.GEMINI_API_KEY || "",
+    });
 
-RESPONSE INSTRUCTIONS:
-- Answer ONLY what the customer specifically asked
-- Keep response under 50 words unless they ask for detailed explanation
-- Don't repeat company info unless directly relevant to their question
-- Be direct and to the point
-- Only mention next steps if they ask about booking/consultation
-- If off-topic, give a 1-line redirect
+    // Create optimized prompt with only relevant context
+    const prompt = `${systemPrompt}
 
-Provide a focused, specific answer to their exact question.`;
+RELEVANT CONTEXT:
+${relevantContext}
 
+CUSTOMER QUESTION: ${message}
+
+RESPONSE:`;
+
+    // Call Gemini API
     const response = await ai.models.generateContent({
       model: "gemini-2.0-flash-exp",
-      contents: prompt,
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: prompt }],
+        },
+      ],
     });
 
     return NextResponse.json({
@@ -85,12 +201,8 @@ Provide a focused, specific answer to their exact question.`;
     });
   } catch (error: any) {
     console.error("Gemini API Error:", error);
-
     return NextResponse.json(
-      {
-        error: "Failed to generate response",
-        details: error.message,
-      },
+      { error: "Failed to generate response", details: error.message },
       { status: 500 }
     );
   }
