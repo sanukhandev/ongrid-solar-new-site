@@ -44,7 +44,7 @@ class SolarContextManager {
       // Service related
       service: ["services"],
       services: ["services"],
-      
+
       // Installation related - Enhanced
       install: ["services", "installationDetails"],
       installation: ["services", "installationDetails"],
@@ -56,7 +56,7 @@ class SolarContextManager {
       setup: ["installationDetails"],
       requirement: ["installationDetails"],
       duration: ["installationDetails"],
-      
+
       // Price related - Enhanced
       price: ["priceStructure", "services"],
       pricing: ["priceStructure", "services"],
@@ -76,23 +76,23 @@ class SolarContextManager {
       financing: ["priceStructure"],
       loan: ["priceStructure"],
       emi: ["priceStructure"],
-      
+
       // Government benefits
       subsidy: ["about", "hero", "priceStructure"],
       government: ["about", "hero", "priceStructure"],
       scheme: ["about", "priceStructure"],
       benefit: ["priceStructure", "about"],
-      
+
       // Customer feedback
       testimonial: ["testimonials"],
       review: ["testimonials"],
       customer: ["testimonials"],
       feedback: ["testimonials"],
-      
+
       // Company info
       about: ["about"],
       company: ["about"],
-      
+
       // Contact
       contact: ["contact"],
       location: ["contact"],
@@ -100,7 +100,7 @@ class SolarContextManager {
       phone: ["contact"],
       email: ["contact"],
       call: ["contact"],
-      
+
       // Technical
       feature: ["hero", "about", "services"],
       solar: ["services", "about", "hero"],
@@ -117,15 +117,15 @@ class SolarContextManager {
 
     // Collect relevant sections based on keywords
     const relevantSections = new Set<string>();
-    keywords.forEach(keyword => {
+    keywords.forEach((keyword) => {
       const sections = contextMap[keyword];
       if (sections) {
-        sections.forEach(section => relevantSections.add(section));
+        sections.forEach((section) => relevantSections.add(section));
       }
     });
 
     // Include relevant data sections
-    relevantSections.forEach(section => {
+    relevantSections.forEach((section) => {
       if (this.contextData[section]) {
         relevantData[section] = this.contextData[section];
       }
@@ -170,11 +170,11 @@ class SolarContextManager {
     // Enhanced Price Structure formatting
     if (data.priceStructure) {
       context += `\nPRICING INFORMATION:\n`;
-      
+
       if (data.priceStructure.overview) {
         context += `Overview: ${data.priceStructure.overview}\n`;
       }
-      
+
       if (data.priceStructure.systems) {
         context += `\nSystem Packages:\n`;
         data.priceStructure.systems.forEach((system: any) => {
@@ -187,14 +187,14 @@ class SolarContextManager {
           }
         });
       }
-      
+
       if (data.priceStructure.subsidies) {
         context += `\nGovernment Benefits:\n`;
         data.priceStructure.subsidies.forEach((subsidy: any) => {
           context += `• ${subsidy.type}: ${subsidy.amount} (${subsidy.description})\n`;
         });
       }
-      
+
       if (data.priceStructure.financing) {
         context += `\nFinancing Options:\n`;
         data.priceStructure.financing.forEach((option: any) => {
@@ -206,15 +206,15 @@ class SolarContextManager {
     // Enhanced Installation Details formatting
     if (data.installationDetails) {
       context += `\nINSTALLATION PROCESS:\n`;
-      
+
       if (data.installationDetails.overview) {
         context += `Overview: ${data.installationDetails.overview}\n`;
       }
-      
+
       if (data.installationDetails.timeline) {
         context += `Timeline: ${data.installationDetails.timeline}\n`;
       }
-      
+
       if (data.installationDetails.process) {
         context += `\nStep-by-Step Process:\n`;
         data.installationDetails.process.forEach((step: any, index: number) => {
@@ -224,14 +224,14 @@ class SolarContextManager {
           }
         });
       }
-      
+
       if (data.installationDetails.requirements) {
         context += `\nRequirements:\n`;
         data.installationDetails.requirements.forEach((req: string) => {
           context += `• ${req}\n`;
         });
       }
-      
+
       if (data.installationDetails.postInstallation) {
         context += `\nPost-Installation:\n`;
         data.installationDetails.postInstallation.forEach((item: string) => {
@@ -351,14 +351,13 @@ Provide a targeted, sales-focused response that directly answers their question 
       response: response.text,
       timestamp: new Date().toISOString(),
     });
-
   } catch (error: any) {
-    console.error('Gemini API Error:', error);
-    
+    console.error("Gemini API Error:", error);
+
     return NextResponse.json(
-      { 
-        error: 'Failed to generate response',
-        details: error.message 
+      {
+        error: "Failed to generate response",
+        details: error.message,
       },
       { status: 500 }
     );
