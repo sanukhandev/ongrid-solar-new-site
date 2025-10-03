@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { Montserrat, Lato } from "next/font/google";
 import "./globals.css";
 import ChatWidget from "@/components/chat-widget";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -140,6 +141,8 @@ export default function RootLayout({
       <body
         className={`font-sans antialiased ${montserrat.className} overflow-x-hidden`}
       >
+        <Analytics />
+        <SpeedInsights />
         {children}
         <ChatWidget />
       </body>
