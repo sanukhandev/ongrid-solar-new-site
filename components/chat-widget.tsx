@@ -23,7 +23,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "👋 Hello! I'm <b>OnGrid AI</b>, your On grid AI executive.\n\n🔹 Get instant quotes & save up to ₹78,000 with government subsidies\n🔹 MNRE certified with 25-year warranties\n🔹 500+ successful installations across Kerala\n\nHow can I help you go solar today? ⚡",
+      text: "👋 Hello! I'm OnGrid AI, your On grid AI executive.\n\n🔹 Get instant quotes & save up to ₹78,000 with government subsidies\n🔹 MNRE certified with 25-year warranties\n🔹 500+ successful installations across Kerala\n\nHow can I help you go solar today? ⚡",
       sender: "bot",
       timestamp: new Date(),
     },
