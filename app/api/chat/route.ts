@@ -38,8 +38,17 @@ class SolarContextManager {
     const contextMap: Record<string, string[]> = {
       service: ["services"],
       install: ["services", "installationDetails"],
-      price: ["services", "priceStructure", "installationDetails"],
-      cost: ["services", "priceStructure", "installationDetails"],
+      installation: ["services", "installationDetails"],
+      process: ["installationDetails"],
+      timeline: ["installationDetails"],
+      steps: ["installationDetails"],
+      procedure: ["installationDetails"],
+      price: ["services", "priceStructure"],
+      pricing: ["priceStructure"],
+      cost: ["services", "priceStructure"],
+      rates: ["priceStructure"],
+      quote: ["priceStructure", "services"],
+      estimate: ["priceStructure", "services"],
       subsidy: ["about", "hero"],
       government: ["about", "hero"],
       testimonial: ["testimonials"],
@@ -55,7 +64,6 @@ class SolarContextManager {
       benefit: ["hero", "about"],
       solar: ["services", "about", "hero"],
       panel: ["services", "about"],
-      installation: ["services", "about", "priceStructure"],
       maintenance: ["services"],
       warranty: ["about"],
       mnre: ["about"],
@@ -100,6 +108,25 @@ class SolarContextManager {
       data.services.items.slice(0, 3).forEach((service: any) => {
         context += `• ${service.title}: ${service.description}\n`;
       });
+    }
+
+    if (data.priceStructure) {
+      context += `\nPRICING:\n`;
+      data.priceStructure.slice(0, 3).forEach((price: any) => {
+        context += `• ${price.capacity}: ₹${price.price} (${price.description})\n`;
+      });
+    }
+
+    if (data.installationDetails) {
+      context += `\nINSTALLATION PROCESS:\n`;
+      if (data.installationDetails.process) {
+        data.installationDetails.process.slice(0, 4).forEach((step: any) => {
+          context += `• ${step.title}: ${step.description}\n`;
+        });
+      }
+      if (data.installationDetails.timeline) {
+        context += `Timeline: ${data.installationDetails.timeline}\n`;
+      }
     }
 
     if (data.about?.stats) {
