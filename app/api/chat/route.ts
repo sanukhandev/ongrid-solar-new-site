@@ -312,10 +312,17 @@ class SolarContextManager {
   }
 
   // Enhanced system prompt for better price and installation responses
-  getSystemPrompt(): string {
+  getSystemPrompt(language: string = "en"): string {
+    const isMalayalam = language === "ml";
+    const languageInstruction = isMalayalam
+      ? "IMPORTANT: You MUST respond entirely in Malayalam (മലയാളം) script. Do not use English except for technical terms, numbers, and company name."
+      : "Respond in English.";
+
     return `You are OnGrid AI, the official sales assistant for ${
       this.contextData.site?.name || "our solar company"
     } in Trivandrum, Kerala.
+
+${languageInstruction}
 
 RESPONSE GUIDELINES:
 • Answer ONLY what's specifically asked - be precise and targeted
@@ -324,7 +331,7 @@ RESPONSE GUIDELINES:
       this.contextData.contact?.phone
     } for personalized quote"
 • For installation queries: Give step-by-step process from context with timeline
-• For non-solar topics: "I specialize in solar solutions only. How can I help with your solar needs?"
+• For non-solar topics: ${isMalayalam ? '"ഞാൻ സോളാർ ഊർജ്ജ വിഷയങ്ങളിൽ മാത്രം സഹായിക്കുന്നു."' : '"I specialize in solar solutions only. How can I help with your solar needs?"'}
 • For detailed consultations: "Book a free site visit by calling ${
       this.contextData.contact?.phone
     }"
@@ -341,7 +348,7 @@ Remember: You're a sales expert, not just an assistant. Convert inquiries into l
 // ==============================
 export async function POST(req: NextRequest) {
   try {
-    const { message } = await req.json();
+    const { message, language = "en" } = await req.json();
 
     if (!message) {
       return NextResponse.json(
@@ -359,7 +366,7 @@ export async function POST(req: NextRequest) {
 
     const contextManager = SolarContextManager.getInstance();
     const relevantContext = contextManager.getRelevantContext(message);
-    const systemPrompt = contextManager.getSystemPrompt();
+    const systemPrompt = contextManager.getSystemPrompt(language);
 
     const prompt = `${systemPrompt}
 

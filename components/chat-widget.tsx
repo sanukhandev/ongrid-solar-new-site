@@ -5,6 +5,7 @@ import { MessageCircle, Send, X, Minimize2, User, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/contexts/language-context";
 
 interface Message {
   id: string;
@@ -17,17 +18,31 @@ interface ChatWidgetProps {
   className?: string;
 }
 
+const WELCOME_MESSAGE = {
+  en: "👋 Hello! I'm OnGrid AI, your solar energy assistant.\n\n🔹 Get instant quotes & save up to ₹78,000 with government subsidies\n🔹 MNRE certified with 25-year warranties\n🔹 500+ successful installations across Kerala\n\nHow can I help you go solar today? ⚡",
+  ml: "👋 നമസ്കാരം! ഞാൻ OnGrid AI ആണ്, നിങ്ങളുടെ സോളാർ ഊർജ്ജ സഹായി.\n\n🔹 ₹78,000 വരെ സർക്കാർ സബ്‌സിഡി നേടൂ\n🔹 MNRE സർട്ടിഫൈഡ്, 25 വർഷം വാറന്റി\n🔹 കേരളത്തിൽ 500-ലധികം ഇൻസ്റ്റലേഷനുകൾ\n\nസോളാർ ഊർജ്ജത്തിലേക്ക് മാറാൻ ഞാൻ എങ്ങനെ സഹായിക്കണം? ⚡",
+};
+
 export default function ChatWidget({ className }: ChatWidgetProps) {
+  const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "👋 Hello! I'm OnGrid AI, your On grid AI executive.\n\n🔹 Get instant quotes & save up to ₹78,000 with government subsidies\n🔹 MNRE certified with 25-year warranties\n🔹 500+ successful installations across Kerala\n\nHow can I help you go solar today? ⚡",
+      text: WELCOME_MESSAGE[language as "en" | "ml"] ?? WELCOME_MESSAGE.en,
       sender: "bot",
       timestamp: new Date(),
     },
   ]);
+
+  // Update welcome message when language changes
+  useEffect(() => {
+    setMessages((prev) => [
+      { ...prev[0], text: WELCOME_MESSAGE[language as "en" | "ml"] ?? WELCOME_MESSAGE.en },
+      ...prev.slice(1),
+    ]);
+  }, [language]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -77,7 +92,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: inputValue }),
+        body: JSON.stringify({ message: inputValue, language }),
       });
 
       if (!response.ok) throw new Error("Failed to fetch");
