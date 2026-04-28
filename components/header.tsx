@@ -108,7 +108,7 @@ export function Header() {
                     : "text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20"
                 }`}
               >
-                മലം
+                മല
               </button>
             </div>
             <Button
@@ -180,7 +180,7 @@ export function Header() {
                           : "text-orange-500 hover:bg-orange-50"
                       }`}
                     >
-                      മലം
+                      മല
                     </button>
                   </div>
                 </div>

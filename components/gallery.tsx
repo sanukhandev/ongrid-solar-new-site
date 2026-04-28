@@ -158,7 +158,7 @@ export function Gallery() {
               textShadow: "0 0 1px rgba(234, 88, 12, 0.2)",
             }}
           >
-            Our Project Gallery
+            ഞങ്ങളുടെ പ്രോജക്ട് ഗാലറി
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             Explore our completed solar installations across Trivandrum and

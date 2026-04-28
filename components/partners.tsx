@@ -27,7 +27,7 @@ export function Partners() {
           <div ref={ref} className="text-center mb-12 animate-on-scroll">
             <div className="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full text-sm font-medium text-primary mb-6">
               <Handshake className="w-5 h-5" />
-              Trusted Partners
+              വിശ്വസനീയ പങ്കാളികൾ
             </div>
             <h2
               className="text-3xl md:text-4xl font-montserrat font-bold text-gray-900 mb-4"
@@ -100,7 +100,7 @@ export function Partners() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
             <div className="text-center p-4 glass-card rounded-lg">
               <div className="text-3xl font-bold text-primary mb-1">10+</div>
-              <div className="text-sm text-gray-600">Trusted Partners</div>
+              <div className="text-sm text-gray-600">വിശ്വസനീയ പങ്കാളികൾ</div>
             </div>
             <div className="text-center p-4 glass-card rounded-lg">
               <div className="text-3xl font-bold text-primary mb-1">25+</div>

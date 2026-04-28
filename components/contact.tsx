@@ -181,7 +181,7 @@ Please provide me with a free quote for solar panel installation.`;
             <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
               <div>
                 <h3 className="font-lato font-bold text-lg sm:text-xl lg:text-2xl text-gray-900 dark:text-white mb-4 sm:mb-6 break-words">
-                  Get Your Free Quote
+                  നിങ്ങളുടെ സൗജന്യ ക്വോട്ട് നേടൂ
                 </h3>
               </div>
 

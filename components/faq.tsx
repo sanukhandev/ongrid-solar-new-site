@@ -30,7 +30,7 @@ export function FAQ() {
           <div ref={ref} className="text-center mb-12 animate-on-scroll">
             <div className="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full text-sm font-medium text-primary mb-6 animate-fade-in">
               <HelpCircle className="w-4 h-4" />
-              <span>Frequently Asked Questions</span>
+              <span>പതിവ് ചോദ്യങ്ങൾ</span>
             </div>
             <h2 className="font-highlight font-bold text-3xl md:text-4xl lg:text-5xl mb-4 animate-fade-in-up stagger-1">
               {content.faq.title}
@@ -101,7 +101,7 @@ export function FAQ() {
           <div className="text-center mt-16 animate-on-scroll animate-fade-in-up stagger-4">
             <div className="glass-card p-8 rounded-2xl border border-primary/20 max-w-2xl mx-auto">
               <h3 className="font-highlight font-bold text-xl mb-4">
-                Still have questions?
+                ഇനിയും ചോദ്യങ്ങളുണ്ടോ?
               </h3>
               <p className="text-muted-foreground mb-6">
                 Our solar experts are here to help you make the best decision
