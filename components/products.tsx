@@ -1,10 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import content from "@/data/content.json"
+import { useContent } from "@/hooks/use-content"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function Products() {
+  const content = useContent()
   const ref = useScrollAnimation()
 
   return (

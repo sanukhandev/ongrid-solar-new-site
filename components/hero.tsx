@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sun } from "lucide-react";
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 
 type ContentType = {
   site: { name: string; tagline: string };
@@ -16,7 +16,7 @@ type ContentType = {
 };
 
 export function Hero() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");

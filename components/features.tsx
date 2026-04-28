@@ -1,6 +1,6 @@
 "use client";
 
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 import { Home, BadgeCheck, PiggyBank } from "lucide-react";
 
 type ContentType = {
@@ -24,7 +24,7 @@ const iconMap = {
 };
 
 export function Features() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   return (
     <section

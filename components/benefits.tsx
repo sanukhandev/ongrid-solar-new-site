@@ -1,6 +1,6 @@
 "use client"
 
-import content from "@/data/content.json"
+import { useContent } from "@/hooks/use-content"
 import { Shield, Zap, Users, Monitor } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
@@ -12,6 +12,7 @@ const iconMap = {
 }
 
 export function Benefits() {
+  const content = useContent()
   const ref = useScrollAnimation()
 
   return (

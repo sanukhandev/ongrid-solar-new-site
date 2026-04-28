@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 
 type ContentType = {
   site: { name: string };
@@ -22,7 +22,7 @@ type ContentType = {
 };
 
 export function Footer() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
   return (
     <>
       <footer id="contact" className="bg-gray-900 text-white pt-20 pb-8">

@@ -1,7 +1,7 @@
 "use client";
 
 import { Phone, CreditCard, Gift, MapPin, Mail } from "lucide-react";
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 
 type ContentType = {
   contact: {
@@ -18,7 +18,7 @@ type ContentType = {
 };
 
 export function TopAnnouncement() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   return (
     <div className="sticky top-0 z-50 bg-gradient-to-r from-orange-600 to-orange-500 text-white py-1.5 sm:py-2 overflow-hidden shadow-lg border-b border-orange-700/20">

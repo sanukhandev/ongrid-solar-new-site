@@ -1,6 +1,6 @@
 "use client";
 
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 import { Home, Building, Wrench, Battery, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -26,7 +26,7 @@ const iconMap = {
 };
 
 export function Services() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   return (
     <section id="services" className="py-16 md:py-20 bg-white dark:bg-gray-900">

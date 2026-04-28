@@ -7,10 +7,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HelpCircle, Sun, Zap } from "lucide-react";
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export function FAQ() {
+  const content = useContent()
   const ref = useScrollAnimation();
 
   // Split FAQ items into two columns

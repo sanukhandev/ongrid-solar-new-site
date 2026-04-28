@@ -1,6 +1,6 @@
 "use client";
 
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 import { CheckCircle, Award, Clock, TrendingUp } from "lucide-react";
 
 type ContentType = {
@@ -15,7 +15,7 @@ type ContentType = {
 };
 
 export function About() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   return (
     <section

@@ -1,6 +1,6 @@
 "use client";
 
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 import { MapPin, Phone, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, FormEvent } from "react";
@@ -23,13 +23,15 @@ type ContentType = {
 };
 
 export function Contact() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
     systemSize: "",
+    roofType: "",
+    location: "",
     message: "",
   });
 
@@ -56,10 +58,12 @@ Name: ${formData.name}
 Phone: ${formData.phone}
 Email: ${formData.email}
 ${formData.systemSize ? `System Size: ${formData.systemSize} kW` : ""}
+${formData.roofType ? `Roof Type: ${formData.roofType}` : ""}
+${formData.location ? `Location: ${formData.location}` : ""}
 
 ${formData.message ? `*Message:*\n${formData.message}` : ""}
 
-Please provide me with a free quote for solar panel installation in Trivandrum.`;
+Please provide me with a free quote for solar panel installation.`;
 
     // Clean phone number for WhatsApp (remove spaces, brackets, hyphens)
     const cleanPhone = data.contact.phone.replace(/[^+\d]/g, "");
@@ -244,6 +248,36 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                   <option value="5">5 kW</option>
                   <option value="10">10 kW+</option>
                 </select>
+              </div>
+
+              <div className="min-w-0">
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Roof Type
+                </label>
+                <select
+                  name="roofType"
+                  value={formData.roofType}
+                  onChange={handleInputChange}
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
+                >
+                  <option value="">Select roof type</option>
+                  <option value="Flat Roof">Flat Roof</option>
+                  <option value="Sheet Roof">Sheet Roof</option>
+                </select>
+              </div>
+
+              <div className="min-w-0">
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Location
+                </label>
+                <input
+                  type="text"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleInputChange}
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
+                  placeholder="Enter your location / area"
+                />
               </div>
 
               <div className="min-w-0">
