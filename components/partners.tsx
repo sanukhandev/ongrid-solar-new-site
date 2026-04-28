@@ -2,22 +2,12 @@
 
 import { Handshake } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-
-const partners = [
-  { name: "Premier Energies", color: "text-blue-600" },
-  { name: "Vikram Solar", color: "text-red-500" },
-  { name: "Waaree", color: "text-green-600" },
-  { name: "Rayzon Solar", color: "text-teal-600" },
-  { name: "Goldi Solar", color: "text-blue-800" },
-  { name: "Adani Solar", color: "text-blue-700" },
-  { name: "Emmvee", color: "text-blue-600" },
-  { name: "RenewSys", color: "text-blue-500" },
-  { name: "ReNew", color: "text-green-500" },
-  { name: "Saatvik", color: "text-orange-500" },
-];
+import { useContent } from "@/hooks/use-content";
 
 export function Partners() {
+  const data = useContent() as any;
   const ref = useScrollAnimation();
+  const partners = data.partners.items;
 
   return (
     <section className="py-16 md:py-20 bg-gradient-to-r from-orange-50 to-amber-50 overflow-hidden">
@@ -27,7 +17,7 @@ export function Partners() {
           <div ref={ref} className="text-center mb-12 animate-on-scroll">
             <div className="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full text-sm font-medium text-primary mb-6">
               <Handshake className="w-5 h-5" />
-              വിശ്വസനീയ പങ്കാളികൾ
+              {data.partners.badge}
             </div>
             <h2
               className="text-3xl md:text-4xl font-montserrat font-bold text-gray-900 mb-4"
@@ -45,13 +35,11 @@ export function Partners() {
                 textShadow: "0 0 1px rgba(234, 88, 12, 0.2)",
               }}
             >
-              Partnered With
-              <span className="text-primary"> Leading Solar Manufacturers</span>
+              {data.partners.titlePrefix}
+              <span className="text-primary"> {data.partners.titleHighlight}</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We collaborate with India's top solar panel manufacturers to bring
-              you premium quality products with industry-leading warranties and
-              performance guarantees.
+              {data.partners.description}
             </p>
           </div>
 
@@ -98,24 +86,12 @@ export function Partners() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-            <div className="text-center p-4 glass-card rounded-lg">
-              <div className="text-3xl font-bold text-primary mb-1">10+</div>
-              <div className="text-sm text-gray-600">വിശ്വസനീയ പങ്കാളികൾ</div>
-            </div>
-            <div className="text-center p-4 glass-card rounded-lg">
-              <div className="text-3xl font-bold text-primary mb-1">25+</div>
-              <div className="text-sm text-gray-600">
-                Years Combined Experience
+            {data.partners.stats.map((stat: any, index: number) => (
+              <div key={index} className="text-center p-4 glass-card rounded-lg">
+                <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
               </div>
-            </div>
-            <div className="text-center p-4 glass-card rounded-lg">
-              <div className="text-3xl font-bold text-primary mb-1">100%</div>
-              <div className="text-sm text-gray-600">Quality Assured</div>
-            </div>
-            <div className="text-center p-4 glass-card rounded-lg">
-              <div className="text-3xl font-bold text-primary mb-1">₹78K</div>
-              <div className="text-sm text-gray-600">Max Subsidy</div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

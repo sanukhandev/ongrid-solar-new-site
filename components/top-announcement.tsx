@@ -15,6 +15,11 @@ type ContentType = {
       pincode: string;
     };
   };
+  topAnnouncement: {
+    callPrefix: string;
+    subsidyText: string;
+    emiText: string;
+  };
 };
 
 export function TopAnnouncement() {
@@ -42,13 +47,13 @@ export function TopAnnouncement() {
             >
               <Phone className="w-3 h-3 text-yellow-300 group-hover:scale-110 transition-transform" />
               <span className="font-bold text-yellow-100 group-hover:text-white text-xs">
-                Call: {data.contact.phone}
+                {data.topAnnouncement.callPrefix}: {data.contact.phone}
               </span>
             </a>
 
             <div className="flex items-center gap-1 bg-white/15 backdrop-blur-sm rounded-full px-2 py-0.5">
               <Gift className="w-3 h-3 text-yellow-300" />
-              <span className="font-semibold text-xs">₹78K Subsidy</span>
+              <span className="font-semibold text-xs">{data.topAnnouncement.subsidyText}</span>
             </div>
           </div>
 
@@ -80,7 +85,7 @@ export function TopAnnouncement() {
               <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm rounded-full px-2.5 py-0.5 border border-white/30">
                 <CreditCard className="w-3 h-3 text-yellow-300" />
                 <span className="text-xs font-bold text-yellow-100">
-                  EMI AVAILABLE
+                  {data.topAnnouncement.emiText}
                 </span>
               </div>
 
@@ -88,7 +93,7 @@ export function TopAnnouncement() {
 
               <div className="flex items-center gap-1 bg-white/15 backdrop-blur-sm rounded-full px-2.5 py-0.5">
                 <Gift className="w-3 h-3 text-yellow-300" />
-                <span className="font-semibold text-xs">₹78K Subsidy</span>
+                <span className="font-semibold text-xs">{data.topAnnouncement.subsidyText}</span>
               </div>
             </div>
 
