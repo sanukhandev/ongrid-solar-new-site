@@ -1,7 +1,7 @@
 "use client";
 
 import { useContent } from "@/hooks/use-content";
-import { CheckCircle, Award, Clock, TrendingUp } from "lucide-react";
+import { CheckCircle, Award, Clock } from "lucide-react";
 
 type ContentType = {
   about: {
