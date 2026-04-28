@@ -77,6 +77,19 @@ body {
   font-family: var(--font-lato), system-ui, sans-serif;
 }
 
+html[lang="ml"] body {
+  font-family: var(--font-malayalam), system-ui, sans-serif;
+  letter-spacing: 0;
+  line-height: 1.65;
+}
+
+html[lang="ml"] .font-highlight,
+html[lang="ml"] .font-lato,
+html[lang="ml"] .font-sans {
+  font-family: var(--font-malayalam), system-ui, sans-serif !important;
+  letter-spacing: 0;
+}
+
 /* Smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;
