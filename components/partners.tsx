@@ -47,7 +47,7 @@ export function Partners() {
           <div className="relative">
             <div className="flex overflow-hidden">
               <div className="flex animate-marquee whitespace-nowrap">
-                {partners.map((partner, index) => (
+                {partners.map((partner: { name: string; color: string }, index: number) => (
                   <div
                     key={index}
                     className="mx-8 px-8 py-4 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-orange-100 hover:bg-white hover:scale-105 transition-all duration-300"
@@ -64,7 +64,7 @@ export function Partners() {
                 className="flex animate-marquee whitespace-nowrap"
                 aria-hidden="true"
               >
-                {partners.map((partner, index) => (
+                {partners.map((partner: { name: string; color: string }, index: number) => (
                   <div
                     key={`duplicate-${index}`}
                     className="mx-8 px-8 py-4 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-orange-100 hover:bg-white hover:scale-105 transition-all duration-300"
