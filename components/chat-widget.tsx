@@ -124,7 +124,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
@@ -281,7 +281,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                       ref={inputRef}
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
-                      onKeyPress={handleKeyPress}
+                      onKeyDown={handleKeyPress}
                       placeholder="Ask about solar solutions..."
                       disabled={isLoading}
                       className="flex-1 text-sm bg-white/50 border-white/30 rounded-xl"

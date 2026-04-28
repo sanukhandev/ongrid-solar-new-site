@@ -70,7 +70,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {data.navigation.links.map((link: any) => (
+            {data.navigation.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -143,7 +143,7 @@ export function Header() {
             }`}
           >
             <nav className="flex flex-col gap-4">
-              {data.navigation.links.map((link: any) => (
+              {data.navigation.links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}

@@ -108,10 +108,7 @@ export function Gallery() {
       id: (index + 1).toString(),
       type: file.type,
       src: `/projects/${file.name}`,
-      thumbnail:
-        file.type === "video"
-          ? `/projects/${file.name}`
-          : `/projects/${file.name}`,
+      thumbnail: `/projects/${file.name}`,
       title: generateTitle(file.name, data.gallery.videoTitle),
       categoryKey: categorizeMedia(file.name),
     }));

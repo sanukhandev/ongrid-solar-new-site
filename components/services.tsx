@@ -41,7 +41,7 @@ export function Services() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {data.services.items.map((service: any, index: number) => {
+          {data.services.items.map((service, index: number) => {
             const IconComponent =
               iconMap[service.icon as keyof typeof iconMap] || Home;
 

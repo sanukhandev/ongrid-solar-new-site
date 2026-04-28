@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import content from "@/data/content.json";
 
+type ContentData = typeof content;
+
 // Initialize Google GenAI
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY || "",
@@ -12,7 +14,7 @@ const ai = new GoogleGenAI({
 // ==============================
 class SolarContextManager {
   private static instance: SolarContextManager;
-  private contextData: any;
+  private contextData: ContentData;
 
   private constructor() {
     this.contextData = content;
@@ -126,8 +128,8 @@ class SolarContextManager {
 
     // Include relevant data sections
     relevantSections.forEach((section) => {
-      if (this.contextData[section]) {
-        relevantData[section] = this.contextData[section];
+      if ((this.contextData as Record<string, unknown>)[section]) {
+        relevantData[section] = (this.contextData as Record<string, unknown>)[section];
       }
     });
 
@@ -385,13 +387,13 @@ Provide a targeted, sales-focused response that directly answers their question 
       response: response.text,
       timestamp: new Date().toISOString(),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Gemini API Error:", error);
-
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
       {
         error: "Failed to generate response",
-        details: error.message,
+        details: errorMessage,
       },
       { status: 500 }
     );

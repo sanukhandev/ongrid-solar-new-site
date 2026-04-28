@@ -10,7 +10,13 @@ type ContentType = {
   contact: {
     phone: string;
     email: string;
-    address: any;
+    address: {
+      street: string;
+      area: string;
+      city: string;
+      state: string;
+      pincode: string;
+    };
   };
   footer?: {
     brandDescription?: string;
@@ -36,7 +42,7 @@ export function Footer() {
   const data = useContent() as unknown as ContentType;
   return (
     <>
-      <footer id="contact" className="bg-gray-900 text-white pt-20 pb-8">
+      <footer className="bg-gray-900 text-white pt-20 pb-8">
         <div className="container mx-auto px-4">
           {/* Main footer content */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
@@ -159,7 +165,7 @@ export function Footer() {
           <div className="pt-8 border-t border-white/10">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-white/70 text-sm">
-                © 2025 {data.site.name}. All rights reserved. | MNRE Registered
+              © {new Date().getFullYear()} {data.site.name}. All rights reserved. | MNRE Registered
                 Vendor
               </p>
               <div className="flex gap-6">

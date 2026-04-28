@@ -58,7 +58,6 @@ export function TopAnnouncement() {
           </div>
 
           {/* Desktop: Full detailed layout */}
-          {/* Desktop: Full detailed layout */}
           <div className="hidden md:flex items-center justify-between w-full gap-3">
             {/* Left Section - Contact Info */}
             <div className="flex items-center gap-2 text-xs">

@@ -47,7 +47,7 @@ export function Features() {
 
         {/* Feature cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data.features.items.map((feature: any, index: number) => {
+          {data.features.items.map((feature, index: number) => {
             const IconComponent =
               iconMap[feature.icon as keyof typeof iconMap] || PiggyBank;
             return (

@@ -67,7 +67,7 @@ export function About() {
           {/* Right Content - Stats */}
           <div className="space-y-8">
             <div className="grid grid-cols-2 gap-6">
-              {data.about.stats.map((stat: any, index: number) => (
+              {data.about.stats.map((stat, index: number) => (
                 <div
                   key={index}
                   className="glass-card p-6 rounded-2xl bg-white/70 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 text-center hover:scale-105 transition-transform duration-300"
