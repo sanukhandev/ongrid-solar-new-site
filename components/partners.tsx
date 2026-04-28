@@ -4,8 +4,22 @@ import { Handshake } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useContent } from "@/hooks/use-content";
 
+type PartnerItem = { name: string; color: string };
+type StatItem = { value: string; label: string };
+
+type ContentType = {
+  partners: {
+    badge: string;
+    titlePrefix: string;
+    titleHighlight: string;
+    description: string;
+    items: PartnerItem[];
+    stats: StatItem[];
+  };
+};
+
 export function Partners() {
-  const data = useContent() as any;
+  const data = useContent() as unknown as ContentType;
   const ref = useScrollAnimation();
   const partners = data.partners.items;
 
@@ -86,7 +100,7 @@ export function Partners() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-            {data.partners.stats.map((stat: any, index: number) => (
+            {data.partners.stats.map((stat, index: number) => (
               <div key={index} className="text-center p-4 glass-card rounded-lg">
                 <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
                 <div className="text-sm text-gray-600">{stat.label}</div>

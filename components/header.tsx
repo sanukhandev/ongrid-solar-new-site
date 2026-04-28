@@ -160,7 +160,9 @@ export function Header() {
               <div className="flex flex-col gap-2 pt-4 border-t border-current/20">
                 {/* Language Toggle (mobile) */}
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-500 dark:text-gray-400">Language:</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    {language === "ml" ? "ഭാഷ:" : "Language:"}
+                  </span>
                   <div className="flex items-center rounded-full border border-orange-400 overflow-hidden text-xs font-semibold">
                     <button
                       onClick={() => setLanguage("en")}

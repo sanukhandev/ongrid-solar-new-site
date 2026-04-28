@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import content from "@/data/content.json";
+import contentMl from "@/data/content.ml.json";
 
 type ContentData = typeof content;
 
@@ -13,18 +14,11 @@ const ai = new GoogleGenAI({
 // SolarContextManager: Enhanced MCP for better price and installation context
 // ==============================
 class SolarContextManager {
-  private static instance: SolarContextManager;
   private contextData: ContentData;
 
-  private constructor() {
-    this.contextData = content;
-  }
-
-  static getInstance(): SolarContextManager {
-    if (!SolarContextManager.instance) {
-      SolarContextManager.instance = new SolarContextManager();
-    }
-    return SolarContextManager.instance;
+  constructor(language: string = "en") {
+    this.contextData =
+      language === "ml" ? (contentMl as unknown as ContentData) : content;
   }
 
   // Enhanced context extraction with better price and installation keyword mapping
@@ -366,7 +360,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const contextManager = SolarContextManager.getInstance();
+    const contextManager = new SolarContextManager(language);
     const relevantContext = contextManager.getRelevantContext(message);
     const systemPrompt = contextManager.getSystemPrompt(language);
 

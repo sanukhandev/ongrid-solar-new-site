@@ -8,6 +8,19 @@ import { Button } from "@/components/ui/button";
 import { Play, X, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import { useContent } from "@/hooks/use-content";
 
+type ContentType = {
+  gallery: {
+    title: string;
+    subtitle: string;
+    videoTitle: string;
+    videoBadge: string;
+    mediaTypeVideo: string;
+    mediaTypeImage: string;
+    noMediaText: string;
+    categories: { key: string; label: string }[];
+  };
+};
+
 interface MediaItem {
   id: string;
   type: "image" | "video";
@@ -88,7 +101,7 @@ const categorizeMedia = (filename: string): string => {
 };
 
 export function Gallery() {
-  const data = useContent() as any;
+  const data = useContent() as unknown as ContentType;
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);

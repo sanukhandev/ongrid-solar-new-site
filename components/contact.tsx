@@ -91,6 +91,12 @@ export function Contact() {
 
     const whatsapp = data.contact.form.whatsapp;
 
+    // Resolve human-readable label for system size
+    const systemSizeLabel =
+      data.contact.form.systemSizeOptions.find(
+        (opt) => opt.value === formData.systemSize
+      )?.label ?? "";
+
     // Create WhatsApp message
     const whatsappMessage = `${whatsapp.intro}
 
@@ -98,7 +104,7 @@ export function Contact() {
 ${whatsapp.nameLabel}: ${formData.name}
 ${whatsapp.phoneLabel}: ${formData.phone}
 ${whatsapp.emailLabel}: ${formData.email}
-${formData.systemSize ? `${whatsapp.systemSizeLabel}: ${formData.systemSize}` : ""}
+${formData.systemSize ? `${whatsapp.systemSizeLabel}: ${systemSizeLabel}` : ""}
 ${formData.roofType ? `${whatsapp.roofTypeLabel}: ${formData.roofType}` : ""}
 ${formData.location ? `${whatsapp.locationLabel}: ${formData.location}` : ""}
 
