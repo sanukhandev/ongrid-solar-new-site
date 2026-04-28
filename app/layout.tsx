@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Montserrat, Lato, Noto_Sans_Malayalam } from "next/font/google";
+import { Montserrat, Lato, Anek_Malayalam } from "next/font/google";
 import "./globals.css";
 import ChatWidget from "@/components/chat-widget";
 import { LanguageProvider } from "@/contexts/language-context";
@@ -19,8 +19,8 @@ const lato = Lato({
   display: "swap",
 });
 
-const notoSansMalayalam = Noto_Sans_Malayalam({
-  weight: ["400", "500", "700"],
+const anekMalayalam = Anek_Malayalam({
+  weight: ["400", "500", "600", "700"],
   subsets: ["malayalam"],
   variable: "--font-malayalam",
   display: "swap",
@@ -147,7 +147,7 @@ children: React.ReactNode;
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${lato.variable} ${notoSansMalayalam.variable}`}
+      className={`${montserrat.variable} ${lato.variable} ${anekMalayalam.variable}`}
     >
       <body
         className={`font-sans antialiased ${montserrat.className} overflow-x-hidden`}
