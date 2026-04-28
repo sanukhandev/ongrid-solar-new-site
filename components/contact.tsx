@@ -1,6 +1,6 @@
 "use client";
 
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 import { MapPin, Phone, Mail, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, FormEvent } from "react";
@@ -19,17 +19,58 @@ type ContentType = {
     phone: string;
     email: string;
     cta: string;
+    form: {
+      officeTitle: string;
+      callTitle: string;
+      callAvailability: string;
+      emailTitle: string;
+      emailResponse: string;
+      mobileCta: string;
+      quoteTitle: string;
+      fullNameLabel: string;
+      fullNamePlaceholder: string;
+      phoneLabel: string;
+      phonePlaceholder: string;
+      emailLabel: string;
+      emailPlaceholder: string;
+      systemSizeLabel: string;
+      systemSizePlaceholder: string;
+      systemSizeOptions: { value: string; label: string }[];
+      roofTypeLabel: string;
+      roofTypePlaceholder: string;
+      roofTypeOptions: { value: string; label: string }[];
+      locationLabel: string;
+      locationPlaceholder: string;
+      messageLabel: string;
+      messagePlaceholder: string;
+      submitText: string;
+      privacyText: string;
+      whatsapp: {
+        intro: string;
+        detailsHeader: string;
+        nameLabel: string;
+        phoneLabel: string;
+        emailLabel: string;
+        systemSizeLabel: string;
+        roofTypeLabel: string;
+        locationLabel: string;
+        messageLabel: string;
+        closing: string;
+      };
+    };
   };
 };
 
 export function Contact() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
     systemSize: "",
+    roofType: "",
+    location: "",
     message: "",
   });
 
@@ -48,18 +89,28 @@ export function Contact() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    const whatsapp = data.contact.form.whatsapp;
+
+    // Resolve human-readable label for system size
+    const systemSizeLabel =
+      data.contact.form.systemSizeOptions.find(
+        (opt) => opt.value === formData.systemSize
+      )?.label ?? "";
+
     // Create WhatsApp message
-    const whatsappMessage = `Hi OnGrid Solar Power Solutions Pvt Ltd! I'm interested in solar panel installation.
+    const whatsappMessage = `${whatsapp.intro}
 
-*Contact Details:*
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-${formData.systemSize ? `System Size: ${formData.systemSize} kW` : ""}
+*${whatsapp.detailsHeader}:*
+${whatsapp.nameLabel}: ${formData.name}
+${whatsapp.phoneLabel}: ${formData.phone}
+${whatsapp.emailLabel}: ${formData.email}
+${formData.systemSize ? `${whatsapp.systemSizeLabel}: ${systemSizeLabel}` : ""}
+${formData.roofType ? `${whatsapp.roofTypeLabel}: ${formData.roofType}` : ""}
+${formData.location ? `${whatsapp.locationLabel}: ${formData.location}` : ""}
 
-${formData.message ? `*Message:*\n${formData.message}` : ""}
+${formData.message ? `*${whatsapp.messageLabel}:*\n${formData.message}` : ""}
 
-Please provide me with a free quote for solar panel installation in Trivandrum.`;
+${whatsapp.closing}`;
 
     // Clean phone number for WhatsApp (remove spaces, brackets, hyphens)
     const cleanPhone = data.contact.phone.replace(/[^+\d]/g, "");
@@ -99,7 +150,7 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                   </div>
                   <div className="min-w-0 flex-1">
                     <h3 className="font-lato font-bold text-lg text-gray-900 dark:text-white mb-2">
-                      Visit Our Office
+                      {data.contact.form.officeTitle}
                     </h3>
                     <address className="text-sm sm:text-base text-gray-700 dark:text-gray-300 not-italic leading-relaxed">
                       {data.contact.address.street}
@@ -120,7 +171,7 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                   </div>
                   <div className="min-w-0 flex-1">
                     <h3 className="font-lato font-bold text-lg text-gray-900 dark:text-white mb-2">
-                      Call Us
+                      {data.contact.form.callTitle}
                     </h3>
                     <a
                       href={`tel:${data.contact.phone}`}
@@ -129,7 +180,7 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                       {data.contact.phone}
                     </a>
                     <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-                      Available 9 AM - 6 PM (Mon-Sat)
+                      {data.contact.form.callAvailability}
                     </p>
                   </div>
                 </div>
@@ -142,7 +193,7 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                   </div>
                   <div className="min-w-0 flex-1 overflow-hidden">
                     <h3 className="font-lato font-bold text-lg text-gray-900 dark:text-white mb-2">
-                      Email Us
+                      {data.contact.form.emailTitle}
                     </h3>
                     <a
                       href={`mailto:${data.contact.email}`}
@@ -151,7 +202,7 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                       {data.contact.email}
                     </a>
                     <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-                      We'll respond within 24 hours
+                      {data.contact.form.emailResponse}
                     </p>
                   </div>
                 </div>
@@ -166,7 +217,7 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 flex-shrink-0" />
                 <span className="truncate min-w-0">
                   <span className="hidden sm:inline">{data.contact.cta}</span>
-                  <span className="sm:hidden">Book Free Site Visit</span>
+                  <span className="sm:hidden">{data.contact.form.mobileCta}</span>
                 </span>
               </Button>
             </div>
@@ -177,14 +228,14 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
             <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
               <div>
                 <h3 className="font-lato font-bold text-lg sm:text-xl lg:text-2xl text-gray-900 dark:text-white mb-4 sm:mb-6 break-words">
-                  Get Your Free Quote
+                  {data.contact.form.quoteTitle}
                 </h3>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="min-w-0">
                   <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Full Name *
+                    {data.contact.form.fullNameLabel}
                   </label>
                   <input
                     type="text"
@@ -193,12 +244,12 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                     onChange={handleInputChange}
                     required
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
-                    placeholder="Enter your name"
+                    placeholder={data.contact.form.fullNamePlaceholder}
                   />
                 </div>
                 <div className="min-w-0">
                   <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Phone Number *
+                    {data.contact.form.phoneLabel}
                   </label>
                   <input
                     type="tel"
@@ -207,14 +258,14 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                     onChange={handleInputChange}
                     required
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
-                    placeholder="Enter your phone"
+                    placeholder={data.contact.form.phonePlaceholder}
                   />
                 </div>
               </div>
 
               <div className="min-w-0">
                 <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Email Address *
+                  {data.contact.form.emailLabel}
                 </label>
                 <input
                   type="email"
@@ -223,13 +274,13 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                   onChange={handleInputChange}
                   required
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
-                  placeholder="Enter your email"
+                  placeholder={data.contact.form.emailPlaceholder}
                 />
               </div>
 
               <div className="min-w-0">
                 <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  System Size (kW)
+                  {data.contact.form.systemSizeLabel}
                 </label>
                 <select
                   name="systemSize"
@@ -237,18 +288,51 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                   onChange={handleInputChange}
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
                 >
-                  <option value="">Select system size</option>
-                  <option value="1">1 kW (₹30,000 subsidy)</option>
-                  <option value="2">2 kW (₹60,000 subsidy)</option>
-                  <option value="3">3 kW (₹78,000 subsidy)</option>
-                  <option value="5">5 kW</option>
-                  <option value="10">10 kW+</option>
+                  <option value="">{data.contact.form.systemSizePlaceholder}</option>
+                  {data.contact.form.systemSizeOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div className="min-w-0">
                 <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Message
+                  {data.contact.form.roofTypeLabel}
+                </label>
+                <select
+                  name="roofType"
+                  value={formData.roofType}
+                  onChange={handleInputChange}
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
+                >
+                  <option value="">{data.contact.form.roofTypePlaceholder}</option>
+                  {data.contact.form.roofTypeOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="min-w-0">
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  {data.contact.form.locationLabel}
+                </label>
+                <input
+                  type="text"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleInputChange}
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base max-w-full"
+                  placeholder={data.contact.form.locationPlaceholder}
+                />
+              </div>
+
+              <div className="min-w-0">
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  {data.contact.form.messageLabel}
                 </label>
                 <textarea
                   name="message"
@@ -256,7 +340,7 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                   onChange={handleInputChange}
                   rows={2}
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base resize-none max-w-full"
-                  placeholder="Tell us about your energy needs..."
+                  placeholder={data.contact.form.messagePlaceholder}
                 />
               </div>
 
@@ -265,12 +349,11 @@ Please provide me with a free quote for solar panel installation in Trivandrum.`
                 size="lg"
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-2.5 sm:py-3 text-sm sm:text-base font-medium min-w-0"
               >
-                <span className="truncate">💬 Send via WhatsApp</span>
+                <span className="truncate">{data.contact.form.submitText}</span>
               </Button>
 
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center leading-relaxed break-words">
-                * Required fields. We respect your privacy and will never share
-                your information.
+                {data.contact.form.privacyText}
               </p>
             </form>
           </div>

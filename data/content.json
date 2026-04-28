@@ -237,7 +237,55 @@
     },
     "phone": "+91 75 94 94 94 06",
     "email": "ongridsolarpowersolution@gmail.com",
-    "cta": "Book a Free Site Visit for Solar Panel Installation in Trivandrum"
+    "cta": "Book a Free Site Visit for Solar Panel Installation in Trivandrum",
+    "form": {
+      "officeTitle": "Visit Our Office",
+      "callTitle": "Call Us",
+      "callAvailability": "Available 9 AM - 6 PM (Mon-Sat)",
+      "emailTitle": "Email Us",
+      "emailResponse": "We'll respond within 24 hours",
+      "mobileCta": "Book Free Site Visit",
+      "quoteTitle": "Get Your Free Quote",
+      "fullNameLabel": "Full Name *",
+      "fullNamePlaceholder": "Enter your name",
+      "phoneLabel": "Phone Number *",
+      "phonePlaceholder": "Enter your phone",
+      "emailLabel": "Email Address *",
+      "emailPlaceholder": "Enter your email",
+      "systemSizeLabel": "System Size (kW)",
+      "systemSizePlaceholder": "Select system size",
+      "systemSizeOptions": [
+        { "value": "1", "label": "1 kW (₹30,000 subsidy)" },
+        { "value": "2", "label": "2 kW (₹60,000 subsidy)" },
+        { "value": "3", "label": "3 kW (₹78,000 subsidy)" },
+        { "value": "5", "label": "5 kW" },
+        { "value": "10", "label": "10 kW+" }
+      ],
+      "roofTypeLabel": "Roof Type",
+      "roofTypePlaceholder": "Select roof type",
+      "roofTypeOptions": [
+        { "value": "Flat Roof", "label": "Flat Roof" },
+        { "value": "Sheet Roof", "label": "Sheet Roof" }
+      ],
+      "locationLabel": "Location",
+      "locationPlaceholder": "Enter your location / area",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell us about your energy needs...",
+      "submitText": "💬 Send via WhatsApp",
+      "privacyText": "* Required fields. We respect your privacy and will never share your information.",
+      "whatsapp": {
+        "intro": "Hi OnGrid Solar Power Solutions Pvt Ltd! I'm interested in solar panel installation.",
+        "detailsHeader": "Contact Details",
+        "nameLabel": "Name",
+        "phoneLabel": "Phone",
+        "emailLabel": "Email",
+        "systemSizeLabel": "System Size",
+        "roofTypeLabel": "Roof Type",
+        "locationLabel": "Location",
+        "messageLabel": "Message",
+        "closing": "Please provide me with a free quote for solar panel installation."
+      }
+    }
   },
   "testimonials": {
     "title": "What Our Customers Say",
@@ -432,8 +480,15 @@
     ]
   },
   "faq": {
+    "badge": "Frequently Asked Questions",
     "title": "Frequently Asked Questions - Solar Panel Installation in Trivandrum",
     "subtitle": "Everything you need to know about Solar Panel Installation in Trivandrum",
+    "leftColumnTitle": "Solar Basics & Benefits",
+    "rightColumnTitle": "Installation & Financing",
+    "ctaTitle": "Still have questions?",
+    "ctaDescription": "Our solar experts are here to help you make the best decision for your home and energy needs.",
+    "ctaPrimary": "Schedule Free Consultation",
+    "ctaSecondary": "Download Solar Guide",
     "items": [
       {
         "question": "How much can I save with Solar Panel Installation in Trivandrum?",
@@ -461,6 +516,52 @@
       }
     ]
   },
+  "partners": {
+    "badge": "Trusted Partners",
+    "titlePrefix": "Partnered With",
+    "titleHighlight": "Leading Solar Manufacturers",
+    "description": "We collaborate with India's top solar panel manufacturers to bring you premium quality products with industry-leading warranties and performance guarantees.",
+    "items": [
+      { "name": "Premier Energies", "color": "text-blue-600" },
+      { "name": "Vikram Solar", "color": "text-red-500" },
+      { "name": "Waaree", "color": "text-green-600" },
+      { "name": "Rayzon Solar", "color": "text-teal-600" },
+      { "name": "Goldi Solar", "color": "text-blue-800" },
+      { "name": "Adani Solar", "color": "text-blue-700" },
+      { "name": "Emmvee", "color": "text-blue-600" },
+      { "name": "RenewSys", "color": "text-blue-500" },
+      { "name": "ReNew", "color": "text-green-500" },
+      { "name": "Saatvik", "color": "text-orange-500" }
+    ],
+    "stats": [
+      { "value": "10+", "label": "Trusted Partners" },
+      { "value": "25+", "label": "Years Combined Experience" },
+      { "value": "100%", "label": "Quality Assured" },
+      { "value": "₹78K", "label": "Max Subsidy" }
+    ]
+  },
+  "gallery": {
+    "title": "Our Project Gallery",
+    "subtitle": "Explore our completed solar installations across Trivandrum and Kerala. From residential rooftops to commercial solar farms, see the quality and craftsmanship that sets OnGrid Solar apart.",
+    "videoTitle": "Installation Video",
+    "videoBadge": "Video",
+    "mediaTypeVideo": "Video",
+    "mediaTypeImage": "Image",
+    "noMediaText": "No media found in this category.",
+    "categories": [
+      { "key": "all", "label": "All" },
+      { "key": "residential", "label": "Residential" },
+      { "key": "commercial", "label": "Commercial" },
+      { "key": "videos", "label": "Videos" },
+      { "key": "certifications", "label": "Certifications" },
+      { "key": "projects", "label": "Projects" }
+    ]
+  },
+  "topAnnouncement": {
+    "callPrefix": "Call",
+    "subsidyText": "₹78K Subsidy",
+    "emiText": "EMI AVAILABLE"
+  },
   "cta": {
     "title": "Ready to Start Saving with Solar Panel Installation in Trivandrum?",
     "subtitle": "Join thousands of satisfied customers who are saving money with clean energy",
@@ -469,9 +570,25 @@
     "secondaryCta": "Call +91 (759) 494-9406"
   },
   "footer": {
+    "brandDescription": "Leading solar installation company in Trivandrum. MNRE registered vendor providing government-approved solar solutions with up to ₹78,000 subsidy.",
+    "contactTitle": "Contact Info",
+    "whatsappLabel": "WhatsApp",
+    "servicesTitle": "Services",
+    "services": [
+      "Residential Solar",
+      "Commercial Solar",
+      "Maintenance & Support",
+      "Battery Storage"
+    ],
+    "privacyPolicyLabel": "Privacy Policy",
+    "termsLabel": "Terms of Service",
+    "designerPrefix": "Designed and Made by",
+    "designerName": "The DesertWhales LLC Dubai",
     "newsletter": {
       "title": "Stay Updated",
-      "description": "Get the latest solar news and tips"
+      "description": "Get the latest solar news and exclusive offers",
+      "emailPlaceholder": "Enter your email",
+      "subscribeLabel": "Subscribe"
     }
   }
 }

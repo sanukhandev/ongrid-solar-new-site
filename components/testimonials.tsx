@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 
 interface Testimonial {
   id: number;
@@ -41,7 +41,7 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export function Testimonials() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
   const testimonials = data.testimonials.reviews;
 
   const [currentIndex, setCurrentIndex] = useState(0);

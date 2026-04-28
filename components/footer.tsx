@@ -3,29 +3,46 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 
 type ContentType = {
   site: { name: string };
   contact: {
     phone: string;
     email: string;
-    address: any;
+    address: {
+      street: string;
+      area: string;
+      city: string;
+      state: string;
+      pincode: string;
+    };
   };
   footer?: {
+    brandDescription?: string;
+    contactTitle?: string;
+    whatsappLabel?: string;
+    servicesTitle?: string;
+    services?: string[];
     description?: string;
+    privacyPolicyLabel?: string;
+    termsLabel?: string;
+    designerPrefix?: string;
+    designerName?: string;
     newsletter?: {
       title: string;
       description: string;
+      emailPlaceholder?: string;
+      subscribeLabel?: string;
     };
   };
 };
 
 export function Footer() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
   return (
     <>
-      <footer id="contact" className="bg-gray-900 text-white pt-20 pb-8">
+      <footer className="bg-gray-900 text-white pt-20 pb-8">
         <div className="container mx-auto px-4">
           {/* Main footer content */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
@@ -61,15 +78,13 @@ export function Footer() {
                 </div>
               </div>
               <p className="text-white/70 text-sm leading-relaxed max-w-sm">
-                Leading solar installation company in Trivandrum. MNRE
-                registered vendor providing government-approved solar solutions
-                with up to ₹78,000 subsidy.
+                {data.footer?.brandDescription}
               </p>
             </div>
 
             {/* Contact Info */}
             <div>
-              <h3 className="font-lato font-bold mb-4">Contact Info</h3>
+              <h3 className="font-lato font-bold mb-4">{data.footer?.contactTitle}</h3>
               <ul className="space-y-3">
                 <li>
                   <a
@@ -91,7 +106,7 @@ export function Footer() {
                     className="flex items-center gap-2 text-white/70 hover:text-green-400 transition-colors text-sm"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    WhatsApp {data.contact.phone}
+                    {data.footer?.whatsappLabel} {data.contact.phone}
                   </a>
                 </li>
                 <li>
@@ -112,57 +127,35 @@ export function Footer() {
 
             {/* Services */}
             <div>
-              <h3 className="font-lato font-bold mb-4">Services</h3>
+              <h3 className="font-lato font-bold mb-4">{data.footer?.servicesTitle}</h3>
               <ul className="space-y-3">
-                <li>
-                  <a
-                    href="#services"
-                    className="text-white/70 hover:text-orange-400 transition-colors text-sm"
-                  >
-                    Residential Solar
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#services"
-                    className="text-white/70 hover:text-orange-400 transition-colors text-sm"
-                  >
-                    Commercial Solar
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#services"
-                    className="text-white/70 hover:text-orange-400 transition-colors text-sm"
-                  >
-                    Maintenance & Support
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#services"
-                    className="text-white/70 hover:text-orange-400 transition-colors text-sm"
-                  >
-                    Battery Storage
-                  </a>
-                </li>
+                {data.footer?.services?.map((service) => (
+                  <li key={service}>
+                    <a
+                      href="#services"
+                      className="text-white/70 hover:text-orange-400 transition-colors text-sm"
+                    >
+                      {service}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
             {/* Newsletter */}
             <div>
-              <h3 className="font-lato font-bold mb-4">Stay Updated</h3>
+              <h3 className="font-lato font-bold mb-4">{data.footer?.newsletter?.title}</h3>
               <p className="text-white/70 text-sm mb-4">
-                Get the latest solar news and exclusive offers
+                {data.footer?.newsletter?.description}
               </p>
               <div className="space-y-3">
                 <Input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={data.footer?.newsletter?.emailPlaceholder}
                   className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 />
                 <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white">
-                  Subscribe
+                  {data.footer?.newsletter?.subscribeLabel}
                 </Button>
               </div>
             </div>
@@ -172,7 +165,7 @@ export function Footer() {
           <div className="pt-8 border-t border-white/10">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-white/70 text-sm">
-                © 2025 {data.site.name}. All rights reserved. | MNRE Registered
+              © {new Date().getFullYear()} {data.site.name}. All rights reserved. | MNRE Registered
                 Vendor
               </p>
               <div className="flex gap-6">
@@ -180,13 +173,13 @@ export function Footer() {
                   href="#"
                   className="text-white/70 hover:text-orange-400 transition-colors text-sm"
                 >
-                  Privacy Policy
+                  {data.footer?.privacyPolicyLabel}
                 </a>
                 <a
                   href="#"
                   className="text-white/70 hover:text-orange-400 transition-colors text-sm"
                 >
-                  Terms of Service
+                  {data.footer?.termsLabel}
                 </a>
               </div>
             </div>
@@ -198,14 +191,14 @@ export function Footer() {
       <div className="bg-black py-2">
         <div className="container mx-auto px-4">
           <p className="text-center text-white/70 text-xs">
-            Designed and Made by{" "}
+            {data.footer?.designerPrefix}{" "}
             <a
               href="https://thedesertwhales.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-orange-400 transition-colors font-medium"
             >
-              The DesertWhales LLC Dubai
+              {data.footer?.designerName}
             </a>
           </p>
         </div>

@@ -2,10 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export function CTA() {
+  const content = useContent();
   const ref = useScrollAnimation();
 
   const scrollToContact = () => {

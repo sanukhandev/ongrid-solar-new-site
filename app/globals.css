@@ -77,6 +77,25 @@ body {
   font-family: var(--font-lato), system-ui, sans-serif;
 }
 
+html[lang="ml"] body {
+  font-family: var(--font-malayalam), 'Anek Malayalam', sans-serif;
+  font-size: 0.9em;
+  letter-spacing: 0;
+  line-height: 1.75;
+}
+
+html[lang="ml"] h1 { font-size: 2rem; }
+html[lang="ml"] h2 { font-size: 1.6rem; }
+html[lang="ml"] h3 { font-size: 1.25rem; }
+html[lang="ml"] h4 { font-size: 1.05rem; }
+
+html[lang="ml"] .font-highlight,
+html[lang="ml"] .font-lato,
+html[lang="ml"] .font-sans {
+  font-family: var(--font-malayalam), 'Anek Malayalam', sans-serif !important;
+  letter-spacing: 0;
+}
+
 /* Smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;

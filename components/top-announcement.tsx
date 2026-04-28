@@ -1,7 +1,7 @@
 "use client";
 
 import { Phone, CreditCard, Gift, MapPin, Mail } from "lucide-react";
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 
 type ContentType = {
   contact: {
@@ -15,10 +15,15 @@ type ContentType = {
       pincode: string;
     };
   };
+  topAnnouncement: {
+    callPrefix: string;
+    subsidyText: string;
+    emiText: string;
+  };
 };
 
 export function TopAnnouncement() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   return (
     <div className="sticky top-0 z-50 bg-gradient-to-r from-orange-600 to-orange-500 text-white py-1.5 sm:py-2 overflow-hidden shadow-lg border-b border-orange-700/20">
@@ -42,17 +47,16 @@ export function TopAnnouncement() {
             >
               <Phone className="w-3 h-3 text-yellow-300 group-hover:scale-110 transition-transform" />
               <span className="font-bold text-yellow-100 group-hover:text-white text-xs">
-                Call: {data.contact.phone}
+                {data.topAnnouncement.callPrefix}: {data.contact.phone}
               </span>
             </a>
 
             <div className="flex items-center gap-1 bg-white/15 backdrop-blur-sm rounded-full px-2 py-0.5">
               <Gift className="w-3 h-3 text-yellow-300" />
-              <span className="font-semibold text-xs">₹78K Subsidy</span>
+              <span className="font-semibold text-xs">{data.topAnnouncement.subsidyText}</span>
             </div>
           </div>
 
-          {/* Desktop: Full detailed layout */}
           {/* Desktop: Full detailed layout */}
           <div className="hidden md:flex items-center justify-between w-full gap-3">
             {/* Left Section - Contact Info */}
@@ -80,7 +84,7 @@ export function TopAnnouncement() {
               <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm rounded-full px-2.5 py-0.5 border border-white/30">
                 <CreditCard className="w-3 h-3 text-yellow-300" />
                 <span className="text-xs font-bold text-yellow-100">
-                  EMI AVAILABLE
+                  {data.topAnnouncement.emiText}
                 </span>
               </div>
 
@@ -88,7 +92,7 @@ export function TopAnnouncement() {
 
               <div className="flex items-center gap-1 bg-white/15 backdrop-blur-sm rounded-full px-2.5 py-0.5">
                 <Gift className="w-3 h-3 text-yellow-300" />
-                <span className="font-semibold text-xs">₹78K Subsidy</span>
+                <span className="font-semibold text-xs">{data.topAnnouncement.subsidyText}</span>
               </div>
             </div>
 

@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
+import { useLanguage } from "@/contexts/language-context";
 
 type ContentType = {
   site: { name: string };
@@ -16,7 +17,8 @@ type ContentType = {
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,7 +70,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {data.navigation.links.map((link: any) => (
+            {data.navigation.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -86,6 +88,29 @@ export function Header() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
+            {/* Language Toggle */}
+            <div className="flex items-center rounded-full border border-orange-400 overflow-hidden text-xs font-semibold">
+              <button
+                onClick={() => setLanguage("en")}
+                className={`px-3 py-1.5 transition-colors ${
+                  language === "en"
+                    ? "bg-orange-500 text-white"
+                    : "text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage("ml")}
+                className={`px-3 py-1.5 transition-colors ${
+                  language === "ml"
+                    ? "bg-orange-500 text-white"
+                    : "text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20"
+                }`}
+              >
+                മല
+              </button>
+            </div>
             <Button
               size="sm"
               className="bg-gradient-orange text-white hover:shadow-lg hover-lift"
@@ -118,7 +143,7 @@ export function Header() {
             }`}
           >
             <nav className="flex flex-col gap-4">
-              {data.navigation.links.map((link: any) => (
+              {data.navigation.links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -133,6 +158,34 @@ export function Header() {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-current/20">
+                {/* Language Toggle (mobile) */}
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    {language === "ml" ? "ഭാഷ:" : "Language:"}
+                  </span>
+                  <div className="flex items-center rounded-full border border-orange-400 overflow-hidden text-xs font-semibold">
+                    <button
+                      onClick={() => setLanguage("en")}
+                      className={`px-3 py-1.5 transition-colors ${
+                        language === "en"
+                          ? "bg-orange-500 text-white"
+                          : "text-orange-500 hover:bg-orange-50"
+                      }`}
+                    >
+                      EN
+                    </button>
+                    <button
+                      onClick={() => setLanguage("ml")}
+                      className={`px-3 py-1.5 transition-colors ${
+                        language === "ml"
+                          ? "bg-orange-500 text-white"
+                          : "text-orange-500 hover:bg-orange-50"
+                      }`}
+                    >
+                      മല
+                    </button>
+                  </div>
+                </div>
                 <Button
                   variant="ghost"
                   size="sm"

@@ -1,6 +1,6 @@
 "use client";
 
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 import { Home, BadgeCheck, PiggyBank } from "lucide-react";
 
 type ContentType = {
@@ -24,7 +24,7 @@ const iconMap = {
 };
 
 export function Features() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   return (
     <section
@@ -47,7 +47,7 @@ export function Features() {
 
         {/* Feature cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data.features.items.map((feature: any, index: number) => {
+          {data.features.items.map((feature, index: number) => {
             const IconComponent =
               iconMap[feature.icon as keyof typeof iconMap] || PiggyBank;
             return (

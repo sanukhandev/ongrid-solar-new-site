@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sun } from "lucide-react";
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 
 type ContentType = {
   site: { name: string; tagline: string };
@@ -16,7 +16,7 @@ type ContentType = {
 };
 
 export function Hero() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
@@ -51,7 +51,6 @@ export function Hero() {
 
       <div className="container mx-auto px-4 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left content */}
           {/* Left content */}
           <div className="space-y-8 hero-content">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-100 to-yellow-100 dark:from-orange-900/30 dark:to-yellow-900/30 rounded-full text-sm font-medium text-orange-700 dark:text-orange-300 glass-card animate-fade-in">

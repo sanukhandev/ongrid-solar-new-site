@@ -1,6 +1,6 @@
 "use client";
 
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 import { Home, Building, Wrench, Battery, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -26,7 +26,7 @@ const iconMap = {
 };
 
 export function Services() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   return (
     <section id="services" className="py-16 md:py-20 bg-white dark:bg-gray-900">
@@ -41,7 +41,7 @@ export function Services() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {data.services.items.map((service: any, index: number) => {
+          {data.services.items.map((service, index: number) => {
             const IconComponent =
               iconMap[service.icon as keyof typeof iconMap] || Home;
 

@@ -1,6 +1,6 @@
 "use client";
 
-import content from "@/data/content.json";
+import { useContent } from "@/hooks/use-content";
 import { Calendar, Tag } from "lucide-react";
 
 type ContentType = {
@@ -17,7 +17,7 @@ type ContentType = {
 };
 
 export function Blog() {
-  const data = content as unknown as ContentType;
+  const data = useContent() as unknown as ContentType;
 
   const categoryColors = {
     Guide: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",

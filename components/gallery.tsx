@@ -6,6 +6,20 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Play, X, ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import { useContent } from "@/hooks/use-content";
+
+type ContentType = {
+  gallery: {
+    title: string;
+    subtitle: string;
+    videoTitle: string;
+    videoBadge: string;
+    mediaTypeVideo: string;
+    mediaTypeImage: string;
+    noMediaText: string;
+    categories: { key: string; label: string }[];
+  };
+};
 
 interface MediaItem {
   id: string;
@@ -13,7 +27,7 @@ interface MediaItem {
   src: string;
   thumbnail: string;
   title: string;
-  category: string;
+  categoryKey: string;
 }
 
 // Media files from projects folder
@@ -53,10 +67,10 @@ const mediaFiles = [
 ];
 
 // Function to generate title from filename
-const generateTitle = (filename: string): string => {
+const generateTitle = (filename: string, videoTitle: string): string => {
   return filename
     .replace(/\.(jpeg|jpg|mp4|png|webp)$/i, "")
-    .replace(/WhatsApp Video.*/, "Installation Video")
+    .replace(/WhatsApp Video.*/, videoTitle)
     .replace(/_/g, " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
 };
@@ -64,42 +78,42 @@ const generateTitle = (filename: string): string => {
 // Function to categorize media
 const categorizeMedia = (filename: string): string => {
   const lower = filename.toLowerCase();
-  if (lower.includes("video") || lower.includes(".mp4")) return "Videos";
+  if (lower.includes("video") || lower.includes(".mp4")) return "videos";
   if (
     lower.includes("kw") ||
     lower.includes("peyad") ||
     lower.includes("vembayam")
   )
-    return "Commercial";
+    return "commercial";
   if (
     lower.includes("rooftop") ||
     lower.includes("hybrid") ||
     lower.includes("installation")
   )
-    return "Residential";
+    return "residential";
   if (
     lower.includes("company") ||
     lower.includes("mnre") ||
     lower.includes("subsidy")
   )
-    return "Certifications";
-  return "Projects";
+    return "certifications";
+  return "projects";
 };
 
-const categories = [
-  "All",
-  "Residential",
-  "Commercial",
-  "Videos",
-  "Certifications",
-  "Projects",
-];
-
 export function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const data = useContent() as unknown as ContentType;
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [galleryItems, setGalleryItems] = useState<MediaItem[]>([]);
+
+  const categoryMap = data.gallery.categories.reduce(
+    (acc: Record<string, string>, category: { key: string; label: string }) => {
+      acc[category.key] = category.label;
+      return acc;
+    },
+    {}
+  );
 
   useEffect(() => {
     // Generate gallery items from media files
@@ -107,18 +121,15 @@ export function Gallery() {
       id: (index + 1).toString(),
       type: file.type,
       src: `/projects/${file.name}`,
-      thumbnail:
-        file.type === "video"
-          ? `/projects/${file.name}`
-          : `/projects/${file.name}`,
-      title: generateTitle(file.name),
-      category: categorizeMedia(file.name),
+      thumbnail: `/projects/${file.name}`,
+      title: generateTitle(file.name, data.gallery.videoTitle),
+      categoryKey: categorizeMedia(file.name),
     }));
     setGalleryItems(items);
-  }, []);
+  }, [data.gallery.videoTitle]);
 
   const filteredItems = galleryItems.filter(
-    (item) => selectedCategory === "All" || item.category === selectedCategory
+    (item) => selectedCategory === "all" || item.categoryKey === selectedCategory
   );
 
   const openMediaViewer = (item: MediaItem) => {
@@ -158,24 +169,22 @@ export function Gallery() {
               textShadow: "0 0 1px rgba(234, 88, 12, 0.2)",
             }}
           >
-            Our Project Gallery
+            {data.gallery.title}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Explore our completed solar installations across Trivandrum and
-            Kerala. From residential rooftops to commercial solar farms, see the
-            quality and craftsmanship that sets OnGrid Solar apart.
+            {data.gallery.subtitle}
           </p>
 
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
+            {data.gallery.categories.map((category: { key: string; label: string }) => (
               <Button
-                key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                onClick={() => setSelectedCategory(category)}
+                key={category.key}
+                variant={selectedCategory === category.key ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category.key)}
                 className="px-6 py-2"
               >
-                {category}
+                {category.label}
               </Button>
             ))}
           </div>
@@ -214,14 +223,14 @@ export function Gallery() {
                   <div className="absolute top-4 left-4">
                     <Badge className="bg-red-600 hover:bg-red-700">
                       <Play className="w-3 h-3 mr-1" />
-                      Video
+                      {data.gallery.videoBadge}
                     </Badge>
                   </div>
                 )}
 
                 {/* Category Badge */}
                 <div className="absolute top-4 right-4">
-                  <Badge variant="secondary">{item.category}</Badge>
+                  <Badge variant="secondary">{categoryMap[item.categoryKey]}</Badge>
                 </div>
 
                 {/* View Button */}
@@ -240,7 +249,7 @@ export function Gallery() {
                   {item.title}
                 </h3>
                 <div className="flex items-center justify-between text-xs text-gray-500">
-                  <span>{item.category}</span>
+                  <span>{categoryMap[item.categoryKey]}</span>
                   <span>{item.type === "video" ? "🎥" : "📸"}</span>
                 </div>
               </div>
@@ -250,9 +259,7 @@ export function Gallery() {
 
         {filteredItems.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">
-              No media found in this category.
-            </p>
+            <p className="text-gray-500 text-lg">{data.gallery.noMediaText}</p>
           </div>
         )}
 
@@ -315,11 +322,11 @@ export function Gallery() {
                     <h3 className="text-xl font-semibold">
                       {selectedMedia.title}
                     </h3>
-                    <Badge variant="secondary">{selectedMedia.category}</Badge>
+                    <Badge variant="secondary">{categoryMap[selectedMedia.categoryKey]}</Badge>
                   </div>
                   <div className="flex items-center gap-4 text-sm text-gray-400">
                     <span>
-                      {selectedMedia.type === "video" ? "🎥 Video" : "📸 Image"}
+                      {selectedMedia.type === "video" ? `🎥 ${data.gallery.mediaTypeVideo}` : `📸 ${data.gallery.mediaTypeImage}`}
                     </span>
                     <span>
                       {currentIndex + 1} / {filteredItems.length}

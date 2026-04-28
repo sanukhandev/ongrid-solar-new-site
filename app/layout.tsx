@@ -1,8 +1,9 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Montserrat, Lato } from "next/font/google";
+import { Montserrat, Lato, Anek_Malayalam } from "next/font/google";
 import "./globals.css";
 import ChatWidget from "@/components/chat-widget";
+import { LanguageProvider } from "@/contexts/language-context";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 const montserrat = Montserrat({
@@ -15,6 +16,13 @@ const lato = Lato({
   weight: ["400", "700", "900"],
   subsets: ["latin"],
   variable: "--font-lato",
+  display: "swap",
+});
+
+const anekMalayalam = Anek_Malayalam({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["malayalam"],
+  variable: "--font-malayalam",
   display: "swap",
 });
 
@@ -137,14 +145,19 @@ export default function RootLayout({
 children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${lato.variable}`}>
+    <html
+      lang="en"
+      className={`${montserrat.variable} ${lato.variable} ${anekMalayalam.variable}`}
+    >
       <body
         className={`font-sans antialiased ${montserrat.className} overflow-x-hidden`}
       >
         <Analytics />
         <SpeedInsights />
-        {children}
-        <ChatWidget />
+        <LanguageProvider>
+          {children}
+          <ChatWidget />
+        </LanguageProvider>
       </body>
     </html>
   );
