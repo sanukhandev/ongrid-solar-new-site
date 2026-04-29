@@ -5,6 +5,7 @@ import {
   useContext,
   useState,
   useEffect,
+  useRef,
   ReactNode,
 } from "react";
 
@@ -25,6 +26,7 @@ const LanguageContext = createContext<LanguageContextType>({
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>("en");
   const [isLoading, setIsLoading] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem("lang") as Language | null;
@@ -33,16 +35,52 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  // Clear any pending timeout on unmount to prevent state updates after unmount.
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current !== null) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   const setLanguage = (lang: Language) => {
-    if (lang === language) return; // Don't reload if same language
+    if (lang === language) return;
+
+    // Cancel any in-flight language switch before starting a new one.
+    if (timeoutRef.current !== null) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
 
     setIsLoading(true);
 
-    // 1.5-second delay before changing language
-    setTimeout(() => {
-      setLanguageState(lang);
-      localStorage.setItem("lang", lang);
-      setIsLoading(false);
+    // Kick off content preload immediately so it's cached when the language
+    // flips, preventing a flash of stale content after the skeleton is dismissed.
+    const contentReady =
+      lang === "ml"
+        ? import("@/data/content.ml.json").catch((err) => {
+            console.error("Failed to preload Malayalam content:", err);
+            return null;
+          })
+        : Promise.resolve(null);
+
+    // Hold the skeleton for a minimum of 1.5 s, then wait for content to be
+    // ready before flipping the language and dismissing the skeleton.
+    timeoutRef.current = setTimeout(() => {
+      contentReady
+        .then(() => {
+          setLanguageState(lang);
+          localStorage.setItem("lang", lang);
+          setIsLoading(false);
+          timeoutRef.current = null;
+        })
+        .catch((err) => {
+          // Ensure the loading state is always cleared even on unexpected errors.
+          console.error("Unexpected error during language switch:", err);
+          setIsLoading(false);
+          timeoutRef.current = null;
+        });
     }, 1500);
   };
 
