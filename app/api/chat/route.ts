@@ -373,7 +373,7 @@ Customer Question: ${message}
 Provide a targeted, sales-focused response that directly answers their question using the context above. Be concise but persuasive.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash-exp",
+      model: "gemini-1.5-flash",
       contents: prompt,
     });
 
