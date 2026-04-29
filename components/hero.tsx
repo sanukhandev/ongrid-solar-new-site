@@ -11,6 +11,8 @@ type ContentType = {
     subtitle: string;
     cta: string;
     secondaryCta: string;
+    warrantyTitle?: string;
+    inverterWarranty?: string;
     highlights: string[];
   };
 };
@@ -156,9 +158,11 @@ export function Hero() {
                   <span className="text-white font-bold text-xl">30</span>
                 </div>
                 <div>
-                  <p className="font-semibold text-white">Years Warranty Solar OnGrid</p>
+                  <p className="font-semibold text-white">
+                    {data.hero.warrantyTitle ?? "Years Warranty Solar OnGrid"}
+                  </p>
                   <p className="text-sm text-orange-600">
-                    10 Years Inverter Warranty
+                    {data.hero.inverterWarranty ?? "10 Years Inverter Warranty"}
                   </p>
                 </div>
               </div>
