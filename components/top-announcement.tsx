@@ -2,6 +2,7 @@
 
 import { Phone, CreditCard, Gift, MapPin, Mail } from "lucide-react";
 import { useContent } from "@/hooks/use-content";
+import { useLanguage } from "@/contexts/language-context";
 
 type ContentType = {
   contact: {
@@ -24,6 +25,7 @@ type ContentType = {
 
 export function TopAnnouncement() {
   const data = useContent() as unknown as ContentType;
+  const { language, setLanguage, isLoading } = useLanguage();
 
   return (
     <div className="sticky top-0 z-50 bg-gradient-to-r from-orange-600 to-orange-500 text-white py-1.5 sm:py-2 overflow-hidden shadow-lg border-b border-orange-700/20">
@@ -54,6 +56,12 @@ export function TopAnnouncement() {
             <div className="flex items-center gap-1 bg-white/15 backdrop-blur-sm rounded-full px-2 py-0.5">
               <Gift className="w-3 h-3 text-yellow-300" />
               <span className="font-semibold text-xs">{data.topAnnouncement.subsidyText}</span>
+
+                        {/* Mobile Locale Toggle */}
+                        <div className="flex items-center rounded-full border border-white/50 overflow-hidden text-xs font-bold">
+                          <button onClick={() => setLanguage("en")} disabled={isLoading} className={`px-2 py-0.5 transition-colors text-xs ${language === "en" ? "bg-white text-orange-600 font-bold" : "text-white/90 hover:bg-white/20"} disabled:opacity-50`}>EN</button>
+                          <button onClick={() => setLanguage("ml")} disabled={isLoading} className={`px-2 py-0.5 transition-colors text-xs ${language === "ml" ? "bg-white text-orange-600 font-bold" : "text-white/90 hover:bg-white/20"} disabled:opacity-50`}>മല</button>
+                        </div>
             </div>
           </div>
 
@@ -97,7 +105,8 @@ export function TopAnnouncement() {
             </div>
 
             {/* Right Section - Phone */}
-            <div>
+            {/* Right Section - Phone + Locale */}
+            <div className="flex items-center gap-2">
               <a
                 href={`tel:${data.contact.phone}`}
                 className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm rounded-full px-2.5 py-0.5 border border-white/30 hover:bg-white/30 transition-all duration-300 group animate-pulse hover:animate-none"
@@ -107,6 +116,12 @@ export function TopAnnouncement() {
                   {data.contact.phone}
                 </span>
               </a>
+              {/* Desktop Locale Toggle */}
+              <div className="flex items-center rounded-full border border-white/50 overflow-hidden text-xs font-bold relative">
+                {isLoading && <div className="absolute inset-0 bg-white/30 backdrop-blur-sm flex items-center justify-center z-10"><div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></div></div>}
+                <button onClick={() => setLanguage("en")} disabled={isLoading} className={`px-2.5 py-1 transition-colors text-xs ${language === "en" ? "bg-white text-orange-600 font-bold" : "text-white/90 hover:bg-white/20"} disabled:opacity-50`}>EN</button>
+                <button onClick={() => setLanguage("ml")} disabled={isLoading} className={`px-2.5 py-1 transition-colors text-xs ${language === "ml" ? "bg-white text-orange-600 font-bold" : "text-white/90 hover:bg-white/20"} disabled:opacity-50`}>മല</button>
+              </div>
             </div>
           </div>
         </div>
