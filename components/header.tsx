@@ -21,6 +21,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const data = useContent() as unknown as ContentType;
+  const telHref = `tel:${data.contact.phone.replace(/[^+0-9]/g, "")}`;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -95,17 +96,19 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA Buttons */}
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center shrink-0">
-            <a href={`tel:${data.contact.phone.replace(/[^+0-9]/g, "")}`}>
-              <Button size="sm" className="bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold hover:shadow-lg hover:scale-105 transition-all duration-200">
+            <Button
+              asChild
+              size="sm"
+              className="bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold hover:shadow-lg hover:scale-105 transition-all duration-200"
+            >
+              <a href={telHref}>
                 {data.navigation.cta.primary}
-              </Button>
-            </a>
+              </a>
+            </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           {/* Mobile Hamburger */}
           <motion.button
             whileTap={{ scale: 0.88 }}
@@ -185,11 +188,11 @@ export function Header() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.25, duration: 0.3 }}
               >
-                <a href={`tel:${data.contact.phone.replace(/[^+0-9]/g, "")}`} className="block" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold py-5 text-base rounded-xl hover:shadow-lg transition-all duration-200">
+                <Button asChild className="w-full bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold py-5 text-base rounded-xl hover:shadow-lg transition-all duration-200">
+                  <a href={telHref} onClick={() => setIsMobileMenuOpen(false)}>
                     {data.navigation.cta.primary}
-                  </Button>
-                </a>
+                  </a>
+                </Button>
                 <p className="text-center text-xs text-gray-400 mt-2 font-medium tracking-wide">{data.contact.phone}</p>
               </motion.div>
             </motion.div>

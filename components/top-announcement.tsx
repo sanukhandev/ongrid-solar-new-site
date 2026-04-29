@@ -104,7 +104,6 @@ export function TopAnnouncement() {
               </div>
             </div>
 
-            {/* Right Section - Phone */}
             {/* Right Section - Phone + Locale */}
             <div className="flex items-center gap-2">
               <a
