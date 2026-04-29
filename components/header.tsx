@@ -95,7 +95,6 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA Buttons */}
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center shrink-0">
             <a href={`tel:${data.contact.phone.replace(/[^+0-9]/g, "")}`}>
@@ -105,7 +104,6 @@ export function Header() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           {/* Mobile Hamburger */}
           <motion.button
             whileTap={{ scale: 0.88 }}

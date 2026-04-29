@@ -38,7 +38,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
     setIsLoading(true);
 
-    // 3-second delay before changing language
+    // 1.5-second delay before changing language
     setTimeout(() => {
       setLanguageState(lang);
       localStorage.setItem("lang", lang);
