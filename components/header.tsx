@@ -137,7 +137,7 @@ export function Header() {
           <>
             <motion.div
               key="backdrop"
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[45] md:hidden"
+              className="fixed top-[32px] right-0 bottom-0 left-0 bg-black/50 backdrop-blur-sm z-[45] md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -146,7 +146,7 @@ export function Header() {
             />
             <motion.div
               key="drawer"
-              className="fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-white z-[46] shadow-2xl md:hidden flex flex-col"
+              className="fixed top-[96px] right-0 bottom-0 w-[300px] max-w-[85vw] overflow-hidden rounded-l-[28px] border-l border-white/60 bg-gradient-to-b from-white via-white to-orange-50/65 z-[46] shadow-[0_24px_64px_rgba(15,23,42,0.24),0_12px_28px_rgba(249,115,22,0.18)] md:hidden flex flex-col"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -159,7 +159,7 @@ export function Header() {
                     {data.site.name}
                   </span>
                 </div>
-                <motion.button whileTap={{ scale: 0.88 }} onClick={() => setIsMobileMenuOpen(false)} className="p-2 rounded-full bg-gray-100 hover:bg-orange-50 text-gray-500 hover:text-orange-600 transition-colors">
+                <motion.button whileTap={{ scale: 0.88 }} onClick={() => setIsMobileMenuOpen(false)} className="p-2 rounded-full bg-white shadow-[0_6px_18px_rgba(15,23,42,0.12)] hover:bg-orange-50 text-gray-500 hover:text-orange-600 transition-colors">
                   <X size={18} />
                 </motion.button>
               </div>
