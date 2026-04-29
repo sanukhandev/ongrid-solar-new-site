@@ -65,12 +65,14 @@
 
 * {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for sticky header height */
 }
 
 body {
   font-family: var(--font-montserrat), system-ui, sans-serif;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  overflow-x: hidden;
 }
 
 .font-highlight {

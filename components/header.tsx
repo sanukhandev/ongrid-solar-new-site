@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useContent } from "@/hooks/use-content";
@@ -32,13 +33,20 @@ export function Header() {
   }, []);
 
   return (
-    <header
-      className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         isScrolled
-          ? "bg-gray-900/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+          ? "bg-white/80 backdrop-blur-xl shadow-lg border-b border-white/20"
+          : "bg-white/60 backdrop-blur-md"
       }`}
-      style={{ top: isScrolled ? "30px" : "40px" }}
+      style={{
+        boxShadow: isScrolled 
+          ? "0 8px 32px 0 rgba(255, 255, 255, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1)"
+          : "0 4px 16px 0 rgba(255, 255, 255, 0.05)",
+      }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
@@ -73,19 +81,18 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {data.navigation.links.map((link) => (
-              <a
+            {data.navigation.links.map((link, index) => (
+              <motion.a
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium ${
-                  isScrolled
-                    ? "text-white dark:text-white"
-                    : "text-gray-800 dark:text-gray-300"
-                } hover:text-orange-600 transition-colors relative group`}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.3 }}
+                className="text-sm font-semibold text-gray-700 hover:text-orange-600 transition-colors relative group"
               >
                 {link.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-orange transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </motion.a>
             ))}
           </nav>
 
@@ -132,43 +139,38 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className={`md:hidden p-2 z-50 rounded-lg transition-all duration-200 ${
-              isScrolled
-                ? "text-white bg-white/10 hover:bg-white/20 hover:text-orange-300"
-                : "text-gray-800 bg-gray-100/80 hover:bg-gray-200 hover:text-orange-600"
-            }`}
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            className="md:hidden p-2 z-50 rounded-lg transition-all duration-200 text-gray-700 bg-white/50 hover:bg-white/80 hover:text-orange-600 backdrop-blur-sm border border-gray-200/50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          </motion.button>
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div
-            className={`md:hidden py-4 border-t animate-fade-in ${
-              isScrolled
-                ? "bg-gray-900/95 backdrop-blur-md border-white/20"
-                : "bg-white/95 backdrop-blur-md border-gray-200 shadow-lg"
-            }`}
-          >
-            <nav className="flex flex-col gap-4">
-              {data.navigation.links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm font-medium transition-colors px-2 py-1 rounded ${
-                    isScrolled
-                      ? "text-white hover:text-orange-300 hover:bg-white/10"
-                      : "text-gray-800 hover:text-orange-600 hover:bg-orange-50"
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden py-4 border-t border-gray-200/50 bg-white/90 backdrop-blur-xl shadow-lg"
+            >
+              <nav className="flex flex-col gap-4">
+                {data.navigation.links.map((link) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    whileTap={{ scale: 0.98 }}
+                    className="text-sm font-medium transition-colors px-2 py-1 rounded text-gray-700 hover:text-orange-600 hover:bg-orange-50"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-current/20">
                 {/* Language Toggle (mobile) */}
                 <div className="flex items-center gap-2">
@@ -208,27 +210,24 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className={
-                    isScrolled
-                      ? "text-white hover:text-orange-300 hover:bg-white/10"
-                      : "text-gray-800 hover:text-orange-600"
-                  }
+                  className="text-gray-700 hover:text-orange-600 hover:bg-orange-50"
                 >
                   {data.navigation.cta.secondary}
                 </Button>
                 <a href={`tel:${data.contact.phone.replace(/[^+0-9]/g, "")}`}>
                   <Button
                     size="sm"
-                    className="bg-gradient-orange text-white hover:shadow-lg"
+                    className="bg-gradient-orange text-white hover:shadow-lg w-full"
                   >
                     {data.navigation.cta.primary}
                   </Button>
                 </a>
               </div>
             </nav>
-          </div>
+          </motion.div>
         )}
+        </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   );
 }
