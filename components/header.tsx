@@ -12,6 +12,9 @@ type ContentType = {
     links: { label: string; href: string }[];
     cta: { primary: string; secondary: string };
   };
+  contact: {
+    phone: string;
+  };
 };
 
 export function Header() {
@@ -111,12 +114,14 @@ export function Header() {
                 മല
               </button>
             </div>
-            <Button
-              size="sm"
-              className="bg-gradient-orange text-white hover:shadow-lg hover-lift"
-            >
-              {data.navigation.cta.primary}
-            </Button>
+            <a href={`tel:${data.contact.phone.replace(/[^+0-9]/g, "")}`}>
+              <Button
+                size="sm"
+                className="bg-gradient-orange text-white hover:shadow-lg hover-lift"
+              >
+                {data.navigation.cta.primary}
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -197,12 +202,14 @@ export function Header() {
                 >
                   {data.navigation.cta.secondary}
                 </Button>
-                <Button
-                  size="sm"
-                  className="bg-gradient-orange text-white hover:shadow-lg"
-                >
-                  {data.navigation.cta.primary}
-                </Button>
+                <a href={`tel:${data.contact.phone.replace(/[^+0-9]/g, "")}`}>
+                  <Button
+                    size="sm"
+                    className="bg-gradient-orange text-white hover:shadow-lg"
+                  >
+                    {data.navigation.cta.primary}
+                  </Button>
+                </a>
               </div>
             </nav>
           </div>
