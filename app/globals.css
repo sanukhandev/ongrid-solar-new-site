@@ -71,6 +71,7 @@ body {
   font-family: var(--font-montserrat), system-ui, sans-serif;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  overflow-x: hidden;
 }
 
 .font-highlight {
@@ -99,6 +100,7 @@ html[lang="ml"] .font-sans {
 /* Smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for sticky header height */
 }
 
 /* Enhanced smooth scrolling for modern browsers */
@@ -184,7 +186,8 @@ html {
   transition: box-shadow 0.3s ease;
 }
 
-.hero-content {
+.hero-content,
+.hero-content * {
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -316,18 +319,6 @@ html {
   animation: gradient-shift 3s ease infinite;
 }
 
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out forwards;
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
-}
-
-.animate-scale-in {
-  animation: scale-in 0.6s ease-out forwards;
-}
-
 /* Stagger animation delays */
 .stagger-1 {
   animation-delay: 0.1s;
@@ -346,81 +337,6 @@ html {
 }
 .stagger-6 {
   animation-delay: 0.6s;
-}
-
-/* Hover effects */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 20px rgba(239, 119, 34, 0.4);
-  transition: box-shadow 0.3s ease;
-}
-
-/* Animation keyframes */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Animation utility classes */
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out forwards;
-}
-
-.animate-scale-in {
-  animation: scale-in 0.6s ease-out forwards;
-}
-
-.animate-slide-in-right {
-  animation: slide-in-right 0.6s ease-out forwards;
 }
 
 /* Initial state for animations */
@@ -442,12 +358,6 @@ html {
     opacity: 1 !important;
     transform: none !important;
   }
-}
-
-/* Ensure content is visible by default */
-.hero-content,
-.hero-content * {
-  opacity: 1 !important;
 }
 
 /* Button Styles */

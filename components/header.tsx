@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useContent } from "@/hooks/use-content";
-import { useLanguage } from "@/contexts/language-context";
 
 type ContentType = {
   site: { name: string };
@@ -12,33 +12,44 @@ type ContentType = {
     links: { label: string; href: string }[];
     cta: { primary: string; secondary: string };
   };
+  contact: {
+    phone: string;
+  };
 };
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const data = useContent() as unknown as ContentType;
-  const { language, setLanguage } = useLanguage();
+  const telHref = `tel:${data.contact.phone.replace(/[^+0-9]/g, "")}`;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isMobileMenuOpen]);
+
   return (
-    <header
-      className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled
-          ? "bg-gray-900/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
-      style={{ top: isScrolled ? "30px" : "40px" }}
-    >
+    <>
+      {/* Header Bar */}
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className={`fixed left-0 right-0 z-40 transition-all duration-500 ${
+          isScrolled
+            ? "bg-white/85 backdrop-blur-xl shadow-md border-b border-gray-200/60"
+            : "bg-white/70 backdrop-blur-md border-b border-white/30"
+        }`}
+        style={{ top: "32px" }}
+      >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-[64px] md:h-[72px]">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3 group">
             <div className="w-12 h-12 flex items-center justify-center transition-transform group-hover:scale-105">
@@ -70,144 +81,124 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {data.navigation.links.map((link) => (
-              <a
+            {data.navigation.links.map((link, index) => (
+              <motion.a
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium ${
-                  isScrolled
-                    ? "text-white dark:text-white"
-                    : "text-gray-800 dark:text-gray-300"
-                } hover:text-orange-600 transition-colors relative group`}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.3 }}
+                className="text-sm font-semibold text-gray-700 hover:text-orange-600 transition-colors relative group"
               >
                 {link.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-orange transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </motion.a>
             ))}
           </nav>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center gap-3">
-            {/* Language Toggle */}
-            <div className="flex items-center rounded-full border border-orange-400 overflow-hidden text-xs font-semibold">
-              <button
-                onClick={() => setLanguage("en")}
-                className={`px-3 py-1.5 transition-colors ${
-                  language === "en"
-                    ? "bg-orange-500 text-white"
-                    : "text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20"
-                }`}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLanguage("ml")}
-                className={`px-3 py-1.5 transition-colors ${
-                  language === "ml"
-                    ? "bg-orange-500 text-white"
-                    : "text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20"
-                }`}
-              >
-                മല
-              </button>
-            </div>
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center shrink-0">
             <Button
+              asChild
               size="sm"
-              className="bg-gradient-orange text-white hover:shadow-lg hover-lift"
+              className="bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold hover:shadow-lg hover:scale-105 transition-all duration-200"
             >
-              {data.navigation.cta.primary}
+              <a href={telHref}>
+                {data.navigation.cta.primary}
+              </a>
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className={`md:hidden p-2 z-50 rounded-lg transition-all duration-200 ${
-              isScrolled
-                ? "text-white bg-white/10 hover:bg-white/20 hover:text-orange-300"
-                : "text-gray-800 bg-gray-100/80 hover:bg-gray-200 hover:text-orange-600"
-            }`}
+          {/* Mobile Hamburger */}
+          <motion.button
+            whileTap={{ scale: 0.88 }}
+            className="md:hidden p-2 rounded-xl text-gray-700 bg-white/60 hover:bg-orange-50 hover:text-orange-600 backdrop-blur-sm border border-gray-200/60 transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <AnimatePresence mode="wait" initial={false}>
+              {isMobileMenuOpen ? (
+                <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.18 }} className="block">
+                  <X size={22} />
+                </motion.span>
+              ) : (
+                <motion.span key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.18 }} className="block">
+                  <Menu size={22} />
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </motion.button>
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div
-            className={`md:hidden py-4 border-t animate-fade-in ${
-              isScrolled
-                ? "bg-gray-900/95 backdrop-blur-md border-white/20"
-                : "bg-white/95 backdrop-blur-md border-gray-200 shadow-lg"
-            }`}
-          >
-            <nav className="flex flex-col gap-4">
-              {data.navigation.links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm font-medium transition-colors px-2 py-1 rounded ${
-                    isScrolled
-                      ? "text-white hover:text-orange-300 hover:bg-white/10"
-                      : "text-gray-800 hover:text-orange-600 hover:bg-orange-50"
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <div className="flex flex-col gap-2 pt-4 border-t border-current/20">
-                {/* Language Toggle (mobile) */}
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
-                    {language === "ml" ? "ഭാഷ:" : "Language:"}
-                  </span>
-                  <div className="flex items-center rounded-full border border-orange-400 overflow-hidden text-xs font-semibold">
-                    <button
-                      onClick={() => setLanguage("en")}
-                      className={`px-3 py-1.5 transition-colors ${
-                        language === "en"
-                          ? "bg-orange-500 text-white"
-                          : "text-orange-500 hover:bg-orange-50"
-                      }`}
-                    >
-                      EN
-                    </button>
-                    <button
-                      onClick={() => setLanguage("ml")}
-                      className={`px-3 py-1.5 transition-colors ${
-                        language === "ml"
-                          ? "bg-orange-500 text-white"
-                          : "text-orange-500 hover:bg-orange-50"
-                      }`}
-                    >
-                      മല
-                    </button>
-                  </div>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className={
-                    isScrolled
-                      ? "text-white hover:text-orange-300 hover:bg-white/10"
-                      : "text-gray-800 hover:text-orange-600"
-                  }
-                >
-                  {data.navigation.cta.secondary}
-                </Button>
-                <Button
-                  size="sm"
-                  className="bg-gradient-orange text-white hover:shadow-lg"
-                >
-                  {data.navigation.cta.primary}
-                </Button>
-              </div>
-            </nav>
-          </div>
-        )}
       </div>
-    </header>
+      </motion.header>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            <motion.div
+              key="backdrop"
+              className="fixed top-[32px] right-0 bottom-0 left-0 bg-black/50 backdrop-blur-sm z-[45] md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            <motion.div
+              key="drawer"
+              className="fixed top-[96px] right-0 bottom-0 w-[300px] max-w-[85vw] overflow-hidden rounded-l-[28px] border-l border-white/60 bg-gradient-to-b from-white via-white to-orange-50/65 z-[46] shadow-[0_24px_64px_rgba(15,23,42,0.24),0_12px_28px_rgba(249,115,22,0.18)] md:hidden flex flex-col"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 28, stiffness: 280, mass: 0.7 }}
+            >
+              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-white shrink-0">
+                <div className="flex items-center gap-2">
+                  <img src="/SVG/logo.svg" alt="logo" className="w-8 h-8 object-contain" />
+                  <span className="font-black text-base" style={{ background: "linear-gradient(135deg, #ea580c, #f97316, #fbbf24)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
+                    {data.site.name}
+                  </span>
+                </div>
+                <motion.button whileTap={{ scale: 0.88 }} onClick={() => setIsMobileMenuOpen(false)} className="p-2 rounded-full bg-white shadow-[0_6px_18px_rgba(15,23,42,0.12)] hover:bg-orange-50 text-gray-500 hover:text-orange-600 transition-colors">
+                  <X size={18} />
+                </motion.button>
+              </div>
+              <nav className="flex-1 flex flex-col px-4 py-4 gap-1 overflow-y-auto">
+                {data.navigation.links.map((link, i) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    initial={{ x: 40, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.05 + i * 0.055, duration: 0.28, ease: "easeOut" }}
+                    className="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:text-orange-600 py-3.5 px-4 rounded-xl hover:bg-orange-50 transition-all duration-150 border-b border-gray-50 last:border-0"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400 flex-shrink-0" />
+                    {link.label}
+                  </motion.a>
+                ))}
+              </nav>
+              <motion.div
+                className="p-5 border-t border-gray-100 bg-gray-50/80 shrink-0"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.25, duration: 0.3 }}
+              >
+                <Button asChild className="w-full bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold py-5 text-base rounded-xl hover:shadow-lg transition-all duration-200">
+                  <a href={telHref} onClick={() => setIsMobileMenuOpen(false)}>
+                    {data.navigation.cta.primary}
+                  </a>
+                </Button>
+                <p className="text-center text-xs text-gray-400 mt-2 font-medium tracking-wide">{data.contact.phone}</p>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
