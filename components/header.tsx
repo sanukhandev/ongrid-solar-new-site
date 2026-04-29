@@ -21,7 +21,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const data = useContent() as unknown as ContentType;
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, isLoading } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,24 +92,31 @@ export function Header() {
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
             {/* Language Toggle */}
-            <div className="flex items-center rounded-full border border-orange-400 overflow-hidden text-xs font-semibold">
+            <div className="flex items-center rounded-full border border-orange-400 overflow-hidden text-xs font-semibold relative">
+              {isLoading && (
+                <div className="absolute inset-0 bg-orange-500/50 backdrop-blur-sm flex items-center justify-center z-10">
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              )}
               <button
                 onClick={() => setLanguage("en")}
+                disabled={isLoading}
                 className={`px-3 py-1.5 transition-colors ${
                   language === "en"
                     ? "bg-orange-500 text-white"
                     : "text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20"
-                }`}
+                } disabled:opacity-50 disabled:cursor-not-allowed`}
               >
                 EN
               </button>
               <button
                 onClick={() => setLanguage("ml")}
+                disabled={isLoading}
                 className={`px-3 py-1.5 transition-colors ${
                   language === "ml"
                     ? "bg-orange-500 text-white"
                     : "text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20"
-                }`}
+                } disabled:opacity-50 disabled:cursor-not-allowed`}
               >
                 മല
               </button>
@@ -168,24 +175,31 @@ export function Header() {
                   <span className="text-xs text-gray-500 dark:text-gray-400">
                     {language === "ml" ? "ഭാഷ:" : "Language:"}
                   </span>
-                  <div className="flex items-center rounded-full border border-orange-400 overflow-hidden text-xs font-semibold">
+                  <div className="flex items-center rounded-full border border-orange-400 overflow-hidden text-xs font-semibold relative">
+                    {isLoading && (
+                      <div className="absolute inset-0 bg-orange-500/50 backdrop-blur-sm flex items-center justify-center z-10">
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      </div>
+                    )}
                     <button
                       onClick={() => setLanguage("en")}
+                      disabled={isLoading}
                       className={`px-3 py-1.5 transition-colors ${
                         language === "en"
                           ? "bg-orange-500 text-white"
                           : "text-orange-500 hover:bg-orange-50"
-                      }`}
+                      } disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       EN
                     </button>
                     <button
                       onClick={() => setLanguage("ml")}
+                      disabled={isLoading}
                       className={`px-3 py-1.5 transition-colors ${
                         language === "ml"
                           ? "bg-orange-500 text-white"
                           : "text-orange-500 hover:bg-orange-50"
-                      }`}
+                      } disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       മല
                     </button>

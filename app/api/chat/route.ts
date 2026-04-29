@@ -123,7 +123,9 @@ class SolarContextManager {
     // Include relevant data sections
     relevantSections.forEach((section) => {
       if ((this.contextData as Record<string, unknown>)[section]) {
-        relevantData[section] = (this.contextData as Record<string, unknown>)[section];
+        relevantData[section] = (this.contextData as Record<string, unknown>)[
+          section
+        ];
       }
     });
 
@@ -349,14 +351,14 @@ export async function POST(req: NextRequest) {
     if (!message) {
       return NextResponse.json(
         { error: "Message is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (!process.env.GEMINI_API_KEY) {
       return NextResponse.json(
         { error: "Gemini API key not configured" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -373,8 +375,8 @@ Customer Question: ${message}
 Provide a targeted, sales-focused response that directly answers their question using the context above. Be concise but persuasive.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-1.5-flash",
-      contents: prompt,
+      model: "gemini-2.5-flash-lite",
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
     });
 
     return NextResponse.json({
@@ -383,13 +385,14 @@ Provide a targeted, sales-focused response that directly answers their question 
     });
   } catch (error: unknown) {
     console.error("Gemini API Error:", error);
-    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
       {
         error: "Failed to generate response",
         details: errorMessage,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
