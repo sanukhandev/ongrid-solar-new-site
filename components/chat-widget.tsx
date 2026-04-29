@@ -171,7 +171,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ duration: 0.3 }}
             className={`flex flex-col w-[calc(100vw-1rem)] max-w-sm sm:w-80 md:w-96 
-                        h-[calc(100vh-6rem)] max-h-[500px] sm:h-[450px] md:h-[500px] 
+                        h-[min(480px,calc(100svh-110px))] 
                         bg-white/20 backdrop-blur-2xl border border-white/30 
                         rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden`}
           >
@@ -222,7 +222,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
               <>
                 {/* Chat Messages */}
                 <div
-                  className="flex-1 p-2 sm:p-4 overflow-y-auto max-h-[calc(100vh-12rem)] sm:max-h-[300px] md:max-h-[350px] scroll-smooth"
+                  className="flex-1 p-2 sm:p-4 overflow-y-auto scroll-smooth"
                   style={{ scrollBehavior: "smooth" }}
                 >
                   <div className="space-y-2 sm:space-y-4">
@@ -284,7 +284,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                       onKeyDown={handleKeyPress}
                       placeholder="Ask about solar solutions..."
                       disabled={isLoading}
-                      className="flex-1 text-sm bg-white/50 border-white/30 rounded-xl"
+                      className="flex-1 text-[16px] leading-tight bg-white/50 border-white/30 rounded-xl"
                     />
                     <Button
                       onClick={sendMessage}
