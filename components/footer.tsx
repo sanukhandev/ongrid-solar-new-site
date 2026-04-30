@@ -46,7 +46,7 @@ export function Footer() {
   const handleNewsletterSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsletterEmail.trim()) return;
-    const cleanPhone = data.contact.phone.replace(/[^+\d]/g, "");
+    const cleanPhone = (data.contact.phone ?? "").replace(/[^+\d]/g, "");
     const message = encodeURIComponent(
       `Hi, I'd like to subscribe to OnGrid Solar updates. My email: ${newsletterEmail}`
     );

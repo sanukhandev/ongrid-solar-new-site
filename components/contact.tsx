@@ -215,7 +215,7 @@ ${whatsapp.closing}`;
                 size="lg"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white w-full sm:w-auto px-4 sm:px-6 py-3 text-xs sm:text-sm md:text-base"
               >
-                <a href={`tel:${data.contact.phone.replace(/[^+\d]/g, "")}`}>
+                <a href={`tel:${(data.contact.phone ?? "").replace(/[^+\d]/g, "")}`}>
                   <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 flex-shrink-0" />
                   <span className="truncate min-w-0">
                     <span className="hidden sm:inline">{data.contact.cta}</span>
