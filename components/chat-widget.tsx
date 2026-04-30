@@ -174,7 +174,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ duration: 0.3 }}
             className={`flex flex-col w-[calc(100vw-1rem)] max-w-sm sm:w-80 md:w-96 
-                        h-[min(480px,calc(100svh-110px))] 
+                        h-[min(480px,calc(100svh_-_110px))] 
                         bg-white/20 backdrop-blur-2xl border border-white/30 
                         rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden`}
           >
@@ -226,7 +226,6 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                 {/* Chat Messages */}
                 <div
                   className="flex-1 p-2 sm:p-4 overflow-y-auto scroll-smooth"
-                  style={{ scrollBehavior: "smooth" }}
                 >
                   <div className="space-y-2 sm:space-y-4">
                     {messages.map((message) => (
