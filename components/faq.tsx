@@ -10,9 +10,23 @@ import { HelpCircle, Sun, Zap } from "lucide-react";
 import { useContent } from "@/hooks/use-content";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
+type ContentType = typeof import("@/data/content.json") & {
+  contact?: { phone?: string };
+};
+
 export function FAQ() {
-  const content = useContent();
+  const content = useContent() as unknown as ContentType;
   const ref = useScrollAnimation();
+
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const openWhatsAppGuide = () => {
+    const phone = content.contact?.phone?.replace(/[^+\d]/g, "") ?? "";
+    const msg = encodeURIComponent("Hi, I'd like to receive the OnGrid Solar Guide.");
+    window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+  };
 
   // Split FAQ items into two columns
   const midPoint = Math.ceil(content.faq.items.length / 2);
@@ -105,8 +119,8 @@ export function FAQ() {
                 {content.faq.ctaDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="btn-primary">{content.faq.ctaPrimary}</button>
-                <button className="btn-secondary">{content.faq.ctaSecondary}</button>
+                <button className="btn-primary" onClick={scrollToContact}>{content.faq.ctaPrimary}</button>
+                <button className="btn-secondary" onClick={openWhatsAppGuide}>{content.faq.ctaSecondary}</button>
               </div>
             </div>
           </div>
