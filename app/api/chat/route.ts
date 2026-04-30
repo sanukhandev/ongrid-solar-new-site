@@ -4,7 +4,7 @@ import content from "@/data/content.json";
 import contentMl from "@/data/content.ml.json";
 
 type ContentData = typeof content;
-const MODEL_NAME = "gemma-3-1b-it";
+const MODEL_NAME = "gemini-2.5-flash-lite";
 // Initialize Google GenAI
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY || "",
