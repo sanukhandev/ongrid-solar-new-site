@@ -20,8 +20,8 @@ interface ChatWidgetProps {
 }
 
 const WELCOME_MESSAGE = {
-  en: "👋 Hello! I'm OnGrid AI, your solar energy assistant.\n\n🔹 Get instant quotes & save up to ₹78,000 with government subsidies\n🔹 MNRE certified with 25-year warranties\n🔹 500+ successful installations across Kerala\n\nHow can I help you go solar today? ⚡",
-  ml: "👋 നമസ്കാരം! ഞാൻ OnGrid AI ആണ്, നിങ്ങളുടെ സോളാർ ഊർജ്ജ സഹായി.\n\n🔹 ₹78,000 വരെ സർക്കാർ സബ്‌സിഡി നേടൂ\n🔹 MNRE സർട്ടിഫൈഡ്, 25 വർഷം വാറന്റി\n🔹 കേരളത്തിൽ 500-ലധികം ഇൻസ്റ്റലേഷനുകൾ\n\nസോളാർ ഊർജ്ജത്തിലേക്ക് മാറാൻ ഞാൻ എങ്ങനെ സഹായിക്കണം? ⚡",
+  en: "👋 Hello! I'm ZaakiyAI, your solar energy assistant.\n\n🔹 Get instant quotes & save up to ₹78,000 with government subsidies\n🔹 MNRE certified with 25-year warranties\n🔹 500+ successful installations across Kerala\n\nHow can I help you go solar today? ⚡",
+  ml: "👋 നമസ്കാരം! ഞാൻ ZaakiyAI ആണ്, നിങ്ങളുടെ സോളാർ ഊർജ്ജ സഹായി.\n\n🔹 ₹78,000 വരെ സർക്കാർ സബ്‌സിഡി നേടൂ\n🔹 MNRE സർട്ടിഫൈഡ്, 25 വർഷം വാറന്റി\n🔹 കേരളത്തിൽ 500-ലധികം ഇൻസ്റ്റലേഷനുകൾ\n\nസോളാർ ഊർജ്ജത്തിലേക്ക് മാറാൻ ഞാൻ എങ്ങനെ സഹായിക്കണം? ⚡",
 };
 
 export default function ChatWidget({ className }: ChatWidgetProps) {
@@ -41,7 +41,10 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
   // Update welcome message when language changes
   useEffect(() => {
     setMessages((prev) => [
-      { ...prev[0], text: WELCOME_MESSAGE[language as "en" | "ml"] ?? WELCOME_MESSAGE.en },
+      {
+        ...prev[0],
+        text: WELCOME_MESSAGE[language as "en" | "ml"] ?? WELCOME_MESSAGE.en,
+      },
       ...prev.slice(1),
     ]);
   }, [language]);
@@ -193,7 +196,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                 </div>
                 <div>
                   <h3 className="font-semibold text-white drop-shadow text-sm sm:text-base">
-                    OnGrid AI
+                    Zaakiy AI
                   </h3>
                   <p className="text-xs text-green-300 flex items-center">
                     ● Online now
@@ -268,7 +271,7 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                         <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-amber-400 rounded-full animate-bounce delay-150"></span>
                         <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400 rounded-full animate-bounce delay-300"></span>
                         <span className="text-xs text-gray-500">
-                          OnGrid AI is typing...
+                          ZaakiyAI is typing...
                         </span>
                       </div>
                     )}

@@ -316,7 +316,7 @@ class SolarContextManager {
       ? "IMPORTANT: You MUST respond entirely in Malayalam (മലയാളം) script. Do not use English except for technical terms, numbers, and company name."
       : "Respond in English.";
 
-    return `You are OnGrid AI, the official sales assistant for ${
+    return `You are ZaakiyAI, the official sales assistant for ${
       this.contextData.site?.name || "our solar company"
     } in Trivandrum, Kerala.
 
