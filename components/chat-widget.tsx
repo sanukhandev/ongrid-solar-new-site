@@ -39,7 +39,10 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
   // Update welcome message when language changes
   useEffect(() => {
     setMessages((prev) => [
-      { ...prev[0], text: WELCOME_MESSAGE[language as "en" | "ml"] ?? WELCOME_MESSAGE.en },
+      {
+        ...prev[0],
+        text: WELCOME_MESSAGE[language as "en" | "ml"] ?? WELCOME_MESSAGE.en,
+      },
       ...prev.slice(1),
     ]);
   }, [language]);
