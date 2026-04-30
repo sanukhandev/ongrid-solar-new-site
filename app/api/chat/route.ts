@@ -4,7 +4,7 @@ import content from "@/data/content.json";
 import contentMl from "@/data/content.ml.json";
 
 type ContentData = typeof content;
-
+const MODEL_NAME = "gemma-3-1b-it";
 // Initialize Google GenAI
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY || "",
@@ -375,7 +375,7 @@ Customer Question: ${message}
 Provide a targeted, sales-focused response that directly answers their question using the context above. Be concise but persuasive.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-lite",
+      model: MODEL_NAME,
       contents: [{ role: "user", parts: [{ text: prompt }] }],
     });
 
