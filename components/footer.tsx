@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
@@ -40,6 +41,18 @@ type ContentType = {
 
 export function Footer() {
   const data = useContent() as unknown as ContentType;
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+
+  const handleNewsletterSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) return;
+    const cleanPhone = (data.contact.phone ?? "").replace(/[^+\d]/g, "");
+    const message = encodeURIComponent(
+      `Hi, I'd like to subscribe to OnGrid Solar updates. My email: ${newsletterEmail}`
+    );
+    window.open(`https://wa.me/${cleanPhone}?text=${message}`, "_blank");
+    setNewsletterEmail("");
+  };
   return (
     <>
       <footer className="bg-gray-900 text-white pt-20 pb-8">
@@ -149,14 +162,19 @@ export function Footer() {
                 {data.footer?.newsletter?.description}
               </p>
               <div className="space-y-3">
+                <form onSubmit={handleNewsletterSubscribe} className="space-y-3">
                 <Input
                   type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder={data.footer?.newsletter?.emailPlaceholder}
                   className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                  required
                 />
-                <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white">
+                <Button type="submit" className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white">
                   {data.footer?.newsletter?.subscribeLabel}
                 </Button>
+                </form>
               </div>
             </div>
           </div>
