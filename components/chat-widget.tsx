@@ -198,8 +198,16 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                   <h3 className="font-semibold text-white drop-shadow text-sm sm:text-base">
                     Zaakiy AI
                   </h3>
-                  <p className="text-xs text-green-300 flex items-center">
-                    ● Online now
+                  <p className="text-[9px] sm:text-[14px] text-white/80 mt-1 text-center px-1">
+                   Powered by Zv3{" "}
+                    <a
+                      href="https://zaakiy.io"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:no-underline"
+                    >
+                      ZaakiyV3RSE
+                    </a>
                   </p>
                 </div>
               </div>
@@ -300,10 +308,6 @@ export default function ChatWidget({ className }: ChatWidgetProps) {
                       <Send className="h-3 w-3 sm:h-4 sm:w-4" />
                     </Button>
                   </div>
-                  <p className="text-[9px] sm:text-[10px] text-black-400 mt-1 text-center px-1">
-                    Powered by <b> Zakkiy AI </b>. Developed by The Desert
-                    Whales LLC Dubai
-                  </p>
                 </div>
               </>
             )}
